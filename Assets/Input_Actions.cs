@@ -53,6 +53,15 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Join"",
+                    ""type"": ""Button"",
+                    ""id"": ""e5ede9b0-22d2-410e-a4a3-297991c7a6b8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -73,7 +82,7 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard"",
                     ""action"": ""Chodzenie"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -84,7 +93,7 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard"",
                     ""action"": ""Chodzenie"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -95,7 +104,7 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard"",
                     ""action"": ""Chodzenie"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -106,10 +115,21 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard"",
                     ""action"": ""Chodzenie"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ecb44bc-1afe-463f-94b5-cea8cb4fc8cf"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad;Joystick"",
+                    ""action"": ""Chodzenie"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
@@ -117,7 +137,18 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Skok"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3708178e-aa5d-4d9a-9fc9-b2b565f42da6"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad;Joystick"",
                     ""action"": ""Skok"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -172,21 +203,89 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard"",
                     ""action"": ""Kamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""78f61611-ce8d-4d7a-a532-cc848f90cc34"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Kamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e10270d-9f42-482a-b38f-8f6b5202574b"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad;Joystick"",
+                    ""action"": ""Kamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""641ffd4b-5267-46a9-9ea9-15e98f84fd2f"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Joystick"",
+                    ""action"": ""Join"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""12144cd4-ec2b-4747-b6ac-87a0eb449953"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Join"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Keyboard"",
+            ""bindingGroup"": ""Keyboard"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Joystick"",
+            ""bindingGroup"": ""Joystick"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Joystick>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // Walking
         m_Walking = asset.FindActionMap("Walking", throwIfNotFound: true);
         m_Walking_Chodzenie = m_Walking.FindAction("Chodzenie", throwIfNotFound: true);
         m_Walking_Skok = m_Walking.FindAction("Skok", throwIfNotFound: true);
         m_Walking_Kamera = m_Walking.FindAction("Kamera", throwIfNotFound: true);
+        m_Walking_Join = m_Walking.FindAction("Join", throwIfNotFound: true);
     }
 
     ~@Input_Actions()
@@ -256,6 +355,7 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Walking_Chodzenie;
     private readonly InputAction m_Walking_Skok;
     private readonly InputAction m_Walking_Kamera;
+    private readonly InputAction m_Walking_Join;
     public struct WalkingActions
     {
         private @Input_Actions m_Wrapper;
@@ -263,6 +363,7 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
         public InputAction @Chodzenie => m_Wrapper.m_Walking_Chodzenie;
         public InputAction @Skok => m_Wrapper.m_Walking_Skok;
         public InputAction @Kamera => m_Wrapper.m_Walking_Kamera;
+        public InputAction @Join => m_Wrapper.m_Walking_Join;
         public InputActionMap Get() { return m_Wrapper.m_Walking; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -281,6 +382,9 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
             @Kamera.started += instance.OnKamera;
             @Kamera.performed += instance.OnKamera;
             @Kamera.canceled += instance.OnKamera;
+            @Join.started += instance.OnJoin;
+            @Join.performed += instance.OnJoin;
+            @Join.canceled += instance.OnJoin;
         }
 
         private void UnregisterCallbacks(IWalkingActions instance)
@@ -294,6 +398,9 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
             @Kamera.started -= instance.OnKamera;
             @Kamera.performed -= instance.OnKamera;
             @Kamera.canceled -= instance.OnKamera;
+            @Join.started -= instance.OnJoin;
+            @Join.performed -= instance.OnJoin;
+            @Join.canceled -= instance.OnJoin;
         }
 
         public void RemoveCallbacks(IWalkingActions instance)
@@ -311,10 +418,29 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
         }
     }
     public WalkingActions @Walking => new WalkingActions(this);
+    private int m_KeyboardSchemeIndex = -1;
+    public InputControlScheme KeyboardScheme
+    {
+        get
+        {
+            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
+            return asset.controlSchemes[m_KeyboardSchemeIndex];
+        }
+    }
+    private int m_JoystickSchemeIndex = -1;
+    public InputControlScheme JoystickScheme
+    {
+        get
+        {
+            if (m_JoystickSchemeIndex == -1) m_JoystickSchemeIndex = asset.FindControlSchemeIndex("Joystick");
+            return asset.controlSchemes[m_JoystickSchemeIndex];
+        }
+    }
     public interface IWalkingActions
     {
         void OnChodzenie(InputAction.CallbackContext context);
         void OnSkok(InputAction.CallbackContext context);
         void OnKamera(InputAction.CallbackContext context);
+        void OnJoin(InputAction.CallbackContext context);
     }
 }
