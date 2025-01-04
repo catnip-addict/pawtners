@@ -37,39 +37,39 @@ public class Player : MonoBehaviour
         if (playerController == PlayerControllerType.Keyboard)
         {
             // Klawiatura
-            inputActions.Keyboard.Chodzenie.performed += OnChodzenie;
-            inputActions.Keyboard.Chodzenie.canceled += OnChodzenie;
-            inputActions.Keyboard.Kamera.performed += OnKamera;
-            inputActions.Keyboard.Kamera.canceled += OnKamera;
-            inputActions.Keyboard.Skok.performed += OnSkok;
-            inputActions.Keyboard.Skok.canceled += OnSkok;
+            inputActions.Keyboard.Walking.performed += OnMove;
+            inputActions.Keyboard.Walking.canceled += OnMove;
+            inputActions.Keyboard.Look.performed += OnCamera;
+            inputActions.Keyboard.Look.canceled += OnCamera;
+            inputActions.Keyboard.Jump.performed += OnJump;
+            inputActions.Keyboard.Jump.canceled += OnJump;
             inputActions.Keyboard.Enable();
             /// Kontroler
-            inputActions.Controller.Chodzenie.performed -= OnChodzenie;
-            inputActions.Controller.Chodzenie.canceled -= OnChodzenie;
-            inputActions.Controller.Kamera.performed -= OnKamera;
-            inputActions.Controller.Kamera.canceled -= OnKamera;
-            inputActions.Controller.Skok.performed -= OnSkok;
-            inputActions.Controller.Skok.canceled -= OnSkok;
+            inputActions.Controller.Walking.performed -= OnMove;
+            inputActions.Controller.Walking.canceled -= OnMove;
+            inputActions.Controller.Look.performed -= OnCamera;
+            inputActions.Controller.Look.canceled -= OnCamera;
+            inputActions.Controller.Jump.performed -= OnJump;
+            inputActions.Controller.Jump.canceled -= OnJump;
             inputActions.Controller.Disable();
         }
         else if (playerController == PlayerControllerType.Gamepad)
         {
             /// Kontroler
-            inputActions.Controller.Chodzenie.performed += OnChodzenie;
-            inputActions.Controller.Chodzenie.canceled += OnChodzenie;
-            inputActions.Controller.Kamera.performed += OnKamera;
-            inputActions.Controller.Kamera.canceled += OnKamera;
-            inputActions.Controller.Skok.performed += OnSkok;
-            inputActions.Controller.Skok.canceled += OnSkok;
+            inputActions.Controller.Walking.performed += OnMove;
+            inputActions.Controller.Walking.canceled += OnMove;
+            inputActions.Controller.Look.performed += OnCamera;
+            inputActions.Controller.Look.canceled += OnCamera;
+            inputActions.Controller.Jump.performed += OnJump;
+            inputActions.Controller.Jump.canceled += OnJump;
             inputActions.Controller.Enable();
             // Klawiatura
-            inputActions.Keyboard.Chodzenie.performed -= OnChodzenie;
-            inputActions.Keyboard.Chodzenie.canceled -= OnChodzenie;
-            inputActions.Keyboard.Kamera.performed -= OnKamera;
-            inputActions.Keyboard.Kamera.canceled -= OnKamera;
-            inputActions.Keyboard.Skok.performed -= OnSkok;
-            inputActions.Keyboard.Skok.canceled -= OnSkok;
+            inputActions.Keyboard.Walking.performed -= OnMove;
+            inputActions.Keyboard.Walking.canceled -= OnMove;
+            inputActions.Keyboard.Look.performed -= OnCamera;
+            inputActions.Keyboard.Look.canceled -= OnCamera;
+            inputActions.Keyboard.Jump.performed -= OnJump;
+            inputActions.Keyboard.Jump.canceled -= OnJump;
             inputActions.Keyboard.Disable();
         }
     }
@@ -83,9 +83,7 @@ public class Player : MonoBehaviour
     {
         if (isGrounded)
         {
-
-            Move();
-            Rotate();
+            Movment();
         }
 
         if (isChargingJump)
@@ -102,28 +100,25 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Move()
+    void Movment()
     {
-
+        //movement
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         move = move.normalized * speed;
         Vector3 newVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
         rb.linearVelocity = newVelocity;
-    }
 
-    void Rotate()
-    {
-
+        //Rotation
         float rot = cameraInput.x * rotationSpeed * Time.deltaTime;
         transform.Rotate(0, rot, 0);
     }
 
-    void OnChodzenie(InputAction.CallbackContext context)
+    void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
     }
 
-    void OnSkok(InputAction.CallbackContext context)
+    void OnJump(InputAction.CallbackContext context)
     {
         if (context.started && isGrounded)
         {
@@ -138,13 +133,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnKamera(InputAction.CallbackContext context)
+    void OnCamera(InputAction.CallbackContext context)
     {
         cameraInput = context.ReadValue<Vector2>();
-    }
-    void OnJoin(InputAction.CallbackContext context)
-    {
-        Debug.Log("fun");
     }
 
     private void OnCollisionEnter(Collision collision)

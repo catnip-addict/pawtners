@@ -6,7 +6,7 @@
             "id": "986381c4-56c9-41d2-be12-f9995d0d0f3e",
             "actions": [
                 {
-                    "name": "Chodzenie",
+                    "name": "Walking",
                     "type": "Value",
                     "id": "cec08518-2c5a-4171-9560-3f7033bf14ff",
                     "expectedControlType": "",
@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Skok",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "eb3fa20a-7d4b-4ebe-b79f-adc849e3455d",
                     "expectedControlType": "",
@@ -24,22 +24,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Kamera",
+                    "name": "Look",
                     "type": "Value",
                     "id": "c0788b3c-677f-4756-8e6b-27411b260f20",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Join",
-                    "type": "Button",
-                    "id": "e5ede9b0-22d2-410e-a4a3-297991c7a6b8",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -50,7 +41,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Chodzenie",
+                    "action": "Walking",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -61,7 +52,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
-                    "action": "Chodzenie",
+                    "action": "Walking",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -72,7 +63,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
-                    "action": "Chodzenie",
+                    "action": "Walking",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -83,7 +74,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
-                    "action": "Chodzenie",
+                    "action": "Walking",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -94,7 +85,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
-                    "action": "Chodzenie",
+                    "action": "Walking",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -105,7 +96,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
-                    "action": "Skok",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -116,29 +107,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
-                    "action": "Kamera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "641ffd4b-5267-46a9-9ea9-15e98f84fd2f",
-                    "path": "<Gamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Joystick",
-                    "action": "Join",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "12144cd4-ec2b-4747-b6ac-87a0eb449953",
-                    "path": "<Keyboard>/anyKey",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "Join",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -149,7 +118,7 @@
             "id": "c2787e4f-383a-49ac-9a02-315aef74e605",
             "actions": [
                 {
-                    "name": "Chodzenie",
+                    "name": "Walking",
                     "type": "Value",
                     "id": "72d978d1-3358-464a-b52d-8e01bde8d379",
                     "expectedControlType": "",
@@ -158,7 +127,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Skok",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "f440999f-e56c-4578-966c-fe50ef92c287",
                     "expectedControlType": "",
@@ -167,22 +136,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Kamera",
+                    "name": "Look",
                     "type": "Value",
                     "id": "b4e2deb5-6c30-47a6-b256-659928fe2414",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Join",
-                    "type": "Button",
-                    "id": "2316b99b-1f6e-4d49-82ff-a1be229948d1",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -193,7 +153,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad;Joystick",
-                    "action": "Chodzenie",
+                    "action": "Walking",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -204,7 +164,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad;Joystick",
-                    "action": "Skok",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -215,29 +175,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad;Joystick",
-                    "action": "Kamera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "44818014-82b8-43fb-9506-deb14966464b",
-                    "path": "<Gamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Joystick",
-                    "action": "Join",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e4d87804-9810-4aec-a760-06dd3d05a496",
-                    "path": "<Keyboard>/anyKey",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "Join",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
