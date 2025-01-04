@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     {
         if (playerController == PlayerControllerType.Keyboard)
         {
+            // Klawiatura
             inputActions.Keyboard.Chodzenie.performed += OnChodzenie;
             inputActions.Keyboard.Chodzenie.canceled += OnChodzenie;
             inputActions.Keyboard.Kamera.performed += OnKamera;
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour
             inputActions.Keyboard.Skok.performed += OnSkok;
             inputActions.Keyboard.Skok.canceled += OnSkok;
             inputActions.Keyboard.Enable();
-            ///
+            /// Kontroler
             inputActions.Controller.Chodzenie.performed -= OnChodzenie;
             inputActions.Controller.Chodzenie.canceled -= OnChodzenie;
             inputActions.Controller.Kamera.performed -= OnKamera;
@@ -54,6 +55,7 @@ public class Player : MonoBehaviour
         }
         else if (playerController == PlayerControllerType.Gamepad)
         {
+            /// Kontroler
             inputActions.Controller.Chodzenie.performed += OnChodzenie;
             inputActions.Controller.Chodzenie.canceled += OnChodzenie;
             inputActions.Controller.Kamera.performed += OnKamera;
@@ -61,7 +63,7 @@ public class Player : MonoBehaviour
             inputActions.Controller.Skok.performed += OnSkok;
             inputActions.Controller.Skok.canceled += OnSkok;
             inputActions.Controller.Enable();
-            //
+            // Klawiatura
             inputActions.Keyboard.Chodzenie.performed -= OnChodzenie;
             inputActions.Keyboard.Chodzenie.canceled -= OnChodzenie;
             inputActions.Keyboard.Kamera.performed -= OnKamera;
