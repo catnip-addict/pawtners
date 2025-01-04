@@ -1,14 +1,21 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour, Input_Actions.IWalkingActions
+public class Player : MonoBehaviour
 {
+    public enum PlayerControllerType
+    {
+        Keyboard,
+        Gamepad
+    }
 
     [SerializeField] public float speed = 5f;
     [SerializeField] public float maxJumpForce = 10f;
     [SerializeField] public float minJumpForce = 5f;
     [SerializeField] public float maxChargeTime = 1f;
     [SerializeField] public float rotationSpeed = 45f;
+    [SerializeField] public PlayerControllerType playerController;
+    PlayerControllerType lastPlayerController;
 
 
     private Rigidbody rb;
@@ -22,24 +29,51 @@ public class Player : MonoBehaviour, Input_Actions.IWalkingActions
     void Awake()
     {
         inputActions = new Input_Actions();
-        inputActions.Walking.SetCallbacks(this);
+        lastPlayerController = playerController;
     }
 
     void OnEnable()
     {
-
-        inputActions.Walking.Enable();
-    }
-
-    void OnDisable()
-    {
-
-        inputActions.Walking.Disable();
+        if (playerController == PlayerControllerType.Keyboard)
+        {
+            inputActions.Keyboard.Chodzenie.performed += OnChodzenie;
+            inputActions.Keyboard.Chodzenie.canceled += OnChodzenie;
+            inputActions.Keyboard.Kamera.performed += OnKamera;
+            inputActions.Keyboard.Kamera.canceled += OnKamera;
+            inputActions.Keyboard.Skok.performed += OnSkok;
+            inputActions.Keyboard.Skok.canceled += OnSkok;
+            inputActions.Keyboard.Enable();
+            ///
+            inputActions.Controller.Chodzenie.performed -= OnChodzenie;
+            inputActions.Controller.Chodzenie.canceled -= OnChodzenie;
+            inputActions.Controller.Kamera.performed -= OnKamera;
+            inputActions.Controller.Kamera.canceled -= OnKamera;
+            inputActions.Controller.Skok.performed -= OnSkok;
+            inputActions.Controller.Skok.canceled -= OnSkok;
+            inputActions.Controller.Disable();
+        }
+        else if (playerController == PlayerControllerType.Gamepad)
+        {
+            inputActions.Controller.Chodzenie.performed += OnChodzenie;
+            inputActions.Controller.Chodzenie.canceled += OnChodzenie;
+            inputActions.Controller.Kamera.performed += OnKamera;
+            inputActions.Controller.Kamera.canceled += OnKamera;
+            inputActions.Controller.Skok.performed += OnSkok;
+            inputActions.Controller.Skok.canceled += OnSkok;
+            inputActions.Controller.Enable();
+            //
+            inputActions.Keyboard.Chodzenie.performed -= OnChodzenie;
+            inputActions.Keyboard.Chodzenie.canceled -= OnChodzenie;
+            inputActions.Keyboard.Kamera.performed -= OnKamera;
+            inputActions.Keyboard.Kamera.canceled -= OnKamera;
+            inputActions.Keyboard.Skok.performed -= OnSkok;
+            inputActions.Keyboard.Skok.canceled -= OnSkok;
+            inputActions.Keyboard.Disable();
+        }
     }
 
     void Start()
     {
-
         rb = GetComponent<Rigidbody>();
     }
 
@@ -59,6 +93,11 @@ public class Player : MonoBehaviour, Input_Actions.IWalkingActions
 
             jumpChargeTime = Mathf.Clamp(jumpChargeTime, 0f, maxChargeTime);
         }
+        if (playerController != lastPlayerController)
+        {
+            OnEnable();
+            lastPlayerController = playerController;
+        }
     }
 
     void Move()
@@ -77,12 +116,12 @@ public class Player : MonoBehaviour, Input_Actions.IWalkingActions
         transform.Rotate(0, rot, 0);
     }
 
-    void Input_Actions.IWalkingActions.OnChodzenie(InputAction.CallbackContext context)
+    void OnChodzenie(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
     }
 
-    void Input_Actions.IWalkingActions.OnSkok(InputAction.CallbackContext context)
+    void OnSkok(InputAction.CallbackContext context)
     {
         if (context.started && isGrounded)
         {
@@ -97,11 +136,11 @@ public class Player : MonoBehaviour, Input_Actions.IWalkingActions
         }
     }
 
-    void Input_Actions.IWalkingActions.OnKamera(InputAction.CallbackContext context)
+    void OnKamera(InputAction.CallbackContext context)
     {
         cameraInput = context.ReadValue<Vector2>();
     }
-    void Input_Actions.IWalkingActions.OnJoin(InputAction.CallbackContext context)
+    void OnJoin(InputAction.CallbackContext context)
     {
         Debug.Log("fun");
     }

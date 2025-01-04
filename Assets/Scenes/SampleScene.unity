@@ -376,7 +376,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5494465981433368353, guid: 80afe5dd01dc48d4797934692e4eb619, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Keyboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8089204968762297895, guid: 80afe5dd01dc48d4797934692e4eb619, type: 3}
+      propertyPath: playerController
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5494465981433368353, guid: 80afe5dd01dc48d4797934692e4eb619, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -434,10 +443,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5494465981433368353, guid: 80afe5dd01dc48d4797934692e4eb619, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Keyboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494465981433368353, guid: 80afe5dd01dc48d4797934692e4eb619, type: 3}
       propertyPath: m_DefaultControlScheme
       value: Keyboard
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5494465981433368353, guid: 80afe5dd01dc48d4797934692e4eb619, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -624,6 +638,7 @@ MonoBehaviour:
   minJumpForce: 5
   maxChargeTime: 1
   rotationSpeed: 45
+  playerController: 0
 --- !u!1 &5030345880337636565
 GameObject:
   m_ObjectHideFlags: 0

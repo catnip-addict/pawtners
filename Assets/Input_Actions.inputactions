@@ -2,7 +2,7 @@
     "name": "Input_Actions",
     "maps": [
         {
-            "name": "Walking",
+            "name": "Keyboard",
             "id": "986381c4-56c9-41d2-be12-f9995d0d0f3e",
             "actions": [
                 {
@@ -100,17 +100,6 @@
                 },
                 {
                     "name": "",
-                    "id": "5ecb44bc-1afe-463f-94b5-cea8cb4fc8cf",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad;Joystick",
-                    "action": "Chodzenie",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "47a310e3-d71c-43ea-9ca7-d3dbe56c8c6d",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -122,88 +111,11 @@
                 },
                 {
                     "name": "",
-                    "id": "3708178e-aa5d-4d9a-9fc9-b2b565f42da6",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad;Joystick",
-                    "action": "Skok",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "2D Vector",
-                    "id": "12f31773-c6ba-4e29-8c17-4cdbb465e5d7",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Kamera",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "92b55bfa-d69b-4cb2-82b0-b3f6249c04b5",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Kamera",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "9f35cba4-1c3f-47fc-a7a2-09d344f35efa",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Kamera",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "0e0a609b-673d-4405-bc00-16717f513de0",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Kamera",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "df4841c2-81a6-4b76-bfcc-aff6d7cfebf1",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "Kamera",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
                     "id": "78f61611-ce8d-4d7a-a532-cc848f90cc34",
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
-                    "action": "Kamera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1e10270d-9f42-482a-b38f-8f6b5202574b",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad;Joystick",
                     "action": "Kamera",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -222,6 +134,105 @@
                 {
                     "name": "",
                     "id": "12144cd4-ec2b-4747-b6ac-87a0eb449953",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Controller",
+            "id": "c2787e4f-383a-49ac-9a02-315aef74e605",
+            "actions": [
+                {
+                    "name": "Chodzenie",
+                    "type": "Value",
+                    "id": "72d978d1-3358-464a-b52d-8e01bde8d379",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Skok",
+                    "type": "Button",
+                    "id": "f440999f-e56c-4578-966c-fe50ef92c287",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Kamera",
+                    "type": "Value",
+                    "id": "b4e2deb5-6c30-47a6-b256-659928fe2414",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Join",
+                    "type": "Button",
+                    "id": "2316b99b-1f6e-4d49-82ff-a1be229948d1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "96fdb5e1-2022-435f-9ca8-d73966b86de2",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad;Joystick",
+                    "action": "Chodzenie",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "59467f2c-c6e2-4d71-b5ec-7955cc55720f",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad;Joystick",
+                    "action": "Skok",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c571a855-93f0-48f6-a4d4-050044ec8675",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad;Joystick",
+                    "action": "Kamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "44818014-82b8-43fb-9506-deb14966464b",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e4d87804-9810-4aec-a760-06dd3d05a496",
                     "path": "<Keyboard>/anyKey",
                     "interactions": "",
                     "processors": "",
