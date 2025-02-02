@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class TaskManager : MonoBehaviour
 {
-    //Publiczba lista tasków, po ukoñczeniu wyœwietla jako ukoñczone zadanie
+    //Publiczba lista taskÃ³w, po ukoï¿½czeniu wyï¿½wietla jako ukoï¿½czone zadanie
 
-    public string[] aktyGry = {"Tutorial", "Akt1 - Ucieczka od Hycla", "Akt2", "Akt3", "Akt4", "Akt5"};
+    public string[] aktyGry = { "Tutorial", "Akt1 - Ucieczka od Hycla", "Akt2", "Akt3", "Akt4", "Akt5" };
     //public int[] aktualnyRozdzial = { 1, 2, 3 };
-    public string[] zadania; //Lista wszystkich zadañ
+    public string[] zadania; //Lista wszystkich zadaÅ„
     public string[] wykonaneZadania;
     public TMP_Text MainTaskUI;
     public TMP_Text taskDone1;
@@ -21,7 +21,7 @@ public class TaskManager : MonoBehaviour
     public Player player1;
     public Player player2;
 
-    //Œmieciowe zmienne do wykonywania tutoriali
+    //ï¿½mieciowe zmienne do wykonywania tutoriali
     private bool czy1, czy2, czy3, czy4;
 
 
@@ -33,13 +33,13 @@ public class TaskManager : MonoBehaviour
 
     private void Update()
     {
-        if(numerZadania == 0)
+        if (numerZadania == 0)
         {
             taskCompleted = false;
             float x = player1.moveInput.x;
             float y = player1.moveInput.y;
             //Prosze zmien to
-            
+
             if (x == 1) { czy1 = true; }
             if (x == -1) { czy2 = true; }
             if (y == 1) { czy3 = true; }
@@ -53,20 +53,20 @@ public class TaskManager : MonoBehaviour
                 taskCompleted = false;
             }
         }
-        else if(numerZadania == 1)
+        else if (numerZadania == 1)
         {
             //Cale zadanie wykonuje skrypt TableScript
             if (taskCompleted)
             {
                 numerZadania++;
                 UpdateZadania();
-                taskCompleted=false;
+                taskCompleted = false;
             }
         }
         else if (numerZadania == 2)
         {
             Debug.Log("Drapanie do zrobienia!");
-            taskCompleted = true ;
+            taskCompleted = true;
 
             if (taskCompleted)
             {
@@ -79,8 +79,8 @@ public class TaskManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyUp(KeyCode.Y))
             {
-                Debug.Log("Mia³³³³");
-                taskCompleted = true ;
+                Debug.Log("Miaï¿½ï¿½ï¿½ï¿½");
+                taskCompleted = true;
             }
 
             if (taskCompleted)
@@ -92,7 +92,7 @@ public class TaskManager : MonoBehaviour
         }
         else if (numerZadania == 4)
         {
-            //Ca³e zadanie wykonuje OknoScript
+            //Caï¿½e zadanie wykonuje OknoScript
             if (taskCompleted)
             {
                 numerZadania++;
@@ -104,7 +104,7 @@ public class TaskManager : MonoBehaviour
 
     void UpdateZadania()
     {
-        if (playTutorial)//Po ukoñczeniu bêdzie mo¿na u¿yæ totalnie inaczej do póŸniejszych aktów
+        if (playTutorial)//Po ukoï¿½czeniu bï¿½dzie moï¿½na uï¿½yï¿½ totalnie inaczej do pï¿½niejszych aktï¿½w
         {
             MainTaskUI.text = zadania[numerZadania];
             if (numerZadania == 1)
@@ -116,7 +116,7 @@ public class TaskManager : MonoBehaviour
                 taskDone1.text = zadania[numerZadania - 1];
                 taskDone2.text = zadania[numerZadania - 2];
             }
-        } 
+        }
 
 
     }

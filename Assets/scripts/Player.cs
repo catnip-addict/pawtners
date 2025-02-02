@@ -15,16 +15,19 @@ public class Player : MonoBehaviour
     [SerializeField] public float maxChargeTime = 1f;
     [SerializeField] public float rotationSpeed = 45f;
     [SerializeField] public PlayerControllerType playerController;
+    [SerializeField] public Animator animator;
     PlayerControllerType lastPlayerController;
-
+    [SerializeField] Renderer playerRenderer;
+    [SerializeField] Transform hatPosition;
 
     private Rigidbody rb;
     private bool isGrounded;
     private Input_Actions inputActions;
-    public Vector2 moveInput; //sorki Macieju musia³em :((
+    public Vector2 moveInput; //sorki Macieju musiaï¿½em :((
     private Vector2 cameraInput;
     private float jumpChargeTime;
     private bool isChargingJump;
+    private GameObject playerHat;
 
     void Awake()
     {
@@ -88,7 +91,6 @@ public class Player : MonoBehaviour
 
         if (isChargingJump)
         {
-
             jumpChargeTime += Time.deltaTime;
 
             jumpChargeTime = Mathf.Clamp(jumpChargeTime, 0f, maxChargeTime);
@@ -107,6 +109,14 @@ public class Player : MonoBehaviour
         move = move.normalized * speed;
         Vector3 newVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
         rb.linearVelocity = newVelocity;
+        if (moveInput.magnitude > 0)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
 
         //Rotation
         float rot = cameraInput.x * rotationSpeed * Time.deltaTime;
@@ -152,5 +162,19 @@ public class Player : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+
+
+    public void SetPlayerMat(Material material)
+    {
+        playerRenderer.material = material;
+    }
+    public void SetPlayerHat(GameObject hat)
+    {
+        if (playerHat != null)
+        {
+            Destroy(playerHat);
+        }
+        playerHat = Instantiate(hat, hatPosition);
     }
 }
