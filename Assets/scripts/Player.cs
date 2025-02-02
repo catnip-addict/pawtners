@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -132,7 +133,7 @@ public class Player : MonoBehaviour
 
     void OnJump(InputAction.CallbackContext context)
     {
-        if (context.started && isGrounded)
+        if (context.performed && isGrounded && !isChargingJump)
         {
             isChargingJump = true;
             jumpChargeTime = 0f;
@@ -141,6 +142,7 @@ public class Player : MonoBehaviour
         {
             isChargingJump = false;
             float jumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, jumpChargeTime / maxChargeTime);
+            Debug.Log(jumpForce);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
