@@ -4568,7 +4568,7 @@ MonoBehaviour:
   numerZadania: 0
   taskCompleted: 0
   player1: {fileID: 701330185}
-  player2: {fileID: 0}
+  player2: {fileID: 1180314482}
 --- !u!1 &966640499
 GameObject:
   m_ObjectHideFlags: 0
@@ -7877,7 +7877,7 @@ Transform:
   m_GameObject: {fileID: 1701933763}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.85, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7893,8 +7893,8 @@ HingeJoint:
   serializedVersion: 3
   m_ConnectedBody: {fileID: 186111308}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0.5, z: 0}
-  m_Axis: {x: 1, y: 0, z: 0}
+  m_Anchor: {x: 0, y: -0.5, z: 0}
+  m_Axis: {x: 0, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_UseSpring: 0
@@ -7930,7 +7930,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701933763}
   serializedVersion: 4
-  m_Mass: 50
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -10228,7 +10228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCollider: {fileID: 1941986431581436743}
-  weight: 2
+  weight: 3
 --- !u!4 &2446776579289242740
 Transform:
   m_ObjectHideFlags: 0
@@ -10565,7 +10565,7 @@ GameObject:
   - component: {fileID: 815332037824132795}
   - component: {fileID: 7884674609101398100}
   m_Layer: 0
-  m_Name: Item (1)
+  m_Name: Handle
   m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

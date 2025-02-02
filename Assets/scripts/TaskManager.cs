@@ -7,7 +7,7 @@ public class TaskManager : MonoBehaviour
 {
     //Publiczba lista tasków, po uko�czeniu wy�wietla jako uko�czone zadanie
 
-    public string[] aktyGry = { "Tutorial", "Akt1 - Ucieczka od Hycla", "Akt2", "Akt3", "Akt4", "Akt5" };
+    public string[] aktyGry = { "Tutorial", "Akt1", "Akt2", "Akt3", "Akt4", "Akt5" };
     //public int[] aktualnyRozdzial = { 1, 2, 3 };
     public string[] zadania; //Lista wszystkich zadań
     public string[] wykonaneZadania;
