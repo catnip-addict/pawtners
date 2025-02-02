@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private bool isGrounded;
     private Input_Actions inputActions;
-    private Vector2 moveInput;
+    public Vector2 moveInput; //sorki Macieju musia³em :((
     private Vector2 cameraInput;
     private float jumpChargeTime;
     private bool isChargingJump;
