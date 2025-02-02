@@ -10,6 +10,10 @@ public class Customization : MonoBehaviour
     int colorIndex = 0;
     int hatIndex = 0;
     // public Player player2;
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
 
     public void NextHat()
     {

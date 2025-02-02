@@ -9,13 +9,13 @@ public class Player : MonoBehaviour
         Gamepad
     }
 
-    [SerializeField] public float speed = 5f;
-    [SerializeField] public float maxJumpForce = 10f;
-    [SerializeField] public float minJumpForce = 5f;
-    [SerializeField] public float maxChargeTime = 1f;
-    [SerializeField] public float rotationSpeed = 45f;
-    [SerializeField] public PlayerControllerType playerController;
-    [SerializeField] public Animator animator;
+    public float speed = 5f;
+    [SerializeField] private float maxJumpForce = 10f;
+    [SerializeField] private float minJumpForce = 5f;
+    [SerializeField] private float maxChargeTime = 1f;
+    public float rotationSpeed = 45f;
+    [SerializeField] private PlayerControllerType playerController;
+    [SerializeField] private Animator animator;
     PlayerControllerType lastPlayerController;
     [SerializeField] Renderer playerRenderer;
     [SerializeField] Transform hatPosition;
@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public Vector2 moveInput; //sorki Macieju musia�em :((
     private Vector2 cameraInput;
     private float jumpChargeTime;
+    private float weight;
     private bool isChargingJump;
     private GameObject playerHat;
 
@@ -80,6 +81,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
@@ -106,7 +108,7 @@ public class Player : MonoBehaviour
     {
         //movement
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
-        move = move.normalized * speed;
+        move = move.normalized * (speed - weight);
         Vector3 newVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
         rb.linearVelocity = newVelocity;
         if (moveInput.magnitude > 0)
@@ -119,7 +121,7 @@ public class Player : MonoBehaviour
         }
 
         //Rotation
-        float rot = cameraInput.x * rotationSpeed * Time.deltaTime;
+        float rot = cameraInput.x * (rotationSpeed - weight * 10) * Time.deltaTime;
         transform.Rotate(0, rot, 0);
     }
 
@@ -148,7 +150,7 @@ public class Player : MonoBehaviour
         cameraInput = context.ReadValue<Vector2>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -165,6 +167,10 @@ public class Player : MonoBehaviour
     }
 
 
+    public void SetWeight(float value)
+    {
+        weight = value;
+    }
     public void SetPlayerMat(Material material)
     {
         playerRenderer.material = material;

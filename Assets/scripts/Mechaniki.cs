@@ -9,6 +9,11 @@ public class Mechaniki : MonoBehaviour
     private GameObject heldObject;
     private Rigidbody heldObjectRb;
     private Item heldObjectItem;
+    private Player player;
+    void Start()
+    {
+        player = GetComponent<Player>();
+    }
 
     void Update()
     {
@@ -23,7 +28,6 @@ public class Mechaniki : MonoBehaviour
                 DropObject();
             }
         }
-
     }
 
     void TryPickUp()
@@ -45,6 +49,7 @@ public class Mechaniki : MonoBehaviour
                     heldObject.transform.parent = holdPosition;
                     heldObjectRb.useGravity = false;
                     heldObjectRb.isKinematic = true;
+                    player.SetWeight(heldObjectItem.weight);
                 }
             }
         }
@@ -60,7 +65,7 @@ public class Mechaniki : MonoBehaviour
             heldObjectRb.useGravity = true;
             heldObjectRb.isKinematic = false;
         }
-
+        player.SetWeight(0f);
         heldObject = null;
         heldObjectRb = null;
     }
