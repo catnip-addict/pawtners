@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     PlayerControllerType lastPlayerController;
     [SerializeField] Renderer playerRenderer;
     [SerializeField] Transform hatPosition;
+    [SerializeField] CapsuleCollider capsulecollider;
 
     private Rigidbody rb;
     private bool isGrounded;
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour
     private float weight;
     private bool isChargingJump;
     private GameObject playerHat;
+    [SerializeField] private LayerMask groundLayer;
 
     void Awake()
     {
@@ -84,25 +87,41 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
     }
-
-    void Update()
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        float radius = capsulecollider.radius * 1.5f;
+        Vector3 pos = transform.position + Vector3.down * (radius * 1.5f);
+        // DrawWireCapsule(pos, pos + Vector3.up * (radius * 3), radius);
+        Gizmos.DrawWireSphere(pos, radius);
+    }
+    void FixedUpdate()
     {
         if (isGrounded)
         {
             Movment();
         }
+    }
+    void Update()
+    {
+        float radius = capsulecollider.radius * 1.5f;
+        Vector3 pos = transform.position + Vector3.down * (radius * 1.5f);
+        isGrounded = Physics.CheckSphere(pos, radius, groundLayer);
 
+        if (playerController != lastPlayerController)
+        {
+            OnEnable();
+            lastPlayerController = playerController;
+        }
         if (isChargingJump)
         {
             jumpChargeTime += Time.deltaTime;
 
             jumpChargeTime = Mathf.Clamp(jumpChargeTime, 0f, maxChargeTime);
         }
-        if (playerController != lastPlayerController)
-        {
-            OnEnable();
-            lastPlayerController = playerController;
-        }
+        //Rotation
+        float rot = cameraInput.x * (rotationSpeed - weight * 10) * Time.deltaTime;
+        transform.Rotate(0, rot, 0);
     }
 
     void Movment()
@@ -110,9 +129,8 @@ public class Player : MonoBehaviour
         //movement
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         move = move.normalized * (speed - weight);
-        Vector3 newVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
-        rb.linearVelocity = newVelocity;
-        if (moveInput.magnitude > 0)
+        rb.linearVelocity = new(move.x, rb.linearVelocity.y, move.z);
+        if (moveInput.sqrMagnitude > 0 * 0)
         {
             animator.SetBool("isWalking", true);
         }
@@ -120,10 +138,6 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("isWalking", false);
         }
-
-        //Rotation
-        float rot = cameraInput.x * (rotationSpeed - weight * 10) * Time.deltaTime;
-        transform.Rotate(0, rot, 0);
     }
 
     void OnMove(InputAction.CallbackContext context)
@@ -152,22 +166,42 @@ public class Player : MonoBehaviour
         cameraInput = context.ReadValue<Vector2>();
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-    }
+    // private void OnCollisionStay(Collision collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Ground"))
+    //     {
+    //         isGrounded = true;
+    //     }
+    // }
 
-    private void OnCollisionExit(Collision collision)
+    // private void OnCollisionExit(Collision collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Ground"))
+    //     {
+    //         isGrounded = false;
+    //     }
+    // }
+    public void DrawWireCapsule(Vector3 point1, Vector3 point2, float radius)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
-        }
+        Vector3 upOffset = point2 - point1;
+        Vector3 up = upOffset.Equals(default) ? Vector3.up : upOffset.normalized;
+        Quaternion orientation = Quaternion.FromToRotation(Vector3.up, up);
+        Vector3 forward = orientation * Vector3.forward;
+        Vector3 right = orientation * Vector3.right;
+        // z axis
+        Handles.DrawWireArc(point2, forward, right, 180, radius);
+        Handles.DrawWireArc(point1, forward, right, -180, radius);
+        Handles.DrawLine(point1 + right * radius, point2 + right * radius);
+        Handles.DrawLine(point1 - right * radius, point2 - right * radius);
+        // x axis
+        Handles.DrawWireArc(point2, right, forward, -180, radius);
+        Handles.DrawWireArc(point1, right, forward, 180, radius);
+        Handles.DrawLine(point1 + forward * radius, point2 + forward * radius);
+        Handles.DrawLine(point1 - forward * radius, point2 - forward * radius);
+        // y axis
+        Handles.DrawWireDisc(point2, up, radius);
+        Handles.DrawWireDisc(point1, up, radius);
     }
-
 
     public void SetWeight(float value)
     {

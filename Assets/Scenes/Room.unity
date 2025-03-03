@@ -2600,6 +2600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 701330188}
   - component: {fileID: 701330187}
+  - component: {fileID: 701330190}
   - component: {fileID: 701330186}
   - component: {fileID: 701330185}
   - component: {fileID: 701330189}
@@ -2625,13 +2626,17 @@ MonoBehaviour:
   speed: 5
   maxJumpForce: 10
   minJumpForce: 5
-  maxChargeTime: 1
+  maxChargeTime: 0.8
   rotationSpeed: 45
   playerController: 0
   animator: {fileID: 919132148737946595}
   playerRenderer: {fileID: 8417361358949681965}
   hatPosition: {fileID: 1758501270}
+  capsulecollider: {fileID: 701330190}
   moveInput: {x: 0, y: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!54 &701330186
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2666,7 +2671,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 701330184}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f1f2c7d36518a4cc3b5050150d6e5e28, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2678,8 +2683,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 1, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.4, y: 0.5, z: 2}
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!4 &701330188
 Transform:
   m_ObjectHideFlags: 0
@@ -2716,6 +2721,29 @@ MonoBehaviour:
   pickUpLayer:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!136 &701330190
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701330184}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Height: 2.25
+  m_Direction: 2
+  m_Center: {x: 0, y: -0.25, z: 0}
 --- !u!1 &705322330
 GameObject:
   m_ObjectHideFlags: 0
@@ -2942,13 +2970,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.63728845, y: -0.099988915, z: 0.083900645, w: 0.7594909}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 80, y: -15, z: 0}
 --- !u!1 &711061405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2961,7 +2989,7 @@ GameObject:
   - component: {fileID: 711061408}
   - component: {fileID: 711061407}
   - component: {fileID: 711061406}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4828,6 +4856,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1180314485}
   - component: {fileID: 1180314484}
+  - component: {fileID: 1180314486}
   - component: {fileID: 1180314483}
   - component: {fileID: 1180314482}
   - component: {fileID: 1180314481}
@@ -4837,7 +4866,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1180314481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4876,7 +4905,11 @@ MonoBehaviour:
   animator: {fileID: 1816870737}
   playerRenderer: {fileID: 2078115871}
   hatPosition: {fileID: 663871777}
+  capsulecollider: {fileID: 1180314486}
   moveInput: {x: 0, y: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!54 &1180314483
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4911,7 +4944,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180314480}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f1f2c7d36518a4cc3b5050150d6e5e28, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4923,8 +4956,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 1, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.4, y: 0.5, z: 2}
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!4 &1180314485
 Transform:
   m_ObjectHideFlags: 0
@@ -4943,6 +4976,29 @@ Transform:
   - {fileID: 865934406}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1180314486
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180314480}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Height: 2.25
+  m_Direction: 2
+  m_Center: {x: 0, y: -0.25, z: 0}
 --- !u!1 &1188856294
 GameObject:
   m_ObjectHideFlags: 0
@@ -6664,7 +6720,7 @@ GameObject:
   - component: {fileID: 1627030275}
   - component: {fileID: 1627030277}
   - component: {fileID: 1627030276}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tutorial2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8125,7 +8181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2097928667}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Static
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8282,7 +8338,7 @@ GameObject:
   - component: {fileID: 39701321008243322}
   - component: {fileID: 7989851734066619510}
   - component: {fileID: 7989851734066619511}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: komoda
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -8332,7 +8388,7 @@ GameObject:
   - component: {fileID: 6363595256574384351}
   - component: {fileID: 1369618415392234582}
   - component: {fileID: 7578033708402528939}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: frontyy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8708,7 +8764,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450652986472141}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MIESZKANIE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8798,7 +8854,7 @@ GameObject:
   - component: {fileID: 7751563818462706972}
   - component: {fileID: 6295307897795181272}
   - component: {fileID: 7751563818462706973}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: podloga
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -9027,7 +9083,7 @@ GameObject:
   - component: {fileID: 6876430566954853671}
   - component: {fileID: 7737390632544362814}
   - component: {fileID: 7737390632544362815}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: piekarnik
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9146,7 +9202,7 @@ GameObject:
   - component: {fileID: 5450561074264210083}
   - component: {fileID: 3625250241132124735}
   - component: {fileID: 5450561074264210084}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: blat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9210,7 +9266,7 @@ GameObject:
   - component: {fileID: 5147336329245095436}
   - component: {fileID: 1592436378064957358}
   - component: {fileID: 5147336329245095437}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: stol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9338,7 +9394,7 @@ GameObject:
   - component: {fileID: 7869692045935283916}
   - component: {fileID: 4740267202016896138}
   - component: {fileID: 7869692045935283917}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: szafki
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9428,7 +9484,7 @@ GameObject:
   - component: {fileID: 4782480810073886011}
   - component: {fileID: 5340811608597948977}
   - component: {fileID: 896557253013883686}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: okap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9479,7 +9535,7 @@ GameObject:
   - component: {fileID: 939929027020888126}
   - component: {fileID: 4102831125349889572}
   - component: {fileID: 4102831125349889573}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: zlew
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9514,7 +9570,7 @@ GameObject:
   - component: {fileID: 1637844390584345667}
   - component: {fileID: 8462569312554735809}
   - component: {fileID: 8462569312554735810}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: szafa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9853,7 +9909,7 @@ GameObject:
   - component: {fileID: 2594021897044732413}
   - component: {fileID: 2136339029858477275}
   - component: {fileID: 4673149670017030261}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: stoliki
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -10334,7 +10390,7 @@ GameObject:
   - component: {fileID: 4087373563775471138}
   - component: {fileID: 3806137638066495752}
   - component: {fileID: 5648257374980019257}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: stolik
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -10406,7 +10462,7 @@ GameObject:
   - component: {fileID: 2618038230921361564}
   - component: {fileID: 6265506038056290735}
   - component: {fileID: 6265506038056290736}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: drzwi1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10724,7 +10780,7 @@ GameObject:
   - component: {fileID: 1896615840478865322}
   - component: {fileID: 880458786365927584}
   - component: {fileID: 6905515356307059799}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lozko
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -11003,7 +11059,7 @@ GameObject:
   - component: {fileID: 3155327976327278966}
   - component: {fileID: 4748916626049569485}
   - component: {fileID: 7411801405682261420}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: kanapa
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -11272,7 +11328,7 @@ GameObject:
   - component: {fileID: 644408887040123986}
   - component: {fileID: 8656851760108839578}
   - component: {fileID: 8656851760108839579}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lodowka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11320,7 +11376,7 @@ GameObject:
   - component: {fileID: 8631278125529621295}
   - component: {fileID: 7016686136024863165}
   - component: {fileID: 8631278125529621296}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sciany
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11806,7 +11862,7 @@ GameObject:
   - component: {fileID: 8575079848963162070}
   - component: {fileID: 6255556048087633876}
   - component: {fileID: 8772472694077207930}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: drzwi2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

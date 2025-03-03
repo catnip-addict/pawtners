@@ -3304,6 +3304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 701330188}
   - component: {fileID: 701330187}
+  - component: {fileID: 701330190}
   - component: {fileID: 701330186}
   - component: {fileID: 701330185}
   - component: {fileID: 701330189}
@@ -3335,7 +3336,11 @@ MonoBehaviour:
   animator: {fileID: 919132148737946595}
   playerRenderer: {fileID: 8417361358949681965}
   hatPosition: {fileID: 1758501270}
+  capsulecollider: {fileID: 701330190}
   moveInput: {x: 0, y: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!54 &701330186
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3382,8 +3387,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 1, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.4, y: 0.5, z: 2}
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!4 &701330188
 Transform:
   m_ObjectHideFlags: 0
@@ -3420,6 +3425,29 @@ MonoBehaviour:
   pickUpLayer:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!136 &701330190
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701330184}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Height: 2.25
+  m_Direction: 2
+  m_Center: {x: 0, y: -0.25, z: 0}
 --- !u!1 &705322330
 GameObject:
   m_ObjectHideFlags: 0
@@ -5669,6 +5697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1180314485}
   - component: {fileID: 1180314484}
+  - component: {fileID: 1180314486}
   - component: {fileID: 1180314483}
   - component: {fileID: 1180314482}
   - component: {fileID: 1180314481}
@@ -5717,7 +5746,11 @@ MonoBehaviour:
   animator: {fileID: 1816870737}
   playerRenderer: {fileID: 2078115871}
   hatPosition: {fileID: 663871777}
+  capsulecollider: {fileID: 1180314486}
   moveInput: {x: 0, y: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!54 &1180314483
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5784,6 +5817,29 @@ Transform:
   - {fileID: 865934406}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1180314486
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180314480}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Height: 2.25
+  m_Direction: 2
+  m_Center: {x: 0, y: -0.25, z: 0}
 --- !u!1 &1188856294
 GameObject:
   m_ObjectHideFlags: 0
