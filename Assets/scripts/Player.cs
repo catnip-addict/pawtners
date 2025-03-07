@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float maxJumpForce = 10f;
     [SerializeField] private float minJumpForce = 5f;
     [SerializeField] private float maxChargeTime = 1f;
+    [SerializeField] private float fallMultiplier = 2.5f;
     public float rotationSpeed = 45f;
     [SerializeField] private PlayerControllerType playerController;
     [SerializeField] private Animator animator;
@@ -101,6 +102,10 @@ public class Player : MonoBehaviour
         {
             Movment();
         }
+        if (rb.linearVelocity.y < 0) // Sprawdzamy, czy gracz spada
+        {
+            rb.AddForce(Vector3.down * fallMultiplier, ForceMode.Acceleration);
+        }
     }
     void Update()
     {
@@ -113,24 +118,26 @@ public class Player : MonoBehaviour
             OnEnable();
             lastPlayerController = playerController;
         }
+
         if (isChargingJump)
         {
             jumpChargeTime += Time.deltaTime;
-
             jumpChargeTime = Mathf.Clamp(jumpChargeTime, 0f, maxChargeTime);
         }
-        //Rotation
-        float rot = cameraInput.x * (rotationSpeed - weight * 10) * Time.deltaTime;
-        transform.Rotate(0, rot, 0);
+
+        // Rotation based on horizontal input
+        float rotationAmount = moveInput.x * rotationSpeed;
+        transform.Rotate(0, rotationAmount * Time.deltaTime, 0);
     }
 
     void Movment()
     {
-        //movement
-        Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
+        // Forward movement based on vertical input only
+        Vector3 move = transform.forward * moveInput.y;
         move = move.normalized * (speed - weight);
         rb.linearVelocity = new(move.x, rb.linearVelocity.y, move.z);
-        if (moveInput.sqrMagnitude > 0 * 0)
+
+        if (moveInput.sqrMagnitude > 0)
         {
             animator.SetBool("isWalking", true);
         }
