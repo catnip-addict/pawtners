@@ -6136,6 +6136,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.07219137, y: 0.03082053, z: 0.09071978}
   m_Center: {x: -0.0015279669, y: 0.008870313, z: 0.010355805}
+--- !u!1 &1325602024 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4848118878839690915, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+  m_PrefabInstance: {fileID: 1802283717}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1325602028
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325602024}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3219676980876139861, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
 --- !u!1 &1343167900 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3836293034380862216, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
@@ -7331,6 +7358,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585642966}
   m_CullTransparentMesh: 1
+--- !u!1 &1598110588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3996301007082057670, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+  m_PrefabInstance: {fileID: 1802283717}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1598110592
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598110588}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5560644621740668647, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
 --- !u!1 &1627030274
 GameObject:
   m_ObjectHideFlags: 0
@@ -8533,7 +8587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4848118878839690915, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4848118878839690915, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8613,7 +8667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3996301007082057670, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -3996301007082057670, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10024,6 +10078,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2175036321523844064, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2118997012}
+    - targetCorrespondingSourceObject: {fileID: -3996301007082057670, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1598110592}
+    - targetCorrespondingSourceObject: {fileID: -4848118878839690915, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1325602028}
     - targetCorrespondingSourceObject: {fileID: -9174788348141423780, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1802283728}
@@ -19272,10 +19332,10 @@ MonoBehaviour:
   moveSpeed: 300
   rotationSpeed: 360
   smoothTime: 0.2
-  jumpForce: 10
-  jumpDuration: 0.5
+  jumpForce: 60
+  jumpDuration: 0.25
   jumpCooldown: 0
-  jumpMaxHeight: 1.25
+  jumpMaxHeight: 2.5
   gravityMultiplier: 2
   mainCam: {fileID: 346675142}
 --- !u!1 &7195186995697990356

@@ -133,18 +133,7 @@ namespace Platformer
             // If jumping or falling calculate velocity
             if (jumpTimer.IsRunning)
             {
-                // Progress point for initial burst of velocity
-                float launchPoint = 0.9f;
-                if (jumpTimer.Progress > launchPoint)
-                {
-                    // Calculate the velocity required to reach the jump height using physics equations v = sqrt(2gh)
-                    jumpVelocity = Mathf.Sqrt(2 * jumpMaxHeight * Mathf.Abs(Physics.gravity.y));
-                }
-                else
-                {
-                    // Gradually apply less velocity as the jump progresses
-                    jumpVelocity += (1 - jumpTimer.Progress) * jumpForce * Time.fixedDeltaTime;
-                }
+                jumpVelocity = Mathf.Sqrt(2 * jumpMaxHeight * Mathf.Abs(Physics.gravity.y));
             }
             else
             {
