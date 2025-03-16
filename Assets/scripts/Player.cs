@@ -53,6 +53,12 @@ public class Player : MonoBehaviour
     List<Timer> timers;
     CountdownTimer jumpTimer;
     CountdownTimer jumpCooldownTimer;
+    [Header("Audio st00pek")]
+    public AudioSource audioSource;
+    public AudioClip footstepSound;
+    public float stepInterval = 0.5f;
+
+    private float stepTimer = 0f;
 
     public void Die()
     {
@@ -102,6 +108,7 @@ public class Player : MonoBehaviour
         else if (!performed && jumpTimer.IsRunning)
         {
             jumpTimer.Stop();
+
         }
     }
 
@@ -168,6 +175,15 @@ public class Player : MonoBehaviour
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpVelocity, rb.linearVelocity.z);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.relativeVelocity.magnitude>2f && groundChecker.IsGrounded)
+        {
+            audioSource.PlayOneShot(footstepSound);
+
+        }
+    }
+
     void HandleMovement()
     {
         // Rotate movement direction to match camera rotation
@@ -178,6 +194,13 @@ public class Player : MonoBehaviour
             HandleRotation(adjustedDirection);
             HandleHorizontalMovement(adjustedDirection);
             SmoothSpeed(adjustedDirection.magnitude);
+
+            stepTimer -= Time.deltaTime;
+            if (stepTimer <= 0f && groundChecker.IsGrounded)
+            {
+                audioSource.PlayOneShot(footstepSound);
+                stepTimer = stepInterval;
+            }
         }
         else
         {
