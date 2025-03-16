@@ -5,120 +5,57 @@ using UnityEngine.UI;
 
 public class TaskManager : MonoBehaviour
 {
-    //Publiczba lista tasków, po uko�czeniu wy�wietla jako uko�czone zadanie
 
     public string[] aktyGry = { "Tutorial", "Akt1", "Akt2", "Akt3", "Akt4", "Akt5" };
-    //public int[] aktualnyRozdzial = { 1, 2, 3 };
-    public string[] zadania; //Lista wszystkich zadań
+    public string[] zadania;
     public string[] wykonaneZadania;
     public TMP_Text MainTaskUI;
     public TMP_Text taskDone1;
     public TMP_Text taskDone2;
     private bool playTutorial = true;
-    public int numerZadania = 0;
-    public bool taskCompleted = false;
+    int numerZadania = 0;
 
     public Player player1;
     public Player player2;
 
-    //�mieciowe zmienne do wykonywania tutoriali
-    private bool czy1, czy2, czy3, czy4;
-
-
     private void Start()
     {
         UpdateZadania();
-        czy1 = czy2 = czy3 = czy4 = false;
     }
 
     private void Update()
     {
         if (numerZadania == 0)
         {
-            // taskCompleted = false;
-            // float x = player1.moveInput.x;
-            // float y = player1.moveInput.y;
-            // //Prosze zmien to
-
-            // if (x == 1) { czy1 = true; }
-            // if (x == -1) { czy2 = true; }
-            // if (y == 1) { czy3 = true; }
-            // if (y == -1) { czy4 = true; }
-            // if (czy1 && czy2 && czy3 && czy4) { taskCompleted = true; }
-
-            // if (taskCompleted)
-            // {
-            //     numerZadania++;
-            //     UpdateZadania();
-            //     taskCompleted = false;
-            // }
-        }
-        else if (numerZadania == 1)
-        {
-            //Cale zadanie wykonuje skrypt TableScript
-            if (taskCompleted)
+            if (player1.movement.magnitude > 0)
             {
-                numerZadania++;
-                UpdateZadania();
-                taskCompleted = false;
+                UpdateZadania(1);
             }
-        }
-        else if (numerZadania == 2)
-        {
-            Debug.Log("Drapanie do zrobienia!");
-            taskCompleted = true;
-
-            if (taskCompleted)
+            else if (player2.movement.magnitude > 0)
             {
-                numerZadania++;
-                UpdateZadania();
-                taskCompleted = false;
-            }
-        }
-        else if (numerZadania == 3)
-        {
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyUp(KeyCode.Y))
-            {
-                Debug.Log("Mia����");
-                taskCompleted = true;
-            }
-
-            if (taskCompleted)
-            {
-                numerZadania++;
-                UpdateZadania();
-                taskCompleted = false;
-            }
-        }
-        else if (numerZadania == 4)
-        {
-            //Ca�e zadanie wykonuje OknoScript
-            if (taskCompleted)
-            {
-                numerZadania++;
-                UpdateZadania();
-                taskCompleted = false;
+                UpdateZadania(1);
             }
         }
     }
 
-    void UpdateZadania()
+    public void UpdateZadania(int index = 0)
     {
-        if (playTutorial)//Po uko�czeniu b�dzie mo�na u�y� totalnie inaczej do p�niejszych akt�w
+        if (numerZadania > index)
+            return;
+
+        numerZadania = index;
+        if (playTutorial)
         {
-            MainTaskUI.text = zadania[numerZadania];
-            if (numerZadania == 1)
+            MainTaskUI.text = zadania[index];
+            if (index == 1)
             {
                 taskDone1.text = zadania[0];
             }
-            if (numerZadania >= 2)
+            if (index >= 2)
             {
-                taskDone1.text = zadania[numerZadania - 1];
-                taskDone2.text = zadania[numerZadania - 2];
+                taskDone1.text = zadania[index - 1];
+                taskDone2.text = zadania[index - 2];
             }
         }
-
-
     }
-
 }

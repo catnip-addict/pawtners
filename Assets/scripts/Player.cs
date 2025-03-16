@@ -4,6 +4,14 @@ using Unity.Cinemachine;
 using UnityEngine;
 using Utilities;
 
+public enum PlayerNumber
+{
+    First,
+    Second,
+    Both,
+    Whatever
+}
+
 public class Player : MonoBehaviour
 {
     //
@@ -15,6 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] InputReader input;
     [SerializeField] Transform mainCam;
     [SerializeField] CheckPoints checkPoints;
+    [SerializeField] Animator BlackoutAnimator;
 
     [Header("Movement Settings")]
     [SerializeField] float moveSpeed = 300f;
@@ -30,13 +39,16 @@ public class Player : MonoBehaviour
     [Header("CheckPoints")]
     [SerializeField] int checkPointIndex = 0;
     [SerializeField] float maxFallSpeed = 10f;
+    [Header("Misc")]
+    public PlayerNumber playerNumber;
 
     const float ZeroF = 0f;
     float currentSpeed;
     float velocity;
     float jumpVelocity;
 
-    Vector3 movement;
+    [HideInInspector]
+    public Vector3 movement;
 
     List<Timer> timers;
     CountdownTimer jumpTimer;
@@ -48,6 +60,7 @@ public class Player : MonoBehaviour
         checkPoints.ResetToCheckPoint(transform, checkPointIndex);
         // Reset player velocity
         rb.linearVelocity = Vector3.zero;
+        BlackoutAnimator.SetTrigger("BlackOut");
     }
 
     void Awake()
