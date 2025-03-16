@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     [SerializeField] float gravityMultiplier = 2f;
     [Header("CheckPoints")]
     [SerializeField] int checkPointIndex = 0;
+    [SerializeField] float maxFallSpeed = 10f;
 
     const float ZeroF = 0f;
     float currentSpeed;
@@ -147,6 +148,10 @@ public class Player : MonoBehaviour
         }
 
         // Apply velocity
+        if (jumpVelocity > maxFallSpeed)
+        {
+            jumpVelocity = maxFallSpeed;
+        }
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpVelocity, rb.linearVelocity.z);
     }
 
