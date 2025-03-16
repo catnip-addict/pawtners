@@ -34,19 +34,21 @@ public class InputReader : MonoBehaviour, IKeyboardActions, IControllerActions
         }
     }
 
-    void OnEnable()
+    public void OnEnable()
     {
         if (inputActions == null)
         {
             inputActions = new Input_Actions();
-            if (playerControllerType == PlayerControllerType.Keyboard)
-            {
-                inputActions.Keyboard.SetCallbacks(this);
-            }
-            else
-            {
-                inputActions.Controller.SetCallbacks(this);
-            }
+        }
+        if (playerControllerType == PlayerControllerType.Keyboard)
+        {
+            inputActions.Keyboard.SetCallbacks(this);
+            inputActions.Controller.RemoveCallbacks(this);
+        }
+        else
+        {
+            inputActions.Controller.SetCallbacks(this);
+            inputActions.Keyboard.RemoveCallbacks(this);
         }
     }
 
