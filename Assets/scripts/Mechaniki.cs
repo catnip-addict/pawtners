@@ -49,7 +49,7 @@ public class Mechaniki : MonoBehaviour
                     heldObject.transform.parent = holdPosition;
                     heldObjectRb.useGravity = false;
                     heldObjectRb.isKinematic = true;
-                    player.SetWeight(heldObjectItem.weight);
+                    // player.SetWeight(heldObjectItem.weight);
                 }
             }
         }
@@ -65,7 +65,7 @@ public class Mechaniki : MonoBehaviour
             heldObjectRb.useGravity = true;
             heldObjectRb.isKinematic = false;
         }
-        player.SetWeight(0f);
+        // player.SetWeight(0f);
         heldObject = null;
         heldObjectRb = null;
     }

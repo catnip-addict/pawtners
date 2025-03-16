@@ -35,23 +35,23 @@ public class TaskManager : MonoBehaviour
     {
         if (numerZadania == 0)
         {
-            taskCompleted = false;
-            float x = player1.moveInput.x;
-            float y = player1.moveInput.y;
-            //Prosze zmien to
+            // taskCompleted = false;
+            // float x = player1.moveInput.x;
+            // float y = player1.moveInput.y;
+            // //Prosze zmien to
 
-            if (x == 1) { czy1 = true; }
-            if (x == -1) { czy2 = true; }
-            if (y == 1) { czy3 = true; }
-            if (y == -1) { czy4 = true; }
-            if (czy1 && czy2 && czy3 && czy4) { taskCompleted = true; }
+            // if (x == 1) { czy1 = true; }
+            // if (x == -1) { czy2 = true; }
+            // if (y == 1) { czy3 = true; }
+            // if (y == -1) { czy4 = true; }
+            // if (czy1 && czy2 && czy3 && czy4) { taskCompleted = true; }
 
-            if (taskCompleted)
-            {
-                numerZadania++;
-                UpdateZadania();
-                taskCompleted = false;
-            }
+            // if (taskCompleted)
+            // {
+            //     numerZadania++;
+            //     UpdateZadania();
+            //     taskCompleted = false;
+            // }
         }
         else if (numerZadania == 1)
         {

@@ -7,104 +7,101 @@ public enum PlayerControllerType
     Keyboard,
     Gamepad
 }
-namespace Platformer
+[CreateAssetMenu(fileName = "InputReader", menuName = "Platformer/InputReader")]
+public class InputReader : MonoBehaviour, IKeyboardActions, IControllerActions
 {
-    [CreateAssetMenu(fileName = "InputReader", menuName = "Platformer/InputReader")]
-    public class InputReader : ScriptableObject, IKeyboardActions, IControllerActions
+    public PlayerControllerType playerControllerType;
+    public event UnityAction<Vector2> Move = delegate { };
+    public event UnityAction<Vector2, bool> Look = delegate { };
+    public event UnityAction EnableMouseControlCamera = delegate { };
+    public event UnityAction DisableMouseControlCamera = delegate { };
+    public event UnityAction<bool> Jump = delegate { };
+
+    Input_Actions inputActions;
+
+    public Vector3 Direction
     {
-        public PlayerControllerType playerControllerType;
-        public event UnityAction<Vector2> Move = delegate { };
-        public event UnityAction<Vector2, bool> Look = delegate { };
-        public event UnityAction EnableMouseControlCamera = delegate { };
-        public event UnityAction DisableMouseControlCamera = delegate { };
-        public event UnityAction<bool> Jump = delegate { };
-
-        Input_Actions inputActions;
-
-        public Vector3 Direction
+        get
         {
-            get
+            if (playerControllerType == PlayerControllerType.Keyboard)
             {
-                if (playerControllerType == PlayerControllerType.Keyboard)
-                {
-                    return inputActions.Keyboard.Walking.ReadValue<Vector2>();
-                }
-                else
-                {
-                    return inputActions.Controller.Walking.ReadValue<Vector2>();
-                }
+                return inputActions.Keyboard.Walking.ReadValue<Vector2>();
+            }
+            else
+            {
+                return inputActions.Controller.Walking.ReadValue<Vector2>();
             }
         }
+    }
 
-        void OnEnable()
+    void OnEnable()
+    {
+        if (inputActions == null)
         {
-            if (inputActions == null)
+            inputActions = new Input_Actions();
+            if (playerControllerType == PlayerControllerType.Keyboard)
             {
-                inputActions = new Input_Actions();
-                if (playerControllerType == PlayerControllerType.Keyboard)
-                {
-                    inputActions.Keyboard.SetCallbacks(this);
-                }
-                else
-                {
-                    inputActions.Controller.SetCallbacks(this);
-                }
+                inputActions.Keyboard.SetCallbacks(this);
+            }
+            else
+            {
+                inputActions.Controller.SetCallbacks(this);
             }
         }
+    }
 
-        public void EnablePlayerActions()
+    public void EnablePlayerActions()
+    {
+        inputActions.Enable();
+    }
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        Look.Invoke(context.ReadValue<Vector2>(), IsDeviceMouse(context));
+    }
+
+    bool IsDeviceMouse(InputAction.CallbackContext context) => context.control.device.name == "Mouse";
+
+    public void OnFire(InputAction.CallbackContext context)
+    {
+        // noop
+    }
+
+    public void OnMouseControlCamera(InputAction.CallbackContext context)
+    {
+        switch (context.phase)
         {
-            inputActions.Enable();
+            case InputActionPhase.Started:
+                EnableMouseControlCamera.Invoke();
+                break;
+            case InputActionPhase.Canceled:
+                DisableMouseControlCamera.Invoke();
+                break;
         }
-        public void OnLook(InputAction.CallbackContext context)
+    }
+
+    public void OnRun(InputAction.CallbackContext context)
+    {
+        // noop
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        switch (context.phase)
         {
-            Look.Invoke(context.ReadValue<Vector2>(), IsDeviceMouse(context));
-        }
+            case InputActionPhase.Started:
+                Jump.Invoke(true);
 
-        bool IsDeviceMouse(InputAction.CallbackContext context) => context.control.device.name == "Mouse";
-
-        public void OnFire(InputAction.CallbackContext context)
-        {
-            // noop
-        }
-
-        public void OnMouseControlCamera(InputAction.CallbackContext context)
-        {
-            switch (context.phase)
-            {
-                case InputActionPhase.Started:
-                    EnableMouseControlCamera.Invoke();
-                    break;
-                case InputActionPhase.Canceled:
-                    DisableMouseControlCamera.Invoke();
-                    break;
-            }
-        }
-
-        public void OnRun(InputAction.CallbackContext context)
-        {
-            // noop
-        }
-
-        public void OnJump(InputAction.CallbackContext context)
-        {
-            switch (context.phase)
-            {
-                case InputActionPhase.Started:
-                    Jump.Invoke(true);
-
-                    break;
-                case InputActionPhase.Canceled:
-                    Jump.Invoke(false);
-                    break;
-
-            }
+                break;
+            case InputActionPhase.Canceled:
+                Jump.Invoke(false);
+                break;
 
         }
 
-        public void OnWalking(InputAction.CallbackContext context)
-        {
-            Move.Invoke(context.ReadValue<Vector2>());
-        }
+    }
+
+    public void OnWalking(InputAction.CallbackContext context)
+    {
+        Move.Invoke(context.ReadValue<Vector2>());
     }
 }

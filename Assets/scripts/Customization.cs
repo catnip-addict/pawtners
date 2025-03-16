@@ -22,7 +22,7 @@ public class Customization : MonoBehaviour
         {
             hatIndex = 0;
         }
-        player.SetPlayerHat(hats[hatIndex]);
+        // player.SetPlayerHat(hats[hatIndex]);
     }
     public void PreviousHat()
     {
@@ -31,7 +31,7 @@ public class Customization : MonoBehaviour
         {
             hatIndex = hats.Length - 1;
         }
-        player.SetPlayerHat(hats[hatIndex]);
+        // player.SetPlayerHat(hats[hatIndex]);
     }
     public void NextColor()
     {
@@ -40,7 +40,7 @@ public class Customization : MonoBehaviour
         {
             colorIndex = 0;
         }
-        player.SetPlayerMat(materials[colorIndex]);
+        // player.SetPlayerMat(materials[colorIndex]);
         colorImage.color = materials[colorIndex].color;
     }
     public void PreviousColor()
@@ -50,7 +50,7 @@ public class Customization : MonoBehaviour
         {
             colorIndex = materials.Length - 1;
         }
-        player.SetPlayerMat(materials[colorIndex]);
+        // player.SetPlayerMat(materials[colorIndex]);
         colorImage.color = materials[colorIndex].color;
     }
 }
