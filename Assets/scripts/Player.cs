@@ -4,6 +4,14 @@ using Unity.Cinemachine;
 using UnityEngine;
 using Utilities;
 
+public enum PlayerNumber
+{
+    First,
+    Second,
+    Both,
+    Whatever
+}
+
 public class Player : MonoBehaviour
 {
     //
@@ -15,6 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] InputReader input;
     [SerializeField] Transform mainCam;
     [SerializeField] CheckPoints checkPoints;
+    [SerializeField] Animator BlackoutAnimator;
 
     [Header("Movement Settings")]
     [SerializeField] float moveSpeed = 300f;
@@ -29,17 +38,27 @@ public class Player : MonoBehaviour
     [SerializeField] float gravityMultiplier = 2f;
     [Header("CheckPoints")]
     [SerializeField] int checkPointIndex = 0;
+    [SerializeField] float maxFallSpeed = 10f;
+    [Header("Misc")]
+    public PlayerNumber playerNumber;
 
     const float ZeroF = 0f;
     float currentSpeed;
     float velocity;
     float jumpVelocity;
 
-    Vector3 movement;
+    [HideInInspector]
+    public Vector3 movement;
 
     List<Timer> timers;
     CountdownTimer jumpTimer;
     CountdownTimer jumpCooldownTimer;
+    [Header("Audio st00pek")]
+    public AudioSource audioSource;
+    public AudioClip footstepSound;
+    public float stepInterval = 0.5f;
+
+    private float stepTimer = 0f;
 
     public void Die()
     {
@@ -47,6 +66,7 @@ public class Player : MonoBehaviour
         checkPoints.ResetToCheckPoint(transform, checkPointIndex);
         // Reset player velocity
         rb.linearVelocity = Vector3.zero;
+        BlackoutAnimator.SetTrigger("BlackOut");
     }
 
     void Awake()
@@ -88,6 +108,7 @@ public class Player : MonoBehaviour
         else if (!performed && jumpTimer.IsRunning)
         {
             jumpTimer.Stop();
+
         }
     }
 
@@ -147,7 +168,20 @@ public class Player : MonoBehaviour
         }
 
         // Apply velocity
+        if (jumpVelocity > maxFallSpeed)
+        {
+            jumpVelocity = maxFallSpeed;
+        }
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpVelocity, rb.linearVelocity.z);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.relativeVelocity.magnitude>2f && groundChecker.IsGrounded)
+        {
+            audioSource.PlayOneShot(footstepSound);
+
+        }
     }
 
     void HandleMovement()
@@ -160,6 +194,13 @@ public class Player : MonoBehaviour
             HandleRotation(adjustedDirection);
             HandleHorizontalMovement(adjustedDirection);
             SmoothSpeed(adjustedDirection.magnitude);
+
+            stepTimer -= Time.deltaTime;
+            if (stepTimer <= 0f && groundChecker.IsGrounded)
+            {
+                audioSource.PlayOneShot(footstepSound);
+                stepTimer = stepInterval;
+            }
         }
         else
         {
