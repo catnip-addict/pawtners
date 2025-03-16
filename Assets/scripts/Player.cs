@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] CinemachineCamera freeLookVCam;
     [SerializeField] InputReader input;
     [SerializeField] Transform mainCam;
+    [SerializeField] CheckPoints checkPoints;
 
     [Header("Movement Settings")]
     [SerializeField] float moveSpeed = 300f;
@@ -26,11 +27,10 @@ public class Player : MonoBehaviour
     float jumpCooldown = 0f;
     [SerializeField] float jumpMaxHeight = 2.5f;
     [SerializeField] float gravityMultiplier = 2f;
+    [Header("CheckPoints")]
+    [SerializeField] int checkPointIndex = 0;
 
     const float ZeroF = 0f;
-
-
-
     float currentSpeed;
     float velocity;
     float jumpVelocity;
@@ -41,8 +41,13 @@ public class Player : MonoBehaviour
     CountdownTimer jumpTimer;
     CountdownTimer jumpCooldownTimer;
 
-    // Animator parameters
-    // static readonly int Speed = Animator.StringToHash("Speed");
+    public void Die()
+    {
+        // Reset player position
+        checkPoints.ResetToCheckPoint(transform, checkPointIndex);
+        // Reset player velocity
+        rb.linearVelocity = Vector3.zero;
+    }
 
     void Awake()
     {
@@ -170,7 +175,7 @@ public class Player : MonoBehaviour
         // Move the player
         Vector3 velocity = adjustedDirection * moveSpeed * Time.fixedDeltaTime;
 
-        Debug.Log(velocity);
+        // Debug.Log(velocity);
 
         rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
     }

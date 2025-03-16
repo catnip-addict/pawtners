@@ -69,18 +69,20 @@
     <Compile Include="Assets\Shaders\testv2\VolumetricLightEffect.cs" />
     <Compile Include="Assets\scripts\Samouczek\OknoScript.cs" />
     <Compile Include="Assets\Shaders\Testv3\SimpleVolumetricEffect .cs" />
-    <Compile Include="Assets\scripts\PlayerV2\InputReader.cs" />
+    <Compile Include="Assets\scripts\CheckPoints.cs" />
     <Compile Include="Assets\scripts\TaskManager.cs" />
-    <Compile Include="Assets\scripts\PlayerV2\GroundChecker.cs" />
-    <Compile Include="Assets\scripts\PlayerV2\Player.cs" />
+    <Compile Include="Assets\scripts\Timer.cs" />
+    <Compile Include="Assets\scripts\InputReader.cs" />
     <Compile Include="Assets\Shaders\Testv3\NoiseTextureGenerator.cs" />
     <Compile Include="Assets\scripts\Input_Actions.cs" />
+    <Compile Include="Assets\scripts\DeathBox.cs" />
     <Compile Include="Assets\scripts\Mechaniki.cs" />
-    <Compile Include="Assets\scripts\PlayerV2\CameraManager.cs" />
     <Compile Include="Assets\scripts\Samouczek\TableScript.cs" />
     <Compile Include="Assets\Shaders\Test\VolumetricLightManager.cs" />
+    <Compile Include="Assets\scripts\CameraManager.cs" />
+    <Compile Include="Assets\scripts\Player.cs" />
     <Compile Include="Assets\scripts\Customization.cs" />
-    <Compile Include="Assets\scripts\PlayerV2\Timer.cs" />
+    <Compile Include="Assets\scripts\GroundChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
