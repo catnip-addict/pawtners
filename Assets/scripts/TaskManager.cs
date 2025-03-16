@@ -1,11 +1,10 @@
-using System.Threading.Tasks.Sources;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TaskManager : MonoBehaviour
 {
-
     public string[] aktyGry = { "Tutorial", "Akt1", "Akt2", "Akt3", "Akt4", "Akt5" };
     public string[] zadania;
     public string[] wykonaneZadania;
@@ -18,9 +17,21 @@ public class TaskManager : MonoBehaviour
     public Player player1;
     public Player player2;
 
+  
+    public Canvas comicCanvas;  
+    public Image[] comicParts;  
+    private bool isComicShowing = false;
+
     private void Start()
     {
         UpdateZadania();
+        comicCanvas.enabled = false;
+
+
+        foreach (var comicPart in comicParts)
+        {
+            comicPart.enabled = false;
+        }
     }
 
     private void Update()
@@ -35,6 +46,12 @@ public class TaskManager : MonoBehaviour
             {
                 UpdateZadania(1);
             }
+        }
+
+        if (numerZadania == 6 && !isComicShowing)
+        {
+            StartCoroutine(ShowComic());
+            isComicShowing = true;
         }
     }
 
@@ -57,5 +74,27 @@ public class TaskManager : MonoBehaviour
                 taskDone2.text = zadania[index - 2];
             }
         }
+    }
+
+
+    IEnumerator ShowComic()
+    {
+        comicCanvas.enabled = true; 
+
+        yield return new WaitForSeconds(1);
+        comicParts[0].enabled = true;
+
+        yield return new WaitForSeconds(2);
+        comicParts[1].enabled = true;
+
+
+        yield return new WaitForSeconds(2);
+        comicParts[2].enabled = true;
+
+
+        yield return new WaitForSeconds(2);
+        comicParts[3].enabled = true;
+
+
     }
 }

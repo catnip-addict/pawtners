@@ -636,6 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f0618153fe60942bca9b26862a34e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 0
 --- !u!65 &237019092
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1437,6 +1438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f0618153fe60942bca9b26862a34e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 0
 --- !u!54 &480623013
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2439,10 +2441,14 @@ MonoBehaviour:
   MainTaskUI: {fileID: 0}
   taskDone1: {fileID: 0}
   taskDone2: {fileID: 0}
-  numerZadania: 0
-  taskCompleted: 0
   player1: {fileID: 0}
   player2: {fileID: 0}
+  comicCanvas: {fileID: 0}
+  comicParts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &959671915
 MonoBehaviour:
   m_ObjectHideFlags: 0
