@@ -17,15 +17,15 @@ public class TaskManager : MonoBehaviour
     public Player player1;
     public Player player2;
 
-  
-    public Canvas comicCanvas;  
-    public Image[] comicParts;  
+
+    public GameObject comicCanvas;
+    public Image[] comicParts;
     private bool isComicShowing = false;
 
     private void Start()
     {
         UpdateZadania();
-        comicCanvas.enabled = false;
+        comicCanvas.SetActive(false);
 
 
         foreach (var comicPart in comicParts)
@@ -79,7 +79,7 @@ public class TaskManager : MonoBehaviour
 
     IEnumerator ShowComic()
     {
-        comicCanvas.enabled = true; 
+        comicCanvas.SetActive(true);
 
         yield return new WaitForSeconds(1);
         comicParts[0].enabled = true;
