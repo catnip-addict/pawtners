@@ -36,9 +36,9 @@ public class Player : MonoBehaviour
     float jumpCooldown = 0f;
     [SerializeField] float jumpMaxHeight = 2.5f;
     [SerializeField] float gravityMultiplier = 2f;
+    [SerializeField] float maxFallSpeed = 10f;
     [Header("CheckPoints")]
     [SerializeField] int checkPointIndex = 0;
-    [SerializeField] float maxFallSpeed = 10f;
     [Header("Misc")]
     public PlayerNumber playerNumber;
 
@@ -177,7 +177,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.relativeVelocity.magnitude>2f && groundChecker.IsGrounded)
+        if (collision.relativeVelocity.magnitude > 2f && groundChecker.IsGrounded)
         {
             audioSource.PlayOneShot(footstepSound);
 
