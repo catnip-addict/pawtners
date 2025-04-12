@@ -53,6 +53,15 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""c90a896e-1703-4e5e-8ea7-18e26c9a5143"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -187,6 +196,17 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9644ac1b-2dab-46c4-ab5a-733e230c2551"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -220,6 +240,15 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""13d2381f-0c75-4924-85b6-b0be26fb9a8a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -253,6 +282,17 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Gamepad;Joystick"",
                     ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""71f1f191-fc0e-4bfa-94fe-9996b583ff01"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -289,11 +329,13 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
         m_Keyboard_Walking = m_Keyboard.FindAction("Walking", throwIfNotFound: true);
         m_Keyboard_Jump = m_Keyboard.FindAction("Jump", throwIfNotFound: true);
         m_Keyboard_Look = m_Keyboard.FindAction("Look", throwIfNotFound: true);
+        m_Keyboard_Pause = m_Keyboard.FindAction("Pause", throwIfNotFound: true);
         // Controller
         m_Controller = asset.FindActionMap("Controller", throwIfNotFound: true);
         m_Controller_Walking = m_Controller.FindAction("Walking", throwIfNotFound: true);
         m_Controller_Jump = m_Controller.FindAction("Jump", throwIfNotFound: true);
         m_Controller_Look = m_Controller.FindAction("Look", throwIfNotFound: true);
+        m_Controller_Pause = m_Controller.FindAction("Pause", throwIfNotFound: true);
     }
 
     ~@Input_Actions()
@@ -364,6 +406,7 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Keyboard_Walking;
     private readonly InputAction m_Keyboard_Jump;
     private readonly InputAction m_Keyboard_Look;
+    private readonly InputAction m_Keyboard_Pause;
     public struct KeyboardActions
     {
         private @Input_Actions m_Wrapper;
@@ -371,6 +414,7 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
         public InputAction @Walking => m_Wrapper.m_Keyboard_Walking;
         public InputAction @Jump => m_Wrapper.m_Keyboard_Jump;
         public InputAction @Look => m_Wrapper.m_Keyboard_Look;
+        public InputAction @Pause => m_Wrapper.m_Keyboard_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -389,6 +433,9 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IKeyboardActions instance)
@@ -402,6 +449,9 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IKeyboardActions instance)
@@ -426,6 +476,7 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Controller_Walking;
     private readonly InputAction m_Controller_Jump;
     private readonly InputAction m_Controller_Look;
+    private readonly InputAction m_Controller_Pause;
     public struct ControllerActions
     {
         private @Input_Actions m_Wrapper;
@@ -433,6 +484,7 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
         public InputAction @Walking => m_Wrapper.m_Controller_Walking;
         public InputAction @Jump => m_Wrapper.m_Controller_Jump;
         public InputAction @Look => m_Wrapper.m_Controller_Look;
+        public InputAction @Pause => m_Wrapper.m_Controller_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -451,6 +503,9 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IControllerActions instance)
@@ -464,6 +519,9 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IControllerActions instance)
@@ -504,11 +562,13 @@ public partial class @Input_Actions: IInputActionCollection2, IDisposable
         void OnWalking(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IControllerActions
     {
         void OnWalking(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
