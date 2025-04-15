@@ -106,4 +106,9 @@ public class InputReader : MonoBehaviour, IKeyboardActions, IControllerActions
     {
         Move.Invoke(context.ReadValue<Vector2>());
     }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
+    }
 }
