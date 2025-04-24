@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -26,8 +27,10 @@ public class Player : MonoBehaviour
     [SerializeField] Animator BlackoutAnimator;
 
     [Header("Movement Settings")]
-    [SerializeField] float moveSpeed = 300f;
-    [SerializeField] float rotationSpeed = 360f;
+    [SerializeField] float constMoveSpeed = 300f;
+    float moveSpeed;
+    [SerializeField] float constRotationSpeed = 360f;
+    float rotationSpeed = 360f;
     [SerializeField] float smoothTime = 0.2f;
 
     [Header("Jump Settings")]
@@ -87,8 +90,12 @@ public class Player : MonoBehaviour
         jumpTimer.OnTimerStop += () => jumpCooldownTimer.Start();
     }
 
-    void Start() => input.EnablePlayerActions();
-
+    void Start()
+    {
+        input.EnablePlayerActions();
+        moveSpeed = constMoveSpeed;
+        rotationSpeed = constRotationSpeed;
+    }
     void OnEnable()
     {
         input.Jump += OnJump;
@@ -137,6 +144,12 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("isWalking", false);
         }
+    }
+
+    public void SetWeight(float weight)
+    {
+        moveSpeed = constMoveSpeed - weight * 100;
+        rotationSpeed = constRotationSpeed - weight * 200;
     }
 
     void HandleTimers()

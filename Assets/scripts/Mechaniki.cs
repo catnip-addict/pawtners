@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Mechaniki : MonoBehaviour
 {
-    public Transform holdPosition;  // Pozycja, w której trzymamy przedmiot
+    public Transform holdPositionAnim;  // Pozycja, w której trzymamy przedmiot z animacją
+    public Transform holdPosition;  // Pozycja, w której trzymamy przedmiot i bez
     public float pickUpRange = 3f;  // Zasięg podnoszenia
     public LayerMask pickUpLayer;   // Warstwa podnoszonych obiektów
 
@@ -44,12 +45,21 @@ public class Mechaniki : MonoBehaviour
                 if (heldObjectRb != null)
                 {
                     heldObjectItem.SetCollider(false);
-                    heldObject.transform.position = holdPosition.position;
-                    heldObject.transform.rotation = holdPosition.rotation;
-                    heldObject.transform.parent = holdPosition;
+                    if (heldObjectItem.needAnimation)
+                    {
+                        heldObject.transform.position = holdPositionAnim.position;
+                        heldObject.transform.rotation = holdPositionAnim.rotation;
+                        heldObject.transform.parent = holdPositionAnim;
+                    }
+                    else
+                    {
+                        heldObject.transform.position = holdPosition.position;
+                        heldObject.transform.rotation = holdPosition.rotation;
+                        heldObject.transform.parent = holdPosition;
+                    }
                     heldObjectRb.useGravity = false;
                     heldObjectRb.isKinematic = true;
-                    // player.SetWeight(heldObjectItem.weight);
+                    player.SetWeight(heldObjectItem.weight);
                 }
             }
         }
@@ -65,7 +75,7 @@ public class Mechaniki : MonoBehaviour
             heldObjectRb.useGravity = true;
             heldObjectRb.isKinematic = false;
         }
-        // player.SetWeight(0f);
+        player.SetWeight(0f);
         heldObject = null;
         heldObjectRb = null;
     }
