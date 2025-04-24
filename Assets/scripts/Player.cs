@@ -164,14 +164,15 @@ public class Player : MonoBehaviour
         else
         {
             // Gravity takes over
-            jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
+            // Apply velocity
+            if (Mathf.Abs(jumpVelocity) <= maxFallSpeed)
+            {
+                jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
+            }
+
         }
 
-        // Apply velocity
-        if (jumpVelocity > maxFallSpeed)
-        {
-            jumpVelocity = maxFallSpeed;
-        }
+
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpVelocity, rb.linearVelocity.z);
     }
 
