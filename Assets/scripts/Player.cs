@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] float constMoveSpeed = 300f;
     float moveSpeed;
-    [SerializeField] float constRotationSpeed = 360f;
+    [SerializeField] float constRotationSpeed = 720f;
     float rotationSpeed = 360f;
     [SerializeField] float smoothTime = 0.2f;
 
