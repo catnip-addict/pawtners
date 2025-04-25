@@ -2,6 +2,8 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class TaskManager : MonoBehaviour
 {
@@ -20,7 +22,9 @@ public class TaskManager : MonoBehaviour
 
     public GameObject comicCanvas;
     public Image[] comicParts;
+    public TMP_Text comicText;
     private bool isComicShowing = false;
+    private bool isComicDone = false;
 
     private void Start()
     {
@@ -53,6 +57,11 @@ public class TaskManager : MonoBehaviour
             StartCoroutine(ShowComic());
             isComicShowing = true;
         }
+        if (Input.anyKey && isComicDone)
+        {
+            SceneManager.LoadScene(0);
+        }
+
     }
 
     public void UpdateZadania(int index = 0)
@@ -95,6 +104,8 @@ public class TaskManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         comicParts[3].enabled = true;
 
-
+        yield return new WaitForSeconds(2);
+        isComicDone = true;
+        comicText.text = "Naciśnij dowolny klawisz aby kontynuować...";
     }
 }
