@@ -162,6 +162,8 @@ public class Player : MonoBehaviour
 
     void HandleJump()
     {
+        if (isRestricted)
+            return;
         // If not jumping and grounded, keep jump velocity at 0
         if (!jumpTimer.IsRunning && groundChecker.IsGrounded)
         {
