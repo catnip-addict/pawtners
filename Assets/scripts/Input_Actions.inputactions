@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "9fc76b1b-b24d-4b09-ab42-e1c9bde377d8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -205,6 +214,17 @@
                     "action": "Sound",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "633e9a9f-e95c-4587-9b96-8238eaac3bd7",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -252,6 +272,15 @@
                     "name": "Sound",
                     "type": "Button",
                     "id": "86d62146-dd97-4373-97a7-8a60353e42e4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "6d957ef2-0562-40cb-94de-43dc7f9982b0",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -311,6 +340,17 @@
                     "processors": "",
                     "groups": ";Joystick",
                     "action": "Sound",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52816dc2-00b6-45c8-8fc8-46dbcfad0373",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

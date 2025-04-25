@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     [SerializeField] float constRotationSpeed = 720f;
     float rotationSpeed = 360f;
     [SerializeField] float smoothTime = 0.2f;
+    [SerializeField] float sprintSpeed = 2.0f;
+    bool isSprinting = false;
 
     [Header("Jump Settings")]
     [SerializeField] float jumpForce = 60f;
@@ -101,6 +103,8 @@ public class Player : MonoBehaviour
     {
         input.Jump += OnJump;
         input.Moew += OnSound;
+        input.Sprint += OnSprint;
+        
     }
 
     private void OnSound(bool arg0)
@@ -110,6 +114,7 @@ public class Player : MonoBehaviour
     void OnDisable()
     {
         input.Jump -= OnJump;
+        input.Sprint -= OnSprint;
     }
 
     void OnJump(bool performed)
@@ -125,9 +130,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnSprint(bool sprinting)
+    {
+        isSprinting = sprinting;
+    }
+
     void Update()
     {
         movement = new Vector3(input.Direction.x, 0f, input.Direction.y);
+
+        if (isSprinting)
+        { 
+        movement *= sprintSpeed;
+        }
 
         HandleTimers();
         UpdateAnimator();
@@ -211,7 +226,6 @@ public class Player : MonoBehaviour
         Vector3 adjustedDirection = Vector3.zero;
         if (isRestricted)
         {
-            //movement.x = 0f;
             adjustedDirection = transform.forward * movement.z;
         }
         else
