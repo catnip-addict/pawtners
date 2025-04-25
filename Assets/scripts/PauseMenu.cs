@@ -4,21 +4,36 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
 
-    public static bool gameIsPaused = false;
+    public static PauseMenu Instance { get; private set; }
+    public bool gameIsPaused = false;
     public GameObject pauseMenuUI;
+
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            CheckForPause();
-        }
-    }
-    void CheckForPause()
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Escape))
+    //     {
+    //         CheckForPause();
+    //     }
+    // }
+    public void CheckForPause()
     {
         if (gameIsPaused)
         {

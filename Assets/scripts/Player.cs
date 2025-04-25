@@ -104,7 +104,13 @@ public class Player : MonoBehaviour
         input.Jump += OnJump;
         input.Moew += OnSound;
         input.Sprint += OnSprint;
-        
+        input.Pause += OnPause;
+    }
+
+    private void OnPause()
+    {
+        PauseMenu.Instance.CheckForPause();
+        Debug.Log("Pause2");
     }
 
     private void OnSound(bool arg0)
@@ -115,6 +121,8 @@ public class Player : MonoBehaviour
     {
         input.Jump -= OnJump;
         input.Sprint -= OnSprint;
+        input.Moew -= OnSound;
+        input.Pause -= OnPause;
     }
 
     void OnJump(bool performed)
@@ -140,8 +148,8 @@ public class Player : MonoBehaviour
         movement = new Vector3(input.Direction.x, 0f, input.Direction.y);
 
         if (isSprinting)
-        { 
-        movement *= sprintSpeed;
+        {
+            movement *= sprintSpeed;
         }
 
         HandleTimers();

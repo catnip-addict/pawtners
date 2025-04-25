@@ -18,6 +18,7 @@ public class InputReader : MonoBehaviour, IKeyboardActions, IControllerActions
     public event UnityAction<bool> Jump = delegate { };
     public event UnityAction<bool> Sprint = delegate { };
     public event UnityAction<bool> Moew = delegate { };
+    public event UnityAction Pause = delegate { };
 
     Input_Actions inputActions;
 
@@ -123,7 +124,8 @@ public class InputReader : MonoBehaviour, IKeyboardActions, IControllerActions
 
     public void OnPause(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        Pause.Invoke();
+        Debug.Log("Pause");
     }
 
     public void OnSound(InputAction.CallbackContext context)
