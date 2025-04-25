@@ -33,6 +33,8 @@ public class Mechaniki : MonoBehaviour
 
     void TryPickUp()
     {
+
+
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, pickUpRange, pickUpLayer))
         {
@@ -40,6 +42,14 @@ public class Mechaniki : MonoBehaviour
             {
                 heldObject = hit.collider.gameObject;
                 heldObjectItem = heldObject.GetComponent<Item>();
+                if (heldObjectItem.needAnimation)
+                {
+                    player.isRestricted = false;
+                }
+                else
+                {
+                    player.isRestricted = true;
+                }
                 heldObjectRb = heldObject.GetComponent<Rigidbody>();
 
                 if (heldObjectRb != null)
@@ -78,5 +88,7 @@ public class Mechaniki : MonoBehaviour
         player.SetWeight(0f);
         heldObject = null;
         heldObjectRb = null;
+        player.isRestricted = false;
+
     }
 }

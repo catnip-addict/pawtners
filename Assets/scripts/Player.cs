@@ -61,6 +61,8 @@ public class Player : MonoBehaviour
     public float stepInterval = 0.5f;
 
     private float stepTimer = 0f;
+    [HideInInspector]
+    public bool isRestricted = false;
 
     public void Die()
     {
@@ -166,6 +168,8 @@ public class Player : MonoBehaviour
 
     void HandleJump()
     {
+        if (isRestricted)
+            return;
         // If not jumping and grounded, keep jump velocity at 0
         if (!jumpTimer.IsRunning && groundChecker.IsGrounded)
         {
@@ -204,8 +208,18 @@ public class Player : MonoBehaviour
 
     void HandleMovement()
     {
+        Vector3 adjustedDirection = Vector3.zero;
+        if (isRestricted)
+        {
+            //movement.x = 0f;
+            adjustedDirection = transform.forward * movement.z;
+        }
+        else
+        {
+            adjustedDirection = Quaternion.AngleAxis(mainCam.eulerAngles.y, Vector3.up) * movement;
+        }
         // Rotate movement direction to match camera rotation
-        var adjustedDirection = Quaternion.AngleAxis(mainCam.eulerAngles.y, Vector3.up) * movement;
+
 
         if (adjustedDirection.magnitude > ZeroF)
         {
@@ -242,6 +256,8 @@ public class Player : MonoBehaviour
     void HandleRotation(Vector3 adjustedDirection)
     {
         // Adjust rotation to match movement direction
+        if (isRestricted)
+            return;
         var targetRotation = Quaternion.LookRotation(adjustedDirection);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
