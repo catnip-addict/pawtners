@@ -210,7 +210,7 @@ public class Player : MonoBehaviour
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0f && groundChecker.IsGrounded)
             {
-                audioSource.PlayOneShot(footstepSound);
+                PlaySound(footstepSound);
                 stepTimer = stepInterval;
             }
         }
@@ -243,5 +243,9 @@ public class Player : MonoBehaviour
     void SmoothSpeed(float value)
     {
         currentSpeed = Mathf.SmoothDamp(currentSpeed, value, ref velocity, smoothTime);
+    }
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }
