@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Sound",
+                    "type": "Button",
+                    "id": "818e11e9-a54d-4aec-8b25-fa0c16fd3cdc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -185,6 +194,17 @@
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5e4e99b5-c50b-458d-8002-2f5c096ede46",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Sound",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -223,6 +243,15 @@
                     "name": "Pause",
                     "type": "Button",
                     "id": "13d2381f-0c75-4924-85b6-b0be26fb9a8a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Sound",
+                    "type": "Button",
+                    "id": "86d62146-dd97-4373-97a7-8a60353e42e4",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -271,6 +300,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff59d26e-9849-405a-86da-43fb42216cdc",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick",
+                    "action": "Sound",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

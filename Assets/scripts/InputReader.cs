@@ -16,6 +16,7 @@ public class InputReader : MonoBehaviour, IKeyboardActions, IControllerActions
     public event UnityAction EnableMouseControlCamera = delegate { };
     public event UnityAction DisableMouseControlCamera = delegate { };
     public event UnityAction<bool> Jump = delegate { };
+    public event UnityAction<bool> Moew = delegate { };
 
     Input_Actions inputActions;
 
@@ -110,5 +111,10 @@ public class InputReader : MonoBehaviour, IKeyboardActions, IControllerActions
     public void OnPause(InputAction.CallbackContext context)
     {
         throw new System.NotImplementedException();
+    }
+
+    public void OnSound(InputAction.CallbackContext context)
+    {
+        Moew.Invoke(true);
     }
 }
