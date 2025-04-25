@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Mechaniki : MonoBehaviour
@@ -81,4 +80,3 @@ public class Mechaniki : MonoBehaviour
         heldObjectRb = null;
     }
 }
-

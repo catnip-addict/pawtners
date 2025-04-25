@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -97,6 +98,11 @@ public class Player : MonoBehaviour
     void OnEnable()
     {
         input.Jump += OnJump;
+        input.Moew += OnSound;
+    }
+
+    private void OnSound(bool arg0)
+    {
     }
 
     void OnDisable()
@@ -249,3 +255,4 @@ public class Player : MonoBehaviour
         audioSource.PlayOneShot(clip);
     }
 }
+
