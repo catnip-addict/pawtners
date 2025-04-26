@@ -31,8 +31,9 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown resolutionDropdown;
 
     [Header("Ustawienia Sterowania")]
-    [SerializeField] private bool enableControllerSupport = true;
-    [SerializeField] private float controllerSensitivity = 0.5f;
+    // [SerializeField] private bool enableControllerSupport = true;
+    [SerializeField] private Slider mouseSensSlider;
+    // [SerializeField] private float controllerSensitivity = 0.5f;
     public InputDeviceType currentInputDevice;
 
     private Resolution[] resolutions;
@@ -83,10 +84,12 @@ public class SettingsManager : MonoBehaviour
         float masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1.0f);
         float musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
         float sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
+        float mouseSens = PlayerPrefs.GetFloat("MouseSens", 1.0f);
 
         masterVolumeSlider.value = masterVolume;
         musicVolumeSlider.value = musicVolume;
         sfxVolumeSlider.value = sfxVolume;
+        mouseSensSlider.value = mouseSens;
 
         qualityDropdown.value = PlayerPrefs.GetInt("QualityLevel", QualitySettings.GetQualityLevel());
         fullscreenToggle.isOn = PlayerPrefs.GetInt("Fullscreen", Screen.fullScreen ? 1 : 0) == 1;
