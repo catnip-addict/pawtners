@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     [SerializeField] Transform mainCam;
     [SerializeField] CheckPoints checkPoints;
     [SerializeField] Animator BlackoutAnimator;
+    [SerializeField] ParticleSystem jumpParticles;
+    [SerializeField] ParticleSystem runParticles;
 
     [Header("Movement Settings")]
     [SerializeField] float constMoveSpeed = 300f;
@@ -110,7 +112,6 @@ public class Player : MonoBehaviour
     private void OnPause()
     {
         PauseMenu.Instance.CheckForPause();
-        Debug.Log("Pause2");
     }
 
     private void OnSound(bool arg0)
@@ -130,11 +131,11 @@ public class Player : MonoBehaviour
         if (performed && !jumpTimer.IsRunning && !jumpCooldownTimer.IsRunning && groundChecker.IsGrounded)
         {
             jumpTimer.Start();
+            jumpParticles.Play();
         }
         else if (!performed && jumpTimer.IsRunning)
         {
             jumpTimer.Stop();
-
         }
     }
 
@@ -146,10 +147,15 @@ public class Player : MonoBehaviour
     void Update()
     {
         movement = new Vector3(input.Direction.x, 0f, input.Direction.y);
-
+        var emission = runParticles.emission;
         if (isSprinting)
         {
             movement *= sprintSpeed;
+            emission.enabled = true;
+        }
+        else
+        {
+            emission.enabled = false;
         }
 
         HandleTimers();
@@ -197,23 +203,24 @@ public class Player : MonoBehaviour
         if (!jumpTimer.IsRunning && groundChecker.IsGrounded)
         {
             jumpVelocity = ZeroF;
+            animator.SetBool("inTheAir", false);
+            animator.SetBool("isJumping", false);
             return;
         }
 
-        // If jumping or falling calculate velocity
         if (jumpTimer.IsRunning)
         {
+            animator.SetBool("isJumping", true);
+            animator.SetBool("inTheAir", true);
+
             jumpVelocity = Mathf.Sqrt(2 * jumpMaxHeight * Mathf.Abs(Physics.gravity.y));
         }
         else
         {
-            // Gravity takes over
-            // Apply velocity
             if (Mathf.Abs(jumpVelocity) <= maxFallSpeed)
             {
                 jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
             }
-
         }
 
 
@@ -225,7 +232,6 @@ public class Player : MonoBehaviour
         if (collision.relativeVelocity.magnitude > 2f && groundChecker.IsGrounded)
         {
             audioSource.PlayOneShot(footstepSound);
-
         }
     }
 
@@ -240,8 +246,6 @@ public class Player : MonoBehaviour
         {
             adjustedDirection = Quaternion.AngleAxis(mainCam.eulerAngles.y, Vector3.up) * movement;
         }
-        // Rotate movement direction to match camera rotation
-
 
         if (adjustedDirection.magnitude > ZeroF)
         {
@@ -259,19 +263,13 @@ public class Player : MonoBehaviour
         else
         {
             SmoothSpeed(ZeroF);
-
-            // Reset horizontal velocity for a snappy stop
             rb.linearVelocity = new Vector3(ZeroF, rb.linearVelocity.y, ZeroF);
         }
     }
 
     void HandleHorizontalMovement(Vector3 adjustedDirection)
     {
-        // Move the player
         Vector3 velocity = adjustedDirection * moveSpeed * Time.fixedDeltaTime;
-
-        // Debug.Log(velocity);
-
         rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
     }
 
