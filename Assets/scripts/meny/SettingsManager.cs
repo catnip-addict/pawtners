@@ -42,6 +42,7 @@ public class SettingsManager : MonoBehaviour
         ShowMainMenu();
         LoadSettings();
         InitializeResolutions();
+        InitializeQualityDropdown();
     }
     void Update()
     {
@@ -90,7 +91,20 @@ public class SettingsManager : MonoBehaviour
         qualityDropdown.value = PlayerPrefs.GetInt("QualityLevel", QualitySettings.GetQualityLevel());
         fullscreenToggle.isOn = PlayerPrefs.GetInt("Fullscreen", Screen.fullScreen ? 1 : 0) == 1;
     }
+    private void InitializeQualityDropdown()
+    {
+        qualityDropdown.ClearOptions();
 
+        System.Collections.Generic.List<string> qualityOptions = new System.Collections.Generic.List<string>();
+        for (int i = 0; i < QualitySettings.names.Length; i++)
+        {
+            qualityOptions.Add(QualitySettings.names[i]);
+        }
+
+        qualityDropdown.AddOptions(qualityOptions);
+        qualityDropdown.value = QualitySettings.GetQualityLevel();
+        qualityDropdown.RefreshShownValue();
+    }
     private void InitializeResolutions()
     {
         resolutions = Screen.resolutions;
@@ -201,7 +215,10 @@ public class SettingsManager : MonoBehaviour
             resolution.refreshRateRatio);
         PlayerPrefs.SetInt("ResolutionIndex", resolutionIndex);
     }
-
+    public void SetMouseSens(float mouseSens)
+    {
+        PlayerPrefs.SetFloat("MouseSens", mouseSens);
+    }
     public void SaveSettings()
     {
         PlayerPrefs.Save();
