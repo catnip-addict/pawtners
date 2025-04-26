@@ -24,9 +24,6 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider musicVolumeSlider;
     [SerializeField] private Slider sfxVolumeSlider;
-    // [SerializeField] private TextMeshProUGUI masterVolumeText;
-    // [SerializeField] private TextMeshProUGUI musicVolumeText;
-    // [SerializeField] private TextMeshProUGUI sfxVolumeText;
 
     [Header("Ustawienia Grafiki")]
     [SerializeField] private TMP_Dropdown qualityDropdown;
@@ -144,7 +141,7 @@ public class SettingsManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
