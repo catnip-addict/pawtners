@@ -2,7 +2,7 @@
 - Project name: pawtners
 - Unity version: Unity 6000.0.30f1
 - Active game object:
-  - Name: Schronisko
+  - Name: GameManager
   - Tag: Untagged
-  - Layer: Ground
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

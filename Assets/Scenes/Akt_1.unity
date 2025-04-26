@@ -941,6 +941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myDoor: {fileID: 1151890779}
   openTrigger: 1
+  cameraManager: {fileID: 959671915}
 --- !u!65 &181939924
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4496,6 +4497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myDoor: {fileID: 1757936814}
   openTrigger: 1
+  cameraManager: {fileID: 959671915}
 --- !u!65 &773749974
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5891,6 +5893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1Cam: {fileID: 3882840238282089786}
   player2Cam: {fileID: 2026394627411082912}
+  cageCum: {fileID: 2080134119}
   playerScreenPos: 0
 --- !u!114 &959671916
 MonoBehaviour:
@@ -8763,8 +8766,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.7186074, y: 3.9122496, z: 4.175247}
-  m_Center: {x: 0.03865218, y: -0.28396565, z: 0.61323035}
+  m_Size: {x: 4.7186074, y: 3.9122496, z: 2.6632266}
+  m_Center: {x: 0.03865218, y: -0.2839656, z: -0.14278013}
 --- !u!1 &1535521717
 GameObject:
   m_ObjectHideFlags: 0
@@ -12719,7 +12722,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080134117}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &2080134119
 Camera:
   m_ObjectHideFlags: 0
