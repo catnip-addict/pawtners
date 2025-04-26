@@ -31,11 +31,11 @@ public class SaveSystem
     }
 }
 
-[Serializable]
-public class GameData
-{
-    public int playerLevel;
-    public float playerHealth;
-    public float playerScore;
-    // Add other game data fields as needed
-}
+// [Serializable]
+// public class GameData
+// {
+//     public int playerLevel;
+//     public float playerHealth;
+//     public float playerScore;
+//     // Add other game data fields as needed
+// }
