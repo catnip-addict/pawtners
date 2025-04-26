@@ -1,4 +1,3 @@
-// AudioManager.cs
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour

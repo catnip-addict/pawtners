@@ -21,7 +21,6 @@ public class MenuHandler : MonoBehaviour
     }
     public void ShowCreditsMenu()
     {
-        // Implementacja wyświetlania menu kredytów
         Debug.Log("Wyświetlanie menu kredytów");
     }
     public void StartGame()

@@ -24,9 +24,9 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider musicVolumeSlider;
     [SerializeField] private Slider sfxVolumeSlider;
-    [SerializeField] private TextMeshProUGUI masterVolumeText;
-    [SerializeField] private TextMeshProUGUI musicVolumeText;
-    [SerializeField] private TextMeshProUGUI sfxVolumeText;
+    // [SerializeField] private TextMeshProUGUI masterVolumeText;
+    // [SerializeField] private TextMeshProUGUI musicVolumeText;
+    // [SerializeField] private TextMeshProUGUI sfxVolumeText;
 
     [Header("Ustawienia Grafiki")]
     [SerializeField] private TMP_Dropdown qualityDropdown;
@@ -45,37 +45,39 @@ public class SettingsManager : MonoBehaviour
         ShowMainMenu();
         LoadSettings();
         InitializeResolutions();
-        // SetupControllerNavigation();
     }
     void Update()
     {
         if (Input.anyKeyDown)
         {
-            ChangeInputDevice();
-            currentInputDevice = InputDeviceType.GamepadKeyboard;
+            if (currentInputDevice != InputDeviceType.GamepadKeyboard)
+            {
+                currentInputDevice = InputDeviceType.GamepadKeyboard;
+                ChangeInputDevice();
+            }
         }
         if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
         {
             currentInputDevice = InputDeviceType.Mouse;
             EventSystem.current.SetSelectedGameObject(null);
         }
-
     }
     void ChangeInputDevice()
     {
         if (currentInputDevice == InputDeviceType.GamepadKeyboard)
-            return;
-        if (mainMenuPanel.activeSelf)
         {
-            EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
-        }
-        if (settingsPanel.activeSelf)
-        {
-            EventSystem.current.SetSelectedGameObject(settingsMenuFirstButton);
-        }
-        if (creditsPanel.activeSelf)
-        {
-            EventSystem.current.SetSelectedGameObject(creditsPanelFirstButton);
+            if (mainMenuPanel.activeSelf)
+            {
+                EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
+            }
+            if (settingsPanel.activeSelf)
+            {
+                EventSystem.current.SetSelectedGameObject(settingsMenuFirstButton);
+            }
+            if (creditsPanel.activeSelf)
+            {
+                EventSystem.current.SetSelectedGameObject(creditsPanelFirstButton);
+            }
         }
     }
     private void LoadSettings()
@@ -87,13 +89,6 @@ public class SettingsManager : MonoBehaviour
         masterVolumeSlider.value = masterVolume;
         musicVolumeSlider.value = musicVolume;
         sfxVolumeSlider.value = sfxVolume;
-
-        if (masterVolumeText != null)
-            masterVolumeText.text = $"{Mathf.RoundToInt(masterVolume * 100)}%";
-        if (musicVolumeText != null)
-            musicVolumeText.text = $"{Mathf.RoundToInt(musicVolume * 100)}%";
-        if (sfxVolumeText != null)
-            sfxVolumeText.text = $"{Mathf.RoundToInt(sfxVolume * 100)}%";
 
         qualityDropdown.value = PlayerPrefs.GetInt("QualityLevel", QualitySettings.GetQualityLevel());
         fullscreenToggle.isOn = PlayerPrefs.GetInt("Fullscreen", Screen.fullScreen ? 1 : 0) == 1;
@@ -109,7 +104,7 @@ public class SettingsManager : MonoBehaviour
 
         for (int i = 0; i < resolutions.Length; i++)
         {
-            string option = resolutions[i].width + " x " + resolutions[i].height + " @ " + resolutions[i].refreshRateRatio + "Hz";
+            string option = resolutions[i].width + " x " + resolutions[i].height;
             options.Add(option);
 
             if (resolutions[i].width == Screen.currentResolution.width &&
@@ -123,51 +118,12 @@ public class SettingsManager : MonoBehaviour
         resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionIndex", currentResolutionIndex);
         resolutionDropdown.RefreshShownValue();
     }
-
-    public void SetupControllerNavigation()
-    {
-        if (enableControllerSupport)
-        {
-            Button[] allButtons = FindObjectsByType<Button>(FindObjectsSortMode.None);
-            foreach (Button button in allButtons)
-            {
-                Navigation navigation = button.navigation;
-                navigation.mode = Navigation.Mode.Automatic;
-                button.navigation = navigation;
-            }
-
-            Slider[] allSliders = FindObjectsByType<Slider>(FindObjectsSortMode.None);
-            foreach (Slider slider in allSliders)
-            {
-                Navigation navigation = slider.navigation;
-                navigation.mode = Navigation.Mode.Automatic;
-                slider.navigation = navigation;
-            }
-
-            Toggle[] allToggles = FindObjectsByType<Toggle>(FindObjectsSortMode.None);
-            foreach (Toggle toggle in allToggles)
-            {
-                Navigation navigation = toggle.navigation;
-                navigation.mode = Navigation.Mode.Automatic;
-                toggle.navigation = navigation;
-            }
-
-            TMP_Dropdown[] allDropdowns = FindObjectsByType<TMP_Dropdown>(FindObjectsSortMode.None);
-            foreach (TMP_Dropdown dropdown in allDropdowns)
-            {
-                Navigation navigation = dropdown.navigation;
-                navigation.mode = Navigation.Mode.Automatic;
-                dropdown.navigation = navigation;
-            }
-        }
-    }
-
     public void ShowMainMenu()
     {
         mainMenuPanel.SetActive(true);
         settingsPanel.SetActive(false);
         creditsPanel.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
+        ChangeInputDevice();
     }
 
     public void ShowSettings()
@@ -175,7 +131,7 @@ public class SettingsManager : MonoBehaviour
         mainMenuPanel.SetActive(false);
         settingsPanel.SetActive(true);
         creditsPanel.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(settingsMenuFirstButton);
+        ChangeInputDevice();
     }
 
     public void ShowCredits()
@@ -183,7 +139,7 @@ public class SettingsManager : MonoBehaviour
         mainMenuPanel.SetActive(false);
         settingsPanel.SetActive(false);
         creditsPanel.SetActive(true);
-        // EventSystem.current.SetSelectedGameObject(creditsPanelFirstButton);
+        ChangeInputDevice();
     }
 
     public void StartGame()
@@ -206,18 +162,11 @@ public class SettingsManager : MonoBehaviour
     {
         AudioListener.volume = volume;
         PlayerPrefs.SetFloat("MasterVolume", volume);
-
-        if (masterVolumeText != null)
-            masterVolumeText.text = $"{Mathf.RoundToInt(volume * 100)}%";
     }
 
     public void SetMusicVolume(float volume)
     {
         PlayerPrefs.SetFloat("MusicVolume", volume);
-
-        if (musicVolumeText != null)
-            musicVolumeText.text = $"{Mathf.RoundToInt(volume * 100)}%";
-
         AudioManager audioManager = FindFirstObjectByType<AudioManager>();
         if (audioManager != null)
         {
@@ -228,10 +177,6 @@ public class SettingsManager : MonoBehaviour
     public void SetSFXVolume(float volume)
     {
         PlayerPrefs.SetFloat("SFXVolume", volume);
-
-        if (sfxVolumeText != null)
-            sfxVolumeText.text = $"{Mathf.RoundToInt(volume * 100)}%";
-
         AudioManager audioManager = FindFirstObjectByType<AudioManager>();
         if (audioManager != null)
         {

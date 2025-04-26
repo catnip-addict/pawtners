@@ -19,14 +19,12 @@ public class SaveSystemManager : MonoBehaviour
         }
     }
 
-    // Metoda do sprawdzania czy istnieją zapisy gry
     public bool SaveFileExists()
     {
         string path = Application.persistentDataPath + "/gamesave.save";
         return File.Exists(path);
     }
 
-    // Metoda do usuwania zapisów
     public void DeleteSaveFile()
     {
         string path = Application.persistentDataPath + "/gamesave.save";
@@ -36,7 +34,6 @@ public class SaveSystemManager : MonoBehaviour
         }
     }
 
-    // Przykład zapisywania danych
     public void SaveGame(GameData data)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -47,7 +44,6 @@ public class SaveSystemManager : MonoBehaviour
         stream.Close();
     }
 
-    // Przykład wczytywania danych
     public GameData LoadGame()
     {
         string path = Application.persistentDataPath + "/gamesave.save";
@@ -69,15 +65,12 @@ public class SaveSystemManager : MonoBehaviour
     }
 }
 
-// Klasa przechowująca dane zapisu
 [System.Serializable]
 public class GameData
 {
     public int playerLevel;
     public float playTime;
     public string playerName;
-
-    // Dodaj tutaj więcej potrzebnych danych
 
     public GameData(int level, float time, string name)
     {
