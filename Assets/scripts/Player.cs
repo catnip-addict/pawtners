@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -67,6 +66,7 @@ public class Player : MonoBehaviour
     private float stepTimer = 0f;
     [HideInInspector]
     public bool isRestricted = false;
+    CinemachineInputAxisController inputAxisController;
 
     public void Die()
     {
@@ -93,6 +93,25 @@ public class Player : MonoBehaviour
         timers = new(2) { jumpTimer, jumpCooldownTimer };
 
         jumpTimer.OnTimerStop += () => jumpCooldownTimer.Start();
+
+        var axisController = freeLookVCam.GetComponent<CinemachineInputAxisController>();
+        float mouseSens = PlayerPrefs.GetFloat("MouseSens", 1.0f);
+        // Debug.Log(mouseSens);
+        foreach (var c in axisController.Controllers)
+        {
+            if (c.Name == "Look Orbit X")
+            {
+                c.Input.LegacyGain = 100f * mouseSens;
+                c.Input.Gain = 200f * mouseSens;
+                // Debug.Log(c.Input.LegacyGain + " " + c.Input.Gain);
+            }
+            if (c.Name == "Look Orbit Y")
+            {
+                c.Input.LegacyGain = -100f * mouseSens;
+                c.Input.Gain = -200f * mouseSens;
+                // Debug.Log(c.Input.LegacyGain + " " + c.Input.Gain);
+            }
+        }
     }
 
     void Start()

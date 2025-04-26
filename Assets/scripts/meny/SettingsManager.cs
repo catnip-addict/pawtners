@@ -158,7 +158,7 @@ public class SettingsManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        StartCoroutine(TransitionManager.instance.TransitionToScene(1));
     }
 
     public void QuitGame()

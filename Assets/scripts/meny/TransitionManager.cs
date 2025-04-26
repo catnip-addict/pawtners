@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
 public class TransitionManager : MonoBehaviour
@@ -34,6 +33,10 @@ public class TransitionManager : MonoBehaviour
 
     private IEnumerator Fade(float startAlpha, float endAlpha)
     {
+        if (startAlpha > endAlpha)
+        {
+            yield return new WaitForSeconds(1f);
+        }
         float elapsedTime = 0f;
 
         while (elapsedTime < fadeDuration)
@@ -46,11 +49,10 @@ public class TransitionManager : MonoBehaviour
         fadeCanvasGroup.alpha = endAlpha;
     }
 
-    public IEnumerator TransitionToScene(string sceneName)
+    public IEnumerator TransitionToScene(int sceneName)
     {
         yield return StartCoroutine(Fade(0f, 1f));
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
-
         yield return StartCoroutine(Fade(1f, 0f));
     }
 }
