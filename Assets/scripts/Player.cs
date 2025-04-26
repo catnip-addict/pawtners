@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     [SerializeField] Transform mainCam;
     [SerializeField] CheckPoints checkPoints;
     [SerializeField] Animator BlackoutAnimator;
+    [SerializeField] ParticleSystem jumpParticles;
+    [SerializeField] ParticleSystem runParticles;
 
     [Header("Movement Settings")]
     [SerializeField] float constMoveSpeed = 300f;
@@ -31,6 +33,8 @@ public class Player : MonoBehaviour
     [SerializeField] float constRotationSpeed = 720f;
     float rotationSpeed = 360f;
     [SerializeField] float smoothTime = 0.2f;
+    [SerializeField] float sprintSpeed = 2.0f;
+    bool isSprinting = false;
 
     [Header("Jump Settings")]
     [SerializeField] float jumpForce = 60f;
@@ -101,6 +105,13 @@ public class Player : MonoBehaviour
     {
         input.Jump += OnJump;
         input.Moew += OnSound;
+        input.Sprint += OnSprint;
+        input.Pause += OnPause;
+    }
+
+    private void OnPause()
+    {
+        PauseMenu.Instance.CheckForPause();
     }
 
     private void OnSound(bool arg0)
@@ -110,6 +121,9 @@ public class Player : MonoBehaviour
     void OnDisable()
     {
         input.Jump -= OnJump;
+        input.Sprint -= OnSprint;
+        input.Moew -= OnSound;
+        input.Pause -= OnPause;
     }
 
     void OnJump(bool performed)
@@ -117,17 +131,32 @@ public class Player : MonoBehaviour
         if (performed && !jumpTimer.IsRunning && !jumpCooldownTimer.IsRunning && groundChecker.IsGrounded)
         {
             jumpTimer.Start();
+            jumpParticles.Play();
         }
         else if (!performed && jumpTimer.IsRunning)
         {
             jumpTimer.Stop();
-
         }
+    }
+
+    void OnSprint(bool sprinting)
+    {
+        isSprinting = sprinting;
     }
 
     void Update()
     {
         movement = new Vector3(input.Direction.x, 0f, input.Direction.y);
+        var emission = runParticles.emission;
+        if (isSprinting)
+        {
+            movement *= sprintSpeed;
+            emission.enabled = true;
+        }
+        else
+        {
+            emission.enabled = false;
+        }
 
         HandleTimers();
         UpdateAnimator();
@@ -174,23 +203,24 @@ public class Player : MonoBehaviour
         if (!jumpTimer.IsRunning && groundChecker.IsGrounded)
         {
             jumpVelocity = ZeroF;
+            animator.SetBool("inTheAir", false);
+            animator.SetBool("isJumping", false);
             return;
         }
 
-        // If jumping or falling calculate velocity
         if (jumpTimer.IsRunning)
         {
+            animator.SetBool("isJumping", true);
+            animator.SetBool("inTheAir", true);
+
             jumpVelocity = Mathf.Sqrt(2 * jumpMaxHeight * Mathf.Abs(Physics.gravity.y));
         }
         else
         {
-            // Gravity takes over
-            // Apply velocity
             if (Mathf.Abs(jumpVelocity) <= maxFallSpeed)
             {
                 jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
             }
-
         }
 
 
@@ -202,7 +232,6 @@ public class Player : MonoBehaviour
         if (collision.relativeVelocity.magnitude > 2f && groundChecker.IsGrounded)
         {
             audioSource.PlayOneShot(footstepSound);
-
         }
     }
 
@@ -211,15 +240,12 @@ public class Player : MonoBehaviour
         Vector3 adjustedDirection = Vector3.zero;
         if (isRestricted)
         {
-            //movement.x = 0f;
             adjustedDirection = transform.forward * movement.z;
         }
         else
         {
             adjustedDirection = Quaternion.AngleAxis(mainCam.eulerAngles.y, Vector3.up) * movement;
         }
-        // Rotate movement direction to match camera rotation
-
 
         if (adjustedDirection.magnitude > ZeroF)
         {
@@ -237,19 +263,13 @@ public class Player : MonoBehaviour
         else
         {
             SmoothSpeed(ZeroF);
-
-            // Reset horizontal velocity for a snappy stop
             rb.linearVelocity = new Vector3(ZeroF, rb.linearVelocity.y, ZeroF);
         }
     }
 
     void HandleHorizontalMovement(Vector3 adjustedDirection)
     {
-        // Move the player
         Vector3 velocity = adjustedDirection * moveSpeed * Time.fixedDeltaTime;
-
-        // Debug.Log(velocity);
-
         rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
     }
 

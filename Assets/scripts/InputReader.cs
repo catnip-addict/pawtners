@@ -16,7 +16,9 @@ public class InputReader : MonoBehaviour, IKeyboardActions, IControllerActions
     public event UnityAction EnableMouseControlCamera = delegate { };
     public event UnityAction DisableMouseControlCamera = delegate { };
     public event UnityAction<bool> Jump = delegate { };
+    public event UnityAction<bool> Sprint = delegate { };
     public event UnityAction<bool> Moew = delegate { };
+    public event UnityAction Pause = delegate { };
 
     Input_Actions inputActions;
 
@@ -102,6 +104,18 @@ public class InputReader : MonoBehaviour, IKeyboardActions, IControllerActions
         }
 
     }
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        switch (context.phase)
+        {
+            case InputActionPhase.Started:
+                Sprint.Invoke(true);
+                break;
+            case InputActionPhase.Canceled:
+                Sprint.Invoke(false);
+                break;
+        }
+    }
 
     public void OnWalking(InputAction.CallbackContext context)
     {
@@ -110,11 +124,13 @@ public class InputReader : MonoBehaviour, IKeyboardActions, IControllerActions
 
     public void OnPause(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        Pause.Invoke();
+        Debug.Log("Pause");
     }
 
     public void OnSound(InputAction.CallbackContext context)
     {
         Moew.Invoke(true);
     }
+
 }
