@@ -12,27 +12,37 @@ public class Mechaniki : MonoBehaviour
     private Item heldObjectItem;
     private Player player;
 
-    [SerializeField] private Outline outline; //aby podświetlenie się wyłączało po podniesieniu
+    [SerializeField] private Outline outline;
     void Start()
     {
         player = GetComponent<Player>();
     }
 
-    void Update()
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.E))
+    //     {
+    //         if (heldObject == null)
+    //         {
+    //             TryPickUp();
+    //         }
+    //         else
+    //         {
+    //             DropObject();
+    //         }
+    //     }
+    // }
+    public void PickUpObject()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (heldObject == null)
         {
-            if (heldObject == null)
-            {
-                TryPickUp();
-            }
-            else
-            {
-                DropObject();
-            }
+            TryPickUp();
+        }
+        else
+        {
+            DropObject();
         }
     }
-
     void TryPickUp()
     {
         RaycastHit hit;

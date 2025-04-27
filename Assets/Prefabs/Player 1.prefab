@@ -10773,6 +10773,7 @@ MonoBehaviour:
   movement: {x: 0, y: 0, z: 0}
   audioSource: {fileID: 6502893344367844896}
   footstepSound: {fileID: 8300000, guid: 036a3599d1e0ca94889a47650a259d4a, type: 3}
+  moewSound: {fileID: 8300000, guid: 784ad822bde85c447aa18dca5be61819, type: 3}
   stepInterval: 0.4
   isRestricted: 0
   hats: {fileID: 0}
@@ -10824,6 +10825,7 @@ MonoBehaviour:
   pickUpLayer:
     serializedVersion: 2
     m_Bits: 16
+  outline: {fileID: 0}
 --- !u!114 &7964585917085854229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11333,7 +11335,7 @@ Animator:
   m_GameObject: {fileID: 5144847546328238073}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 37a52445f08a2468994564385974a2a6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2ec6a85a749ebd44ca5d848e066913a8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

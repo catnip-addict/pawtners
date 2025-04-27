@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public bool isRestricted = false;
     CinemachineInputAxisController inputAxisController;
+    Mechaniki mechaniki;
     public Hats hats;
 
     public void Die()
@@ -122,6 +123,7 @@ public class Player : MonoBehaviour
         input.EnablePlayerActions();
         moveSpeed = constMoveSpeed;
         rotationSpeed = constRotationSpeed;
+        mechaniki = GetComponent<Mechaniki>();
     }
     void OnEnable()
     {
@@ -129,6 +131,12 @@ public class Player : MonoBehaviour
         input.Moew += OnSound;
         input.Sprint += OnSprint;
         input.Pause += OnPause;
+        input.PickUp += OnPickUp;
+    }
+
+    private void OnPickUp()
+    {
+        mechaniki.PickUpObject();
     }
 
     private void OnPause()
@@ -147,6 +155,7 @@ public class Player : MonoBehaviour
         input.Sprint -= OnSprint;
         input.Moew -= OnSound;
         input.Pause -= OnPause;
+        input.PickUp -= OnPickUp;
     }
 
     void OnJump(bool performed)
