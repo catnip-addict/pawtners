@@ -2628,12 +2628,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284954122}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -3, y: 0, z: -1.75}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.7500006, y: -0.045454543, z: -0.37500006}
+  m_LocalScale: {x: 0.5, y: 0.045454543, z: 0.0625}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1799169433}
+  m_Father: {fileID: 1762250943}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &284954124
 BoxCollider:
@@ -9894,6 +9894,7 @@ MonoBehaviour:
   - {fileID: 1105075757}
   - {fileID: 927691654}
   comicText: {fileID: 0}
+  whichScene: 2
 --- !u!114 &959671915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17608,7 +17609,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.5, z: -1}
   m_LocalScale: {x: 1, y: 11, z: 8}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 284954123}
   m_Father: {fileID: 1799169433}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &1762250944
@@ -18070,7 +18072,6 @@ Transform:
   - {fileID: 1807989656}
   - {fileID: 1791312216}
   - {fileID: 1762250943}
-  - {fileID: 284954123}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1807989655
