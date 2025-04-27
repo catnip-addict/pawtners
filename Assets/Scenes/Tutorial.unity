@@ -16955,15 +16955,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045faad163716f144b302bcdb8804036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  hatPlayer1: {fileID: 0}
+  hatPlayer2: {fileID: 0}
   materials:
   - {fileID: 2100000, guid: de987bb37144d6d4da12672765cb7434, type: 2}
   - {fileID: 2100000, guid: 7de95d0831e4f40419a9f3834e0b4150, type: 2}
   - {fileID: 2100000, guid: 09daeae07be6ba340b6441f8e3764ffb, type: 2}
-  hats:
-  - {fileID: 5989297393950676667, guid: cae021eed7647f847b586e3bda616002, type: 3}
-  - {fileID: 5989297393950676667, guid: 0f773fe71d129bb46ae549af068d6b98, type: 3}
-  - {fileID: 2435268425292053829, guid: 04b4cec9eeeaf494ab59cbe4be7f5ba8, type: 3}
   colorImage: {fileID: 1763576304}
 --- !u!1 &1309163181
 GameObject:
@@ -20871,15 +20868,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045faad163716f144b302bcdb8804036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  hatPlayer1: {fileID: 0}
+  hatPlayer2: {fileID: 0}
   materials:
   - {fileID: 2100000, guid: de987bb37144d6d4da12672765cb7434, type: 2}
   - {fileID: 2100000, guid: 7de95d0831e4f40419a9f3834e0b4150, type: 2}
   - {fileID: 2100000, guid: 09daeae07be6ba340b6441f8e3764ffb, type: 2}
-  hats:
-  - {fileID: 5989297393950676667, guid: cae021eed7647f847b586e3bda616002, type: 3}
-  - {fileID: 5989297393950676667, guid: 0f773fe71d129bb46ae549af068d6b98, type: 3}
-  - {fileID: 2435268425292053829, guid: 04b4cec9eeeaf494ab59cbe4be7f5ba8, type: 3}
   colorImage: {fileID: 1929864753}
 --- !u!114 &1781892161
 MonoBehaviour:
@@ -26133,8 +26127,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8001257151785261926, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8001257151785261926, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -67,6 +68,7 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public bool isRestricted = false;
     CinemachineInputAxisController inputAxisController;
+    public Hats hats;
 
     public void Die()
     {
@@ -79,7 +81,6 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-
         freeLookVCam.Follow = transform;
         freeLookVCam.LookAt = transform;
         // Invoke event when observed transform is teleported, adjusting freeLookVCam's position accordingly
@@ -112,6 +113,7 @@ public class Player : MonoBehaviour
                 // Debug.Log(c.Input.LegacyGain + " " + c.Input.Gain);
             }
         }
+        hats = GetComponentInChildren<Hats>();
     }
 
     void Start()
@@ -308,6 +310,16 @@ public class Player : MonoBehaviour
     public void PlaySound(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
+    }
+
+    public void SetPlayerHat(int index)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SetPlayerMat(Material material)
+    {
+        throw new NotImplementedException();
     }
 }
 
