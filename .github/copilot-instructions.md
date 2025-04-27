@@ -4,11 +4,11 @@
 - Active scene:
   - Name: MainMenu
   - Tags:
-    - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Ground, PickUp
+    - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Ground, PickUp, BatteryBox
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Player1, Player2, Ground
 - Active game object:
-  - Name: Graphic_Dropdown
+  - Name: Options
   - Tag: Untagged
   - Layer: UI
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

@@ -35,8 +35,6 @@ public class Mechaniki : MonoBehaviour
 
     void TryPickUp()
     {
-
-
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, pickUpRange, pickUpLayer))
         {
@@ -76,9 +74,24 @@ public class Mechaniki : MonoBehaviour
                     player.SetWeight(heldObjectItem.weight);
                 }
             }
+            else if (hit.collider.CompareTag("BatteryBox"))
+            {
+                GiveObject(hit.collider.GetComponent<BatteryBox>().GiveBattery());
+            }
         }
     }
 
+    public void GiveObject(GameObject item)
+    {
+        heldObject = item;
+        heldObjectRb = item.GetComponent<Rigidbody>();
+        heldObjectItem = item.GetComponent<Item>();
+        heldObjectItem.SetCollider(false);
+        heldObjectRb.useGravity = false;
+        heldObjectRb.isKinematic = true;
+        item.transform.SetPositionAndRotation(holdPosition.position, holdPosition.rotation);
+        item.transform.parent = holdPosition;
+    }
     void DropObject()
     {
         if (heldObjectRb != null)
@@ -94,6 +107,5 @@ public class Mechaniki : MonoBehaviour
         heldObject = null;
         heldObjectRb = null;
         player.isRestricted = false;
-
     }
 }
