@@ -1,56 +1,113 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Customization : MonoBehaviour
 {
-    [SerializeReference] private Player player;
+    // [SerializeReference] private Player player1;
+    // [SerializeReference] private Player player2;
+    [SerializeReference] private Hats hatPlayer1;
+    [SerializeReference] private TMP_Text hatTextPlayer2;
+    [SerializeReference] private TMP_Text hatTextPlayer1;
+    [SerializeReference] private Hats hatPlayer2;
     [SerializeReference] private Material[] materials;
-    [SerializeReference] private GameObject[] hats;
     [SerializeReference] private RawImage colorImage;
     int colorIndex = 0;
     int hatIndex = 0;
-    // public Player player2;
+    int hatsLength = 0;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.None;
+        hatsLength = hatPlayer1.GetHatLength();
+        hatTextPlayer1.text = "Hat: " + (hatIndex + 1).ToString() + "/" + hatsLength.ToString();
+        hatTextPlayer2.text = "Hat: " + (hatIndex + 1).ToString() + "/" + hatsLength.ToString();
     }
 
-    public void NextHat()
+    public void NextHat(int playerNumber)
     {
-        hatIndex++;
-        if (hatIndex >= hats.Length)
+        if (playerNumber == 1)
         {
-            hatIndex = 0;
+            hatIndex++;
+            if (hatIndex >= hatsLength)
+            {
+                hatIndex = 0;
+            }
+            hatTextPlayer1.text = "Hat: " + (hatIndex + 1).ToString() + "/" + hatsLength.ToString();
+            hatPlayer1.SetPlayerHat(hatIndex, PlayerNumber.First);
         }
-        // player.SetPlayerHat(hats[hatIndex]);
+        else if (playerNumber == 2)
+        {
+            hatIndex++;
+            if (hatIndex >= hatsLength)
+            {
+                hatIndex = 0;
+            }
+            hatTextPlayer2.text = "Hat: " + (hatIndex + 1).ToString() + "/" + hatsLength.ToString();
+            hatPlayer2.SetPlayerHat(hatIndex, PlayerNumber.Second);
+        }
     }
-    public void PreviousHat()
+    public void PreviousHat(int playerNumber)
     {
-        hatIndex--;
-        if (hatIndex < 0)
+        if (playerNumber == 1)
         {
-            hatIndex = hats.Length - 1;
+            hatIndex--;
+            if (hatIndex < 0)
+            {
+                hatIndex = hatsLength - 1;
+            }
+            hatPlayer1.SetPlayerHat(hatIndex, PlayerNumber.First);
         }
-        // player.SetPlayerHat(hats[hatIndex]);
-    }
-    public void NextColor()
-    {
-        colorIndex++;
-        if (colorIndex >= materials.Length)
+        else if (playerNumber == 2)
         {
-            colorIndex = 0;
+            hatIndex--;
+            if (hatIndex < 0)
+            {
+                hatIndex = hatsLength - 1;
+            }
+            hatPlayer2.SetPlayerHat(hatIndex, PlayerNumber.Second);
         }
-        // player.SetPlayerMat(materials[colorIndex]);
-        colorImage.color = materials[colorIndex].color;
     }
-    public void PreviousColor()
-    {
-        colorIndex--;
-        if (colorIndex < 0)
-        {
-            colorIndex = materials.Length - 1;
-        }
-        // player.SetPlayerMat(materials[colorIndex]);
-        colorImage.color = materials[colorIndex].color;
-    }
+    // public void NextColor(PlayerNumber playerNumber)
+    // {
+    //     if (playerNumber == PlayerNumber.First)
+    //     {
+    //         colorIndex++;
+    //         if (colorIndex >= materials.Length)
+    //         {
+    //             colorIndex = 0;
+    //         }
+    //         hatPlayer1.SetPlayerMat(materials[colorIndex]);
+    //     }
+    //     else if (playerNumber == PlayerNumber.Second)
+    //     {
+    //         colorIndex++;
+    //         if (colorIndex >= materials.Length)
+    //         {
+    //             colorIndex = 0;
+    //         }
+    //         hatPlayer2.SetPlayerMat(materials[colorIndex]);
+    //     }
+    // }
+    // public void PreviousColor(PlayerNumber playerNumber)
+    // {
+    //     if (playerNumber == PlayerNumber.First)
+    //     {
+    //         colorIndex--;
+    //         if (colorIndex < 0)
+    //         {
+    //             colorIndex = materials.Length - 1;
+    //         }
+    //         hatPlayer1.SetPlayerMat(materials[colorIndex]);
+    //     }
+    //     else if (playerNumber == PlayerNumber.Second)
+    //     {
+    //         colorIndex--;
+    //         if (colorIndex < 0)
+    //         {
+    //             colorIndex = materials.Length - 1;
+    //         }
+    //         hatPlayer2.SetPlayerMat(materials[colorIndex]);
+    //     }
+    // }
 }

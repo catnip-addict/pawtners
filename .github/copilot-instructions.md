@@ -4,11 +4,15 @@
 - Active scene:
   - Name: Akt_1
   - Tags:
-    - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Ground, PickUp
+    - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Ground, PickUp, BatteryBox
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Player1, Player2, Ground
 - Active game object:
+<<<<<<< HEAD
   - Name: cutscene trigger
+=======
+  - Name: Options
+>>>>>>> development
   - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

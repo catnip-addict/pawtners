@@ -59,6 +59,8 @@ public class TaskManager : MonoBehaviour
         if (Input.anyKey && isComicDone)
         {
             SceneManager.LoadScene(0);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
     }
