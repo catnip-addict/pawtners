@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
     [SerializeField] int checkPointIndex = 0;
     [Header("Misc")]
     public PlayerNumber playerNumber;
+    [SerializeField] private float pickupCooldown = 0.5f; // Cooldown time in seconds for pickup action
+    private float pickupCooldownTimer = 0f;
 
     const float ZeroF = 0f;
     float currentSpeed;
@@ -136,7 +138,13 @@ public class Player : MonoBehaviour
 
     private void OnPickUp()
     {
-        // mechaniki.PickUpObject();
+        // Only allow pickup/drop if not on cooldown
+        if (pickupCooldownTimer <= 0)
+        {
+            mechaniki.PickUpObject();
+            // Reset cooldown timer
+            pickupCooldownTimer = pickupCooldown;
+        }
     }
 
     private void OnPause()
@@ -195,6 +203,12 @@ public class Player : MonoBehaviour
         else
         {
             emission.enabled = false;
+        }
+
+        // Update pickup cooldown timer
+        if (pickupCooldownTimer > 0)
+        {
+            pickupCooldownTimer -= Time.deltaTime;
         }
 
         HandleTimers();
