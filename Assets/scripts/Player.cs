@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
     [Header("Audio st00pek")]
     public AudioSource audioSource;
     public AudioClip footstepSound;
+    public AudioClip moewSound;
     public float stepInterval = 0.5f;
 
     private float stepTimer = 0f;
@@ -137,6 +138,7 @@ public class Player : MonoBehaviour
 
     private void OnSound(bool arg0)
     {
+        PlaySound(moewSound);
     }
 
     void OnDisable()
@@ -282,10 +284,13 @@ public class Player : MonoBehaviour
             HandleHorizontalMovement(adjustedDirection);
             SmoothSpeed(adjustedDirection.magnitude);
 
-            stepTimer -= Time.deltaTime;
             if (isSprinting)
             {
-                stepTimer -= Time.deltaTime * 2f;
+                stepTimer -= Time.deltaTime * 1.25f;
+            }
+            else
+            {
+                stepTimer -= Time.deltaTime;
             }
             if (stepTimer <= 0f && groundChecker.IsGrounded)
             {
