@@ -283,6 +283,10 @@ public class Player : MonoBehaviour
             SmoothSpeed(adjustedDirection.magnitude);
 
             stepTimer -= Time.deltaTime;
+            if (isSprinting)
+            {
+                stepTimer -= Time.deltaTime * 2f;
+            }
             if (stepTimer <= 0f && groundChecker.IsGrounded)
             {
                 PlaySound(footstepSound);
