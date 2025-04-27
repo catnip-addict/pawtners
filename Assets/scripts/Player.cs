@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     [SerializeField] Animator BlackoutAnimator;
     [SerializeField] ParticleSystem jumpParticles;
     [SerializeField] ParticleSystem runParticles;
+    [SerializeField] private int playerID;
+
 
     [Header("Movement Settings")]
     [SerializeField] float constMoveSpeed = 300f;
