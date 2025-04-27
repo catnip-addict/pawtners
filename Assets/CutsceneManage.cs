@@ -16,17 +16,6 @@ public class CutsceneManage : MonoBehaviour
     private bool player2Ready = false;
 
 
-    public void PlayerEntered(int playerID)
-    {
-
-        if (playerID == 1)
-            player1Ready = true;
-        else if (playerID == 2)
-            player2Ready = true;
-
-        CheckIfStartCutscene();
-    }
-
     public void CheckIfStartCutscene()
     {
         StartCoroutine(StartCutscene());
@@ -46,11 +35,11 @@ public class CutsceneManage : MonoBehaviour
         cutsceneAnim.SetTrigger(cutsceneTriggerName);
 
         yield return new WaitForSeconds(animationTime);
-
-        playerScript.enabled = true;
-        playerCam1.gameObject.SetActive(true);
-        playerCam2.gameObject.SetActive(true);
-        cutsceneCam.gameObject.SetActive(false);
-        cutsceneObject.SetActive(false);
+        StartCoroutine(TransitionManager.instance.TransitionToScene(3));
+        // playerScript.enabled = true;
+        // playerCam1.gameObject.SetActive(true);
+        // playerCam2.gameObject.SetActive(true);
+        // cutsceneCam.gameObject.SetActive(false);
+        // cutsceneObject.SetActive(false);
     }
 }
