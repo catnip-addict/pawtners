@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
     [SerializeField] int checkPointIndex = 0;
     [Header("Misc")]
     public PlayerNumber playerNumber;
+    [SerializeField] private float pickupCooldown = 0.5f; // Cooldown time in seconds for pickup action
+    private float pickupCooldownTimer = 0f;
 
     const float ZeroF = 0f;
     float currentSpeed;
@@ -62,12 +64,14 @@ public class Player : MonoBehaviour
     [Header("Audio st00pek")]
     public AudioSource audioSource;
     public AudioClip footstepSound;
+    public AudioClip moewSound;
     public float stepInterval = 0.5f;
 
     private float stepTimer = 0f;
     [HideInInspector]
     public bool isRestricted = false;
     CinemachineInputAxisController inputAxisController;
+    Mechaniki mechaniki;
     public Hats hats;
 
     public void Die()
@@ -121,6 +125,7 @@ public class Player : MonoBehaviour
         input.EnablePlayerActions();
         moveSpeed = constMoveSpeed;
         rotationSpeed = constRotationSpeed;
+        mechaniki = GetComponent<Mechaniki>();
     }
     void OnEnable()
     {
@@ -128,6 +133,18 @@ public class Player : MonoBehaviour
         input.Moew += OnSound;
         input.Sprint += OnSprint;
         input.Pause += OnPause;
+        input.PickUp += OnPickUp;
+    }
+
+    private void OnPickUp()
+    {
+        // Only allow pickup/drop if not on cooldown
+        if (pickupCooldownTimer <= 0)
+        {
+            mechaniki.PickUpObject();
+            // Reset cooldown timer
+            pickupCooldownTimer = pickupCooldown;
+        }
     }
 
     private void OnPause()
@@ -137,6 +154,7 @@ public class Player : MonoBehaviour
 
     private void OnSound(bool arg0)
     {
+        PlaySound(moewSound);
     }
 
     void OnDisable()
@@ -145,6 +163,7 @@ public class Player : MonoBehaviour
         input.Sprint -= OnSprint;
         input.Moew -= OnSound;
         input.Pause -= OnPause;
+        input.PickUp -= OnPickUp;
     }
 
     void OnJump(bool performed)
@@ -172,11 +191,24 @@ public class Player : MonoBehaviour
         if (isSprinting)
         {
             movement *= sprintSpeed;
-            emission.enabled = true;
+            if (groundChecker.IsGrounded)
+            {
+                emission.enabled = true;
+            }
+            else
+            {
+                emission.enabled = false;
+            }
         }
         else
         {
             emission.enabled = false;
+        }
+
+        // Update pickup cooldown timer
+        if (pickupCooldownTimer > 0)
+        {
+            pickupCooldownTimer -= Time.deltaTime;
         }
 
         HandleTimers();
@@ -252,13 +284,14 @@ public class Player : MonoBehaviour
     {
         if (collision.relativeVelocity.magnitude > 2f && groundChecker.IsGrounded)
         {
-            audioSource.PlayOneShot(footstepSound);
+            PlaySound(footstepSound);
         }
     }
 
     void HandleMovement()
     {
-        Vector3 adjustedDirection = Vector3.zero;
+        _ = Vector3.zero;
+        Vector3 adjustedDirection;
         if (isRestricted)
         {
             adjustedDirection = transform.forward * movement.z;
@@ -274,13 +307,21 @@ public class Player : MonoBehaviour
             HandleHorizontalMovement(adjustedDirection);
             SmoothSpeed(adjustedDirection.magnitude);
 
-            stepTimer -= Time.deltaTime;
+            if (isSprinting)
+            {
+                stepTimer -= Time.deltaTime * 1.25f;
+            }
+            else
+            {
+                stepTimer -= Time.deltaTime;
+            }
             if (stepTimer <= 0f && groundChecker.IsGrounded)
             {
                 PlaySound(footstepSound);
                 stepTimer = stepInterval;
             }
         }
+
         else
         {
             SmoothSpeed(ZeroF);
@@ -296,7 +337,6 @@ public class Player : MonoBehaviour
 
     void HandleRotation(Vector3 adjustedDirection)
     {
-        // Adjust rotation to match movement direction
         if (isRestricted)
             return;
         var targetRotation = Quaternion.LookRotation(adjustedDirection);
@@ -309,7 +349,10 @@ public class Player : MonoBehaviour
     }
     public void PlaySound(AudioClip clip)
     {
+        float originalPitch = audioSource.pitch;
+        audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
         audioSource.PlayOneShot(clip);
+        audioSource.pitch = originalPitch;
     }
 
     public void SetPlayerHat(int index)

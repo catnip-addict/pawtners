@@ -25,6 +25,7 @@ public class TaskManager : MonoBehaviour
     public TMP_Text comicText;
     private bool isComicShowing = false;
     private bool isComicDone = false;
+    public int whichScene = 2;
 
     private void Start()
     {
@@ -50,15 +51,23 @@ public class TaskManager : MonoBehaviour
                 UpdateZadania(1);
             }
         }
-
+        if (numerZadania == 6 && !isComicShowing && whichScene == 0)
+        {
+            StartCoroutine(ShowComic2());
+            isComicShowing = true;
+        }
         if (numerZadania == 6 && !isComicShowing)
         {
             StartCoroutine(ShowComic());
             isComicShowing = true;
         }
+
         if (Input.anyKey && isComicDone)
         {
-            SceneManager.LoadScene(0);
+            // SceneManager.LoadScene(0);
+            // Cursor.lockState = CursorLockMode.None;
+            // Cursor.visible = true;
+            StartCoroutine(TransitionManager.instance.TransitionToScene(whichScene));
         }
 
     }
@@ -99,12 +108,36 @@ public class TaskManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         comicParts[2].enabled = true;
 
-
-        yield return new WaitForSeconds(2);
-        comicParts[3].enabled = true;
+        if (comicParts[3] != null)
+        {
+            yield return new WaitForSeconds(2);
+            comicParts[3].enabled = true;
+        }
 
         yield return new WaitForSeconds(2);
         isComicDone = true;
         comicText.text = "Naciśnij dowolny klawisz aby kontynuować...";
+    }
+    IEnumerator ShowComic2()
+    {
+        comicCanvas.SetActive(true);
+
+        yield return new WaitForSeconds(1);
+        comicParts[0].enabled = true;
+
+        yield return new WaitForSeconds(2);
+        comicParts[1].enabled = true;
+
+
+        yield return new WaitForSeconds(2);
+        comicParts[2].enabled = true;
+
+        yield return new WaitForSeconds(2);
+        isComicDone = true;
+        comicText.text = "Naciśnij dowolny klawisz aby kontynuować...";
+    }
+    public void Tp(int id)
+    {
+        StartCoroutine(TransitionManager.instance.TransitionToScene(id));
     }
 }
