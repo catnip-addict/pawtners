@@ -67,6 +67,8 @@ public class Player : MonoBehaviour
     private float stepTimer = 0f;
     [HideInInspector]
     public bool isRestricted = false;
+    CinemachineInputAxisController inputAxisController;
+    public Hats hats;
 
     public void Die()
     {
@@ -79,7 +81,6 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-
         freeLookVCam.Follow = transform;
         freeLookVCam.LookAt = transform;
         // Invoke event when observed transform is teleported, adjusting freeLookVCam's position accordingly
@@ -93,6 +94,26 @@ public class Player : MonoBehaviour
         timers = new(2) { jumpTimer, jumpCooldownTimer };
 
         jumpTimer.OnTimerStop += () => jumpCooldownTimer.Start();
+
+        var axisController = freeLookVCam.GetComponent<CinemachineInputAxisController>();
+        float mouseSens = PlayerPrefs.GetFloat("MouseSens", 1.0f);
+        // Debug.Log(mouseSens);
+        foreach (var c in axisController.Controllers)
+        {
+            if (c.Name == "Look Orbit X")
+            {
+                c.Input.LegacyGain = 100f * mouseSens;
+                c.Input.Gain = 200f * mouseSens;
+                // Debug.Log(c.Input.LegacyGain + " " + c.Input.Gain);
+            }
+            if (c.Name == "Look Orbit Y")
+            {
+                c.Input.LegacyGain = -100f * mouseSens;
+                c.Input.Gain = -200f * mouseSens;
+                // Debug.Log(c.Input.LegacyGain + " " + c.Input.Gain);
+            }
+        }
+        hats = GetComponentInChildren<Hats>();
     }
 
     void Start()
@@ -289,6 +310,16 @@ public class Player : MonoBehaviour
     public void PlaySound(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
+    }
+
+    public void SetPlayerHat(int index)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SetPlayerMat(Material material)
+    {
+        throw new NotImplementedException();
     }
 }
 

@@ -31,7 +31,6 @@ public class TaskManager : MonoBehaviour
         UpdateZadania();
         comicCanvas.SetActive(false);
 
-
         foreach (var comicPart in comicParts)
         {
             comicPart.enabled = false;
