@@ -1,14 +1,8 @@
 <!-- UNITY CODE ASSIST INSTRUCTIONS START -->
-- Project name: Pawtners
+- Project name: pawtners
 - Unity version: Unity 6000.0.30f1
-- Active scene:
-  - Name: Tutorial
-  - Tags:
-    - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Ground, PickUp, BatteryBox
-  - Layers:
-    - Default, TransparentFX, Ignore Raycast, Water, UI, Player1, Player2, Ground
 - Active game object:
-  - Name: Player 1
+  - Name: podloga
   - Tag: Untagged
-  - Layer: Player1
+  - Layer: Ground
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
