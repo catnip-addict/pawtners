@@ -12471,12 +12471,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hats:
+  - {fileID: 2831676939391875981}
   - {fileID: 1172722199960701923}
   - {fileID: 4260540166700354994}
   - {fileID: 1257086164187068903}
   - {fileID: 7243481575129003183}
   - {fileID: 1151372216173602106}
   - {fileID: 1845604424949777007}
+  playerNumber: 0
   hatIndex: 0
 --- !u!1 &9152986115002326653
 GameObject:
@@ -12586,6 +12588,11 @@ GameObject:
 --- !u!1 &1845604424949777007 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8351054257634072575, guid: 55b3241bdf6ee04459ba3159b59a8877, type: 3}
+  m_PrefabInstance: {fileID: 7671882978021053840}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2831676939391875981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5563110780071685661, guid: 55b3241bdf6ee04459ba3159b59a8877, type: 3}
   m_PrefabInstance: {fileID: 7671882978021053840}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4260540166700354994 stripped

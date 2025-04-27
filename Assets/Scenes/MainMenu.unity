@@ -399,6 +399,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &90463736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5563110780071685661, guid: 55b3241bdf6ee04459ba3159b59a8877, type: 3}
+  m_PrefabInstance: {fileID: 499042629612540208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &112021250
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +507,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 160808250}
         m_TargetAssemblyTypeName: Customization, Assembly-CSharp
         m_MethodName: NextHat
         m_Mode: 3
@@ -744,7 +749,7 @@ MonoBehaviour:
   creditsCamera: {fileID: 672104011}
   mainMenuFirstButton: {fileID: 2439625353792287463}
   customizationFirstButton: {fileID: 938839201}
-  achievementFirstButton: {fileID: 35488003}
+  achievementFirstButton: {fileID: 1079368768}
   settingsMenuFirstButton: {fileID: 1398766889}
   creditsPanelFirstButton: {fileID: 0}
   masterVolumeSlider: {fileID: 1398766892}
@@ -865,8 +870,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hatPlayer1: {fileID: 498257406}
-  hatTextPlayer2: {fileID: 775065829}
-  hatTextPlayer1: {fileID: 1178260122}
+  hatTextPlayer2: {fileID: 1178260122}
+  hatTextPlayer1: {fileID: 775065829}
   hatPlayer2: {fileID: 921893772}
   materials: []
   colorImage: {fileID: 0}
@@ -874,6 +879,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8351054257634072575, guid: 55b3241bdf6ee04459ba3159b59a8877, type: 3}
   m_PrefabInstance: {fileID: 499042629612540208}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &174625470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5563110780071685661, guid: 55b3241bdf6ee04459ba3159b59a8877, type: 3}
+  m_PrefabInstance: {fileID: 270576862}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &185639800
 PrefabInstance:
@@ -2130,7 +2140,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 160808250}
         m_TargetAssemblyTypeName: Customization, Assembly-CSharp
         m_MethodName: NextHat
         m_Mode: 3
@@ -2361,6 +2371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hats:
+  - {fileID: 90463736}
   - {fileID: 1148533825}
   - {fileID: 270714142}
   - {fileID: 2025347992}
@@ -4028,6 +4039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hats:
+  - {fileID: 174625470}
   - {fileID: 1896674488}
   - {fileID: 681413495}
   - {fileID: 1644378550}
@@ -5497,7 +5509,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 160808250}
         m_TargetAssemblyTypeName: Customization, Assembly-CSharp
         m_MethodName: PreviousHat
         m_Mode: 3
@@ -6373,7 +6385,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 160808250}
         m_TargetAssemblyTypeName: Customization, Assembly-CSharp
         m_MethodName: PreviousHat
         m_Mode: 3
