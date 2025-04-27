@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
 
     private void OnPickUp()
     {
-        mechaniki.PickUpObject();
+        // mechaniki.PickUpObject();
     }
 
     private void OnPause()

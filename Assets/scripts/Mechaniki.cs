@@ -18,20 +18,20 @@ public class Mechaniki : MonoBehaviour
         player = GetComponent<Player>();
     }
 
-    // void Update()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.E))
-    //     {
-    //         if (heldObject == null)
-    //         {
-    //             TryPickUp();
-    //         }
-    //         else
-    //         {
-    //             DropObject();
-    //         }
-    //     }
-    // }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (heldObject == null)
+            {
+                TryPickUp();
+            }
+            else
+            {
+                DropObject();
+            }
+        }
+    }
     public void PickUpObject()
     {
         if (heldObject == null)
