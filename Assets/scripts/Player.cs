@@ -172,7 +172,14 @@ public class Player : MonoBehaviour
         if (isSprinting)
         {
             movement *= sprintSpeed;
-            emission.enabled = true;
+            if (groundChecker.IsGrounded)
+            {
+                emission.enabled = true;
+            }
+            else
+            {
+                emission.enabled = false;
+            }
         }
         else
         {
