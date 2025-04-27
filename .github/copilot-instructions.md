@@ -2,13 +2,13 @@
 - Project name: Pawtners
 - Unity version: Unity 6000.0.30f1
 - Active scene:
-  - Name: obby
+  - Name: Akt_1_obby_2
   - Tags:
     - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Ground, PickUp, BatteryBox
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Player1, Player2, Ground
 - Active game object:
-  - Name: BatteryBox
-  - Tag: BatteryBox
-  - Layer: Water
+  - Name: karton_L_1 (5)
+  - Tag: Untagged
+  - Layer: Ground
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
