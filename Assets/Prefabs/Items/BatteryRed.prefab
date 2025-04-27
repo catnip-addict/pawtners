@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 3008339466748255168}
   - component: {fileID: 2785491558383527055}
   - component: {fileID: 4144020004340782999}
-  - component: {fileID: 6905156128119092496}
+
+  - component: {fileID: 1333989951421120369}
+
   m_Layer: 4
   m_Name: BatteryRed
   m_TagString: PickUp
@@ -137,7 +139,9 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1.25}
   m_Center: {x: 0, y: 0, z: 0.125}
---- !u!114 &6905156128119092496
+
+--- !u!114 &1333989951421120369
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,8 +154,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 1, g: 0.13725491, b: 0.17254902, a: 1}
-  outlineWidth: 8
+
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
