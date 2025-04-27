@@ -8,9 +8,9 @@ public enum BatteryType
 public class Battery : MonoBehaviour
 {
     public BatteryType batteryType;
-    public float charge = 100f; // Charge level from 0 to 100
-    public float dischargeRate = 1f; // Rate at which the battery discharges per second
-    public float rechargeRate = 2f; // Rate at which the battery recharges per second
+    // public float charge = 100f; // Charge level from 0 to 100
+    // public float dischargeRate = 1f; // Rate at which the battery discharges per second
+    // public float rechargeRate = 2f; // Rate at which the battery recharges per second
 
     // private void Update()
     // {
@@ -24,20 +24,20 @@ public class Battery : MonoBehaviour
     //     }
     // }
 
-    public void RechargeBattery(float amount)
-    {
-        charge += amount * rechargeRate * Time.deltaTime;
-        if (charge > 100f)
-        {
-            charge = 100f;
-        }
-    }
-    public void DischargeBattery(float amount)
-    {
-        charge -= amount * dischargeRate * Time.deltaTime;
-        if (charge < 0f)
-        {
-            charge = 0f;
-        }
-    }
+    // public void RechargeBattery(float amount)
+    // {
+    //     charge += amount * rechargeRate * Time.deltaTime;
+    //     if (charge > 100f)
+    //     {
+    //         charge = 100f;
+    //     }
+    // }
+    // public void DischargeBattery(float amount)
+    // {
+    //     charge -= amount * dischargeRate * Time.deltaTime;
+    //     if (charge < 0f)
+    //     {
+    //         charge = 0f;
+    //     }
+    // }
 }
