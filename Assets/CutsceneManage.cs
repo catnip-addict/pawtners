@@ -15,7 +15,7 @@ public class CutsceneManage : MonoBehaviour
     private bool player1Ready = false;
     private bool player2Ready = false;
 
-  
+
     public void PlayerEntered(int playerID)
     {
 
@@ -27,18 +27,15 @@ public class CutsceneManage : MonoBehaviour
         CheckIfStartCutscene();
     }
 
-    private void CheckIfStartCutscene()
+    public void CheckIfStartCutscene()
     {
-        if (player1Ready && player2Ready)
-        {
-            StartCoroutine(StartCutscene());
-        }
+        StartCoroutine(StartCutscene());
     }
 
     private IEnumerator StartCutscene()
     {
 
-        yield return new WaitForSeconds(0.5f);  
+        yield return new WaitForSeconds(0.5f);
 
         playerScript.enabled = false;
         cutsceneObject.SetActive(true);

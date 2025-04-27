@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class EventBox : MonoBehaviour
 {
     [SerializeField] PlayerNumber playerNumber;
+    [SerializeField] bool disappearAfter = true;
     public UnityEvent onButtonPress;
     bool player1OnButton = false;
     bool player2OnButton = false;
@@ -35,7 +36,7 @@ public class EventBox : MonoBehaviour
                 if (onButtonPress != null)
                 {
                     onButtonPress.Invoke();
-                    gameObject.SetActive(false);
+                    gameObject.SetActive(!disappearAfter);
                 }
             }
             else if (playerNumber == PlayerNumber.Both)
@@ -53,6 +54,7 @@ public class EventBox : MonoBehaviour
                 {
                     if (onButtonPress != null)
                     {
+                        gameObject.SetActive(!disappearAfter);
                         onButtonPress.Invoke();
                     }
                 }
@@ -62,7 +64,7 @@ public class EventBox : MonoBehaviour
                 if (onButtonPress != null)
                 {
                     onButtonPress.Invoke();
-                    gameObject.SetActive(false);
+                    gameObject.SetActive(!disappearAfter);
                 }
             }
         }
