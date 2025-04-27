@@ -8,7 +8,13 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Player1, Player2, Ground
 - Active game object:
+<<<<<<< HEAD
   - Name: karton_L_1 (5)
   - Tag: Untagged
   - Layer: Ground
+=======
+  - Name: wieszak
+  - Tag: Untagged
+  - Layer: Default
+>>>>>>> 53303073aed6c5a586beaebb5d1670e25f58565b
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
