@@ -52,9 +52,9 @@ public class SettingsManager : MonoBehaviour
     private void Start()
     {
         ShowMainMenu();
+        InitializeQualityDropdown();
         LoadSettings();
         InitializeResolutions();
-        InitializeQualityDropdown();
     }
     void Update()
     {
@@ -106,8 +106,19 @@ public class SettingsManager : MonoBehaviour
         sfxVolumeSlider.value = sfxVolume;
         mouseSensSlider.value = mouseSens;
 
-        qualityDropdown.value = PlayerPrefs.GetInt("QualityLevel", QualitySettings.GetQualityLevel());
         fullscreenToggle.isOn = PlayerPrefs.GetInt("Fullscreen", Screen.fullScreen ? 1 : 0) == 1;
+
+        SetMasterVolume(masterVolume);
+        SetMusicVolume(musicVolume);
+        SetSFXVolume(sfxVolume);
+        SetMouseSens(mouseSens);
+        SetFullscreen(fullscreenToggle.isOn);
+#if UNITY_EDITOR
+
+#else
+    SetResolution(resolutionDropdown.value);
+#endif
+
     }
     private void InitializeQualityDropdown()
     {
@@ -120,7 +131,9 @@ public class SettingsManager : MonoBehaviour
         }
 
         qualityDropdown.AddOptions(qualityOptions);
-        qualityDropdown.value = QualitySettings.GetQualityLevel();
+
+        int savedQualityLevel = PlayerPrefs.GetInt("QualityLevel", QualitySettings.GetQualityLevel());
+        qualityDropdown.value = savedQualityLevel;
         qualityDropdown.RefreshShownValue();
     }
     private void InitializeResolutions()
@@ -270,6 +283,7 @@ public class SettingsManager : MonoBehaviour
     {
         QualitySettings.SetQualityLevel(qualityIndex);
         PlayerPrefs.SetInt("QualityLevel", qualityIndex);
+        PlayerPrefs.Save();
     }
 
     public void SetFullscreen(bool isFullscreen)
