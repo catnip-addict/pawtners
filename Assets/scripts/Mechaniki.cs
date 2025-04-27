@@ -11,6 +11,8 @@ public class Mechaniki : MonoBehaviour
     private Rigidbody heldObjectRb;
     private Item heldObjectItem;
     private Player player;
+
+    [SerializeField] private Outline outline; //aby podświetlenie się wyłączało po podniesieniu
     void Start()
     {
         player = GetComponent<Player>();
@@ -38,6 +40,8 @@ public class Mechaniki : MonoBehaviour
         {
             if (hit.collider.CompareTag("PickUp"))
             {
+                outline = hit.collider.GetComponent<Outline>();
+                outline.enabled = false;
                 heldObject = hit.collider.gameObject;
                 heldObjectItem = heldObject.GetComponent<Item>();
                 if (heldObjectItem.needAnimation)
@@ -98,6 +102,7 @@ public class Mechaniki : MonoBehaviour
             heldObjectRb.useGravity = true;
             heldObjectRb.isKinematic = false;
         }
+        outline.enabled = true;
         player.SetWeight(0f);
         heldObject = null;
         heldObjectRb = null;
