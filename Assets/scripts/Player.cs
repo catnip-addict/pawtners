@@ -259,13 +259,14 @@ public class Player : MonoBehaviour
     {
         if (collision.relativeVelocity.magnitude > 2f && groundChecker.IsGrounded)
         {
-            audioSource.PlayOneShot(footstepSound);
+            PlaySound(footstepSound);
         }
     }
 
     void HandleMovement()
     {
-        Vector3 adjustedDirection = Vector3.zero;
+        _ = Vector3.zero;
+        Vector3 adjustedDirection;
         if (isRestricted)
         {
             adjustedDirection = transform.forward * movement.z;
@@ -303,7 +304,6 @@ public class Player : MonoBehaviour
 
     void HandleRotation(Vector3 adjustedDirection)
     {
-        // Adjust rotation to match movement direction
         if (isRestricted)
             return;
         var targetRotation = Quaternion.LookRotation(adjustedDirection);
@@ -316,7 +316,10 @@ public class Player : MonoBehaviour
     }
     public void PlaySound(AudioClip clip)
     {
+        float originalPitch = audioSource.pitch;
+        audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
         audioSource.PlayOneShot(clip);
+        audioSource.pitch = originalPitch;
     }
 
     public void SetPlayerHat(int index)
