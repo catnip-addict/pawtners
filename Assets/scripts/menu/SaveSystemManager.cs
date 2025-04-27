@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.Generic;
 
 public class SaveSystemManager : MonoBehaviour
 {
@@ -70,12 +71,17 @@ public class GameData
 {
     public int playerLevel;
     public float playTime;
-    public string playerName;
+    public List<bool> achievements;
 
-    public GameData(int level, float time, string name)
+    public GameData(int level) //, float time
     {
         playerLevel = level;
-        playTime = time;
-        playerName = name;
+        // playTime = time;
+        achievements = new List<bool>();
+
+        for (int i = 0; i < 10; i++)
+        {
+            achievements.Add(false);
+        }
     }
 }
