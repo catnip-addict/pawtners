@@ -7,6 +7,7 @@ public class Hats : MonoBehaviour
     public int hatIndex = 0;
     void Start()
     {
+        //PlayerPrefs.DeleteAll();
         if (TryGetComponent(out Player playerComponent))
         {
             playerNumber = playerComponent.playerNumber;

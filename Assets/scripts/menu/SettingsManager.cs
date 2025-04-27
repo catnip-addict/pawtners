@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
 
@@ -13,19 +12,24 @@ public class SettingsManager : MonoBehaviour
 {
     [Header("Panele Menu")]
     [SerializeField] private GameObject mainMenuPanel;
+    [SerializeField] private GameObject customizationPanel;
+    [SerializeField] private GameObject achievementPanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject creditsPanel;
-    [SerializeField] private GameObject customizationPanel;
+
     [Header("Kamery")]
     [SerializeField] private GameObject mainMenuCamera;
+    [SerializeField] private GameObject customizationCamera;
+    [SerializeField] private GameObject achievementCamera;
     [SerializeField] private GameObject settingsCamera;
     [SerializeField] private GameObject creditsCamera;
-    [SerializeField] private GameObject customizationCamera;
+
     [Header("Pierwsze guziki")]
     [SerializeField] private GameObject mainMenuFirstButton;
+    [SerializeField] private GameObject customizationFirstButton;
+    [SerializeField] private GameObject achievementFirstButton;
     [SerializeField] private GameObject settingsMenuFirstButton;
     [SerializeField] private GameObject creditsPanelFirstButton;
-    [SerializeField] private GameObject customizationFirstButton;
 
     [Header("Ustawienia Dźwięku")]
     [SerializeField] private Slider masterVolumeSlider;
@@ -149,11 +153,13 @@ public class SettingsManager : MonoBehaviour
         settingsPanel.SetActive(false);
         creditsPanel.SetActive(false);
         customizationPanel.SetActive(false);
+        achievementPanel.SetActive(false);
         /// Camera
         mainMenuCamera.SetActive(true);
         settingsCamera.SetActive(false);
         creditsCamera.SetActive(false);
         customizationCamera.SetActive(false);
+        achievementCamera.SetActive(false);
         ChangeInputDevice();
     }
 
@@ -163,11 +169,13 @@ public class SettingsManager : MonoBehaviour
         settingsPanel.SetActive(true);
         creditsPanel.SetActive(false);
         customizationPanel.SetActive(false);
+        achievementPanel.SetActive(false);
         /// Camera
         mainMenuCamera.SetActive(false);
         settingsCamera.SetActive(true);
         creditsCamera.SetActive(false);
         customizationCamera.SetActive(false);
+        achievementCamera.SetActive(false);
         ChangeInputDevice();
     }
 
@@ -177,11 +185,13 @@ public class SettingsManager : MonoBehaviour
         settingsPanel.SetActive(false);
         creditsPanel.SetActive(true);
         customizationPanel.SetActive(false);
+        achievementPanel.SetActive(false);
         /// Camera
         mainMenuCamera.SetActive(false);
         settingsCamera.SetActive(false);
         creditsCamera.SetActive(true);
         customizationCamera.SetActive(false);
+        achievementCamera.SetActive(false);
         ChangeInputDevice();
     }
     public void ShowCustomization()
@@ -190,14 +200,30 @@ public class SettingsManager : MonoBehaviour
         settingsPanel.SetActive(false);
         creditsPanel.SetActive(false);
         customizationPanel.SetActive(true);
+        achievementPanel.SetActive(false);
         /// Camera
         mainMenuCamera.SetActive(false);
         settingsCamera.SetActive(false);
         creditsCamera.SetActive(false);
         customizationCamera.SetActive(true);
+        achievementCamera.SetActive(false);
         ChangeInputDevice();
     }
-
+    public void ShowAchievements()
+    {
+        mainMenuPanel.SetActive(false);
+        settingsPanel.SetActive(false);
+        creditsPanel.SetActive(false);
+        customizationPanel.SetActive(false);
+        achievementPanel.SetActive(true);
+        /// Camera
+        mainMenuCamera.SetActive(false);
+        settingsCamera.SetActive(false);
+        creditsCamera.SetActive(false);
+        customizationCamera.SetActive(false);
+        achievementCamera.SetActive(true);
+        ChangeInputDevice();
+    }
     public void StartGame()
     {
         StartCoroutine(TransitionManager.instance.TransitionToScene(1));
