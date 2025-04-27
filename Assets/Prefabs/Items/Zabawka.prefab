@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2899483389343660724}
   - component: {fileID: 4213650319444887769}
   - component: {fileID: 4792396706281483607}
+  - component: {fileID: 8186526693855160574}
   m_Layer: 4
   m_Name: Zabawka
   m_TagString: PickUp
@@ -50,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCollider: {fileID: 2899483389343660724}
+  triggerCollider: {fileID: 0}
   weight: 0
   needAnimation: 1
 --- !u!65 &2899483389343660724
@@ -121,6 +123,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0.25}
+--- !u!114 &8186526693855160574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847521021045066699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 3
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1205756826271226071
 GameObject:
   m_ObjectHideFlags: 0

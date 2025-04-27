@@ -110,4 +110,8 @@ public class TaskManager : MonoBehaviour
         isComicDone = true;
         comicText.text = "Naciśnij dowolny klawisz aby kontynuować...";
     }
+    public void Tp(int id)
+    {
+        StartCoroutine(TransitionManager.instance.TransitionToScene(id));
+    }
 }

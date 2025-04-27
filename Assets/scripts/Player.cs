@@ -298,6 +298,7 @@ public class Player : MonoBehaviour
                 stepTimer = stepInterval;
             }
         }
+
         else
         {
             SmoothSpeed(ZeroF);
