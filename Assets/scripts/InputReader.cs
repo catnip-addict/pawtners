@@ -19,6 +19,7 @@ public class InputReader : MonoBehaviour, IKeyboardActions, IControllerActions
     public event UnityAction<bool> Sprint = delegate { };
     public event UnityAction<bool> Moew = delegate { };
     public event UnityAction Pause = delegate { };
+    public event UnityAction PickUp = delegate { };
 
     Input_Actions inputActions;
 
@@ -100,7 +101,6 @@ public class InputReader : MonoBehaviour, IKeyboardActions, IControllerActions
             case InputActionPhase.Canceled:
                 Jump.Invoke(false);
                 break;
-
         }
 
     }
@@ -133,4 +133,8 @@ public class InputReader : MonoBehaviour, IKeyboardActions, IControllerActions
         Moew.Invoke(true);
     }
 
+    public void OnPickup(InputAction.CallbackContext context)
+    {
+        PickUp.Invoke();
+    }
 }
