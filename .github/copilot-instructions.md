@@ -2,13 +2,13 @@
 - Project name: Pawtners
 - Unity version: Unity 6000.0.30f1
 - Active scene:
-  - Name: Tutorial
+  - Name: MainMenu
   - Tags:
     - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Ground, PickUp, BatteryBox
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Player1, Player2, Ground
 - Active game object:
-  - Name: Player 1
+  - Name: MouseSens_Slider
   - Tag: Untagged
-  - Layer: Player1
+  - Layer: UI
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
