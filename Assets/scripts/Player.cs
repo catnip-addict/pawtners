@@ -76,9 +76,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        // Reset player position
         checkPoints.ResetToCheckPoint(transform, checkPointIndex);
-        // Reset player velocity
         rb.linearVelocity = Vector3.zero;
         BlackoutAnimator.SetTrigger("BlackOut");
     }
@@ -87,7 +85,6 @@ public class Player : MonoBehaviour
     {
         freeLookVCam.Follow = transform;
         freeLookVCam.LookAt = transform;
-        // Invoke event when observed transform is teleported, adjusting freeLookVCam's position accordingly
         freeLookVCam.OnTargetObjectWarped(transform, transform.position - freeLookVCam.transform.position - Vector3.forward);
 
         rb.freezeRotation = true;
@@ -101,19 +98,18 @@ public class Player : MonoBehaviour
 
         var axisController = freeLookVCam.GetComponent<CinemachineInputAxisController>();
         float mouseSens = PlayerPrefs.GetFloat("MouseSens", 1.0f);
-        // Debug.Log(mouseSens);
         foreach (var c in axisController.Controllers)
         {
             if (c.Name == "Look Orbit X")
             {
-                c.Input.LegacyGain = 100f * mouseSens;
-                c.Input.Gain = 200f * mouseSens;
+                c.Input.LegacyGain = 1f * mouseSens;
+                c.Input.Gain = 2f * mouseSens;
                 // Debug.Log(c.Input.LegacyGain + " " + c.Input.Gain);
             }
             if (c.Name == "Look Orbit Y")
             {
-                c.Input.LegacyGain = -100f * mouseSens;
-                c.Input.Gain = -200f * mouseSens;
+                c.Input.LegacyGain = -1f * mouseSens;
+                c.Input.Gain = -2f * mouseSens;
                 // Debug.Log(c.Input.LegacyGain + " " + c.Input.Gain);
             }
         }
@@ -340,7 +336,7 @@ public class Player : MonoBehaviour
         if (isRestricted)
             return;
         var targetRotation = Quaternion.LookRotation(adjustedDirection);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
     }
 
     void SmoothSpeed(float value)

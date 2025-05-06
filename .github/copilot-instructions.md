@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Player1, Player2, Ground
 - Active game object:
-  - Name: Map
+  - Name: Player 1
   - Tag: Untagged
-  - Layer: Default
+  - Layer: Player1
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

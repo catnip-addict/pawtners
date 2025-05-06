@@ -3244,6 +3244,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2019793930757211763, guid: 6bd2d81ef276c2047b9b897913d3f3e7, type: 3}
+      propertyPath: m_ControllerManager.Controllers.Array.data[0].Input.Gain
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019793930757211763, guid: 6bd2d81ef276c2047b9b897913d3f3e7, type: 3}
+      propertyPath: m_ControllerManager.Controllers.Array.data[1].Input.Gain
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019793930757211763, guid: 6bd2d81ef276c2047b9b897913d3f3e7, type: 3}
+      propertyPath: m_ControllerManager.Controllers.Array.data[0].Input.LegacyGain
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019793930757211763, guid: 6bd2d81ef276c2047b9b897913d3f3e7, type: 3}
+      propertyPath: m_ControllerManager.Controllers.Array.data[1].Input.LegacyGain
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 6472724489312553276, guid: 6bd2d81ef276c2047b9b897913d3f3e7, type: 3}
       propertyPath: UpdateMethod
       value: 1
@@ -22712,6 +22728,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 728353771917281996, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
+      propertyPath: ScanRecursively
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 728353771917281996, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
+      propertyPath: SuppressInputWhileBlending
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 728353771917281996, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
+      propertyPath: m_ControllerManager.Controllers.Array.data[0].Input.Gain
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 728353771917281996, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
+      propertyPath: m_ControllerManager.Controllers.Array.data[1].Input.Gain
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 728353771917281996, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
+      propertyPath: m_ControllerManager.Controllers.Array.data[0].Input.LegacyGain
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 728353771917281996, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
+      propertyPath: m_ControllerManager.Controllers.Array.data[1].Input.LegacyGain
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 1145093485538874620, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
       propertyPath: checkPoints
       value: 
