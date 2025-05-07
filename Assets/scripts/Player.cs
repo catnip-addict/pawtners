@@ -201,6 +201,7 @@ public class Player : MonoBehaviour
         else
         {
             emission.enabled = false;
+            animator.SetBool("isSprinting", false);
         }
 
         // Update pickup cooldown timer
@@ -217,6 +218,17 @@ public class Player : MonoBehaviour
     {
         HandleJump();
         HandleMovement();
+    }
+    void LateUpdate()
+    {
+        if (groundChecker.IsGrounded)
+        {
+            animator.SetBool("inTheAir", false);
+        }
+        else
+        {
+            animator.SetBool("inTheAir", true);
+        }
     }
 
     void UpdateAnimator()
@@ -250,7 +262,7 @@ public class Player : MonoBehaviour
     {
         if (isRestricted)
             return;
-        // If not jumping and grounded, keep jump velocity at 0
+
         if (!jumpTimer.IsRunning && groundChecker.IsGrounded)
         {
             jumpVelocity = ZeroF;
@@ -337,8 +349,14 @@ public class Player : MonoBehaviour
     {
         if (isRestricted)
             return;
+
+        if (adjustedDirection.sqrMagnitude < 0.01f)
+            return;
+
         var targetRotation = Quaternion.LookRotation(adjustedDirection);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+
+        float rotationFactor = rotationSpeed * Time.fixedDeltaTime;
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationFactor);
     }
 
     void SmoothSpeed(float value)
