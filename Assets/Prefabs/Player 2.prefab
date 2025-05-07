@@ -5589,7 +5589,7 @@ MonoBehaviour:
   IgnoreTimeScale: 0
   WorldUpOverride: {fileID: 0}
   ChannelMask: 4
-  UpdateMethod: 2
+  UpdateMethod: 1
   BlendUpdateMethod: 1
   LensModeOverride:
     Enabled: 0
@@ -11811,9 +11811,9 @@ MonoBehaviour:
       Enabled: 1
       Input:
         InputAction: {fileID: -4167074822916604510, guid: 3084a83e0c35b194185406c781255097, type: 3}
-        Gain: 100
+        Gain: 10
         LegacyInput: 
-        LegacyGain: 200
+        LegacyGain: 20
         CancelDeltaTime: 0
       InputValue: 0
       Driver:
@@ -11824,9 +11824,9 @@ MonoBehaviour:
       Enabled: 1
       Input:
         InputAction: {fileID: -4167074822916604510, guid: 3084a83e0c35b194185406c781255097, type: 3}
-        Gain: -100
+        Gain: -10
         LegacyInput: 
-        LegacyGain: -200
+        LegacyGain: -20
         CancelDeltaTime: 0
       InputValue: 0
       Driver:
@@ -12298,7 +12298,7 @@ MonoBehaviour:
   jumpParticles: {fileID: 1865127632355074363}
   runParticles: {fileID: 3392521402643334024}
   constMoveSpeed: 300
-  constRotationSpeed: 720
+  constRotationSpeed: 10
   smoothTime: 0.2
   sprintSpeed: 2
   jumpForce: 10
@@ -12308,6 +12308,7 @@ MonoBehaviour:
   maxFallSpeed: 10
   checkPointIndex: 1
   playerNumber: 1
+  pickupCooldown: 0.5
   movement: {x: 0, y: 0, z: 0}
   audioSource: {fileID: 577653033917479870}
   footstepSound: {fileID: 8300000, guid: 036a3599d1e0ca94889a47650a259d4a, type: 3}

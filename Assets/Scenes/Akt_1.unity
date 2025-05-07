@@ -7009,9 +7009,8 @@ MonoBehaviour:
   - Akt4
   - Akt5
   zadania:
-  - "Poruszajcie si\u0119 za pomoc\u0105 A, W, D, S lub lewego analoga."
-  - "Podejd\u017A do EventBoxa i go dotknij"
-  - Gratulacje!
+  - "Wydosta\u0144 si\u0119 z klatki!"
+  - "Znajd\u017A spos\xF3b aby dosta\u0107 si\u0119 do venta"
   wykonaneZadania: []
   MainTaskUI: {fileID: 1309163183}
   taskDone1: {fileID: 507510655}
@@ -21201,6 +21200,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 959671914}
+        m_TargetAssemblyTypeName: TaskManager, Assembly-CSharp
+        m_MethodName: UpdateZadania
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
