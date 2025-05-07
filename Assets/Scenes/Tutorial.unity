@@ -13762,19 +13762,18 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 25, y: -10, z: 20}
-  - {x: -2.9702806, y: -9.577659, z: 14.53307}
-  - {x: -5.1132927, y: -9.577659, z: -1.8069248}
-  - {x: -7, y: -10, z: -26.989208}
-  - {x: -7.221658, y: -6.5754185, z: -34.14312}
-  - {x: -4.560405, y: -3.9052863, z: -41.374527}
-  - {x: -3.0757883, y: 4.269192, z: -31.335451}
-  - {x: -3.0757883, y: 6.1394663, z: -26.498325}
-  - {x: -2.4601645, y: 8.367162, z: -22.111187}
-  - {x: -2.2588487, y: 9.853982, z: -14.213409}
-  - {x: 0.9486293, y: 9.853982, z: -14.261552}
-  - {x: 5.605741, y: 6.244003, z: -14.261552}
-  - {x: 21.551048, y: 6.438277, z: 0.5290592}
+  - {x: 25.23506, y: -10, z: 20.099518}
+  - {x: -4.20734, y: -9.683573, z: 23.636717}
+  - {x: -5.2042556, y: -9.683573, z: 58.073364}
+  - {x: -8.51076, y: -9.428581, z: 86.56293}
+  - {x: -4.5725627, y: -4.4732013, z: 83.01028}
+  - {x: -4.0899673, y: -3.1513422, z: 78.01748}
+  - {x: -1.2601852, y: 3.044416, z: 74.64445}
+  - {x: -1.2601852, y: 3.322867, z: 67.747345}
+  - {x: -2.667894, y: 10.300925, z: 58.143528}
+  - {x: 5.836536, y: 6.4980397, z: 54.25026}
+  - {x: 5.836536, y: 6.4980397, z: 54.25026}
+  - {x: 20.359758, y: 6.8066278, z: 39.721634}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -13782,13 +13781,22 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
+        time: 0.91642606
+        value: 0.50611025
+        inSlope: 0.32919353
+        outSlope: 0.32919353
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0.99999976
+      - serializedVersion: 3
+        time: 1
+        value: 0.05115509
+        inSlope: -1.90467
+        outSlope: -1.90467
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.7058755
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -13797,19 +13805,19 @@ LineRenderer:
       serializedVersion: 2
       key0: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 0}
       key1: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 0}
-      key2: {r: 0.79753566, g: 0.82045275, b: 0.8469807, a: 0}
-      key3: {r: 0.79753566, g: 0.82045275, b: 0.8469807, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
+      key2: {r: 0.17848878, g: 0.18754621, b: 0.1981132, a: 0}
+      key3: {r: 0.17848878, g: 0.18754621, b: 0.1981132, a: 0}
+      key4: {r: 0.17848878, g: 0.18754621, b: 0.1981132, a: 0}
+      key5: {r: 0.17848878, g: 0.18754621, b: 0.1981132, a: 0}
+      key6: {r: 0.17848878, g: 0.18754621, b: 0.1981132, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
       ctime1: 65535
       ctime2: 65535
       ctime3: 65535
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
+      ctime4: 65535
+      ctime5: 65535
+      ctime6: 65535
       ctime7: 0
       atime0: 578
       atime1: 13493
@@ -13828,7 +13836,7 @@ LineRenderer:
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
-    shadowBias: 0.5
+    shadowBias: 0
     generateLightingData: 0
   m_MaskInteraction: 0
   m_UseWorldSpace: 1
@@ -13846,8 +13854,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 515704e4097bd674fa24b9f0f1928968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1705289257}
-  offset: {x: 0, y: 1, z: 0}
+  player: {fileID: 1573812280}
+  offset: {x: 0, y: 0.15, z: -0.15}
 --- !u!1 &1132118775
 GameObject:
   m_ObjectHideFlags: 0
@@ -15956,7 +15964,7 @@ LineRenderer:
   - {x: -2.667894, y: 10.300925, z: 58.143528}
   - {x: 5.836536, y: 6.4980397, z: 54.25026}
   - {x: 5.836536, y: 6.4980397, z: 54.25026}
-  - {x: 21.949228, y: 6.041967, z: 39.391052}
+  - {x: 20.359758, y: 6.8066278, z: 39.721634}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -15964,13 +15972,22 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
+        time: 0.91642606
+        value: 0.50611025
+        inSlope: 0.32919353
+        outSlope: 0.32919353
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0.99999976
+      - serializedVersion: 3
+        time: 1
+        value: 0.05115509
+        inSlope: -1.90467
+        outSlope: -1.90467
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.7058755
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -16028,8 +16045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 515704e4097bd674fa24b9f0f1928968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1779336366}
-  offset: {x: 0, y: 1, z: 0}
+  player: {fileID: 1945350654}
+  offset: {x: 0, y: 0.15, z: -0.15}
 --- !u!1 &1465890737
 GameObject:
   m_ObjectHideFlags: 0
@@ -16987,6 +17004,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.12112704, y: 1.0204543, z: 0.014186636}
   m_Center: {x: -0.011870317, y: 0.17039478, z: 0.000000026542693}
+--- !u!4 &1573812280 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3706407261063381102, guid: 6bd2d81ef276c2047b9b897913d3f3e7, type: 3}
+  m_PrefabInstance: {fileID: 421346890}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1577969663
 GameObject:
   m_ObjectHideFlags: 0
@@ -18503,11 +18525,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7002990889684171719, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
---- !u!4 &1705289257 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2005270790026852139, guid: 6bd2d81ef276c2047b9b897913d3f3e7, type: 3}
-  m_PrefabInstance: {fileID: 421346890}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1717032514 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5792357556516535139, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
@@ -18664,11 +18681,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85080cc60f993f841a917ffc295f8891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1779336366 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3713272717208273398, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
-  m_PrefabInstance: {fileID: 1878311751}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1780834780
 GameObject:
   m_ObjectHideFlags: 0
@@ -24242,6 +24254,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9979764, y: 2.0895615, z: 2.5724256}
   m_Center: {x: -0.1456253, y: 0.12970486, z: -0.45748225}
+--- !u!4 &1945350654 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3033990262617847335, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
+  m_PrefabInstance: {fileID: 1878311751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1945690931
 GameObject:
   m_ObjectHideFlags: 0
