@@ -65,11 +65,7 @@ public class ButtonTMPro : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             {
                 buttonText.color = hoverTextColor;
             }
-
-            if (hoverSound != null)
-            {
-                audioSource.PlayOneShot(hoverSound);
-            }
+            SoundManager.Instance.PlayButtonSound();
         }
     }
 
@@ -101,10 +97,7 @@ public class ButtonTMPro : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             StartCoroutine(PressAnimation());
         }
 
-        if (clickSound != null)
-        {
-            audioSource.PlayOneShot(clickSound);
-        }
+        SoundManager.Instance.PlayClickSound();
     }
 
     private System.Collections.IEnumerator PressAnimation()

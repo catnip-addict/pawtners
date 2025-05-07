@@ -13,7 +13,7 @@ public class SliderSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     [Header("Dźwięki")]
     [SerializeField] private AudioClip hoverSound;
-    [SerializeField] private AudioClip slideSound;
+    // [SerializeField] private AudioClip slideSound;
 
     private Slider slider;
     private RectTransform sliderHandle;
@@ -48,7 +48,7 @@ public class SliderSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
         targetScale = originalScale;
 
-        slider.onValueChanged.AddListener(OnSliderValueChanged);
+        // slider.onValueChanged.AddListener(OnSliderValueChanged);
     }
 
     private void Update()
@@ -76,9 +76,10 @@ public class SliderSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 handleImage.color = hoverHandleColor;
             }
 
-            if (hoverSound != null && !isDragging)
+            if (!isDragging)
             {
-                audioSource.PlayOneShot(hoverSound);
+                // audioSource.PlayOneShot(hoverSound);
+                SoundManager.Instance.PlayButtonSound();
             }
         }
     }
@@ -106,18 +107,18 @@ public class SliderSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         OnPointerExit(eventData as PointerEventData);
     }
 
-    private void OnSliderValueChanged(float value)
-    {
-        // Odtwarzamy dźwięk przeciągania
-        if (slideSound != null && isDragging)
-        {
-            if (!audioSource.isPlaying || audioSource.clip != slideSound)
-            {
-                audioSource.clip = slideSound;
-                audioSource.Play();
-            }
-        }
-    }
+    // private void OnSliderValueChanged(float value)
+    // {
+    //     // Odtwarzamy dźwięk przeciągania
+    //     if (slideSound != null && isDragging)
+    //     {
+    //         if (!audioSource.isPlaying || audioSource.clip != slideSound)
+    //         {
+    //             audioSource.clip = slideSound;
+    //             audioSource.Play();
+    //         }
+    //     }
+    // }
 
     public void OnBeginDrag()
     {

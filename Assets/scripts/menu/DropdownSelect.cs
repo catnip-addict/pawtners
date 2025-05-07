@@ -75,9 +75,10 @@ public class DropdownSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
                 dropdownLabel.color = hoverLabelColor;
             }
 
-            if (hoverSound != null && !isExpanded)
+            if (!isExpanded)
             {
-                audioSource.PlayOneShot(hoverSound);
+                // audioSource.PlayOneShot(hoverSound);
+                SoundManager.Instance.PlayButtonSound();
             }
         }
     }
@@ -107,10 +108,7 @@ public class DropdownSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     private void OnDropdownValueChanged(int value)
     {
-        if (selectSound != null)
-        {
-            audioSource.PlayOneShot(selectSound);
-        }
+        SoundManager.Instance.PlayClickSound();
     }
 
     private void OnDropdownShow()

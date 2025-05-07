@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class TransitionManager : MonoBehaviour
 {
     public static TransitionManager instance;
 
     [SerializeField] private CanvasGroup fadeCanvasGroup;
+    [SerializeField] private GraphicRaycaster graphicRaycaster;
     [SerializeField] private float fadeDuration = 1.0f;
 
     private void Awake()
@@ -23,11 +25,13 @@ public class TransitionManager : MonoBehaviour
 
     public void FadeIn()
     {
+        graphicRaycaster.enabled = true;
         StartCoroutine(Fade(0f, 1f));
     }
 
     public void FadeOut()
     {
+        graphicRaycaster.enabled = false;
         StartCoroutine(Fade(1f, 0f));
     }
 
@@ -51,8 +55,10 @@ public class TransitionManager : MonoBehaviour
 
     public IEnumerator TransitionToScene(int sceneName)
     {
+        graphicRaycaster.enabled = true;
         yield return StartCoroutine(Fade(0f, 1f));
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        graphicRaycaster.enabled = false;
         yield return StartCoroutine(Fade(1f, 0f));
     }
 }
