@@ -190,10 +190,12 @@ public class Player : MonoBehaviour
             if (groundChecker.IsGrounded)
             {
                 emission.enabled = true;
+                animator.SetBool("isSprinting", true);
             }
             else
             {
                 emission.enabled = false;
+                animator.SetBool("isSprinting", false);
             }
         }
         else
