@@ -34,6 +34,10 @@ public class Hats : MonoBehaviour
         PlayerPrefs.SetInt("HatIndex" + playerNumber, hatIndex);
         PlayerPrefs.Save();
     }
+    public int GetHatIndex()
+    {
+        return hatIndex;
+    }
     public int GetHatLength()
     {
         return hats.Length;
