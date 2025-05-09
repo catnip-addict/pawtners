@@ -96,24 +96,33 @@ public class Player : MonoBehaviour
 
         jumpTimer.OnTimerStop += () => jumpCooldownTimer.Start();
 
-        var axisController = freeLookVCam.GetComponent<CinemachineInputAxisController>();
         float mouseSens = PlayerPrefs.GetFloat("MouseSens", 1.0f);
-        foreach (var c in axisController.Controllers)
+        SetMouseSensitivity(mouseSens);
+        hats = GetComponentInChildren<Hats>();
+    }
+
+    public void SetMouseSensitivity(float mouseSens)
+    {
+        var axisControllers = freeLookVCam.GetComponents<CinemachineInputAxisController>();
+
+        foreach (var axisController in axisControllers)
         {
-            if (c.Name == "Look Orbit X")
+            foreach (var c in axisController.Controllers)
             {
-                c.Input.LegacyGain = 1f * mouseSens;
-                c.Input.Gain = 2f * mouseSens;
-                // Debug.Log(c.Input.LegacyGain + " " + c.Input.Gain);
-            }
-            if (c.Name == "Look Orbit Y")
-            {
-                c.Input.LegacyGain = -1f * mouseSens;
-                c.Input.Gain = -2f * mouseSens;
-                // Debug.Log(c.Input.LegacyGain + " " + c.Input.Gain);
+                if (c.Name == "Look Orbit X")
+                {
+                    c.Input.LegacyGain = 1f * mouseSens;
+                    c.Input.Gain = 2f * mouseSens;
+                    Debug.Log($"Setting X sensitivity on controller: {axisController.name}");
+                }
+                if (c.Name == "Look Orbit Y")
+                {
+                    c.Input.LegacyGain = -1f * mouseSens;
+                    c.Input.Gain = -2f * mouseSens;
+                    Debug.Log($"Setting Y sensitivity on controller: {axisController.name}");
+                }
             }
         }
-        hats = GetComponentInChildren<Hats>();
     }
 
     void Start()
@@ -122,6 +131,15 @@ public class Player : MonoBehaviour
         moveSpeed = constMoveSpeed;
         rotationSpeed = constRotationSpeed;
         mechaniki = GetComponent<Mechaniki>();
+        PauseMenu.Instance.isBusy = false;
+        if (playerNumber == PlayerNumber.First)
+        {
+            GameManager.Instance.player1 = this;
+        }
+        else if (playerNumber == PlayerNumber.Second)
+        {
+            GameManager.Instance.player2 = this;
+        }
     }
     void OnEnable()
     {

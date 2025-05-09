@@ -461,8 +461,6 @@ MonoBehaviour:
   normalTextColor: {r: 0.88235295, g: 0.827451, b: 0.654902, a: 1}
   hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 0}
 --- !u!114 &112021253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1761,8 +1759,6 @@ MonoBehaviour:
   normalTextColor: {r: 0.88235295, g: 0.827451, b: 0.654902, a: 1}
   hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 0}
 --- !u!1 &407425916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,8 +1910,6 @@ MonoBehaviour:
   normalTextColor: {r: 0.88235295, g: 0.827451, b: 0.654902, a: 1}
   hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 0}
 --- !u!114 &410637753 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3750629613149620277, guid: 13ebddc0a952f8c428ca7f72331f4f0b, type: 3}
@@ -2094,8 +2088,6 @@ MonoBehaviour:
   normalTextColor: {r: 0.88235295, g: 0.827451, b: 0.654902, a: 1}
   hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 0}
 --- !u!114 &444090910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2315,6 +2307,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSceneName: test1
+  player1: {fileID: 0}
+  player2: {fileID: 0}
 --- !u!114 &477048665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4496,8 +4490,6 @@ MonoBehaviour:
   normalTextColor: {r: 0.88235295, g: 0.827451, b: 0.654902, a: 1}
   hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 0}
 --- !u!114 &803218128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5064,8 +5056,6 @@ MonoBehaviour:
   normalTextColor: {r: 0.88235295, g: 0.827451, b: 0.654902, a: 1}
   hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 0}
 --- !u!114 &938839204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5355,8 +5345,6 @@ MonoBehaviour:
   normalTextColor: {r: 0.88235295, g: 0.827451, b: 0.654902, a: 1}
   hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 0}
 --- !u!114 &983170522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6398,8 +6386,6 @@ MonoBehaviour:
   normalTextColor: {r: 0.88235295, g: 0.827451, b: 0.654902, a: 1}
   hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 0}
 --- !u!114 &1205673108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7275,8 +7261,6 @@ MonoBehaviour:
   normalTextColor: {r: 0.88235295, g: 0.827451, b: 0.654902, a: 1}
   hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 0}
 --- !u!114 &1420548710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8430,8 +8414,6 @@ MonoBehaviour:
   normalTextColor: {r: 0.88235295, g: 0.827451, b: 0.654902, a: 1}
   hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 0}
 --- !u!114 &1601017849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10020,8 +10002,6 @@ MonoBehaviour:
   normalTextColor: {r: 0.88235295, g: 0.827451, b: 0.654902, a: 1}
   hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 0}
 --- !u!114 &1794031102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10867,8 +10847,6 @@ MonoBehaviour:
   normalTextColor: {r: 0.88235295, g: 0.827451, b: 0.654902, a: 1}
   hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 0}
 --- !u!114 &1880831968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11350,8 +11328,6 @@ MonoBehaviour:
   normalTextColor: {r: 0.88235295, g: 0.827451, b: 0.654902, a: 1}
   hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 0}
 --- !u!114 &1967422100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12102,7 +12078,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 99
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &2128372115
 RectTransform:
@@ -14172,8 +14148,6 @@ MonoBehaviour:
   normalTextColor: {r: 0.88235295, g: 0.827451, b: 0.654902, a: 1}
   hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 0}
 --- !u!23 &6032406649430441732
 MeshRenderer:
   m_ObjectHideFlags: 0
