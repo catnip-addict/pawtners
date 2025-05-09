@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TransitionManager : MonoBehaviour
@@ -57,7 +58,7 @@ public class TransitionManager : MonoBehaviour
     {
         graphicRaycaster.enabled = true;
         yield return StartCoroutine(Fade(0f, 1f));
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
         graphicRaycaster.enabled = false;
         yield return StartCoroutine(Fade(1f, 0f));
     }

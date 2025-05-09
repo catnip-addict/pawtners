@@ -51,7 +51,12 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
-        ShowMainMenu();
+        if (mainMenuPanel != null)
+        {
+            // Debug.LogError("Main Menu Panel is not assigned in the inspector.");
+            ShowMainMenu();
+        }
+
         InitializeQualityDropdown();
         LoadSettings();
         InitializeResolutions();
@@ -113,12 +118,7 @@ public class SettingsManager : MonoBehaviour
         SetSFXVolume(sfxVolume);
         SetMouseSens(mouseSens);
         SetFullscreen(fullscreenToggle.isOn);
-#if UNITY_EDITOR
-
-#else
-    SetResolution(resolutionDropdown.value);
-#endif
-
+        SetResolution(resolutionDropdown.value);
     }
     private void InitializeQualityDropdown()
     {
