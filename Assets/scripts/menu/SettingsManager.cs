@@ -56,10 +56,9 @@ public class SettingsManager : MonoBehaviour
             // Debug.LogError("Main Menu Panel is not assigned in the inspector.");
             ShowMainMenu();
         }
-
+        InitializeResolutions();
         InitializeQualityDropdown();
         LoadSettings();
-        InitializeResolutions();
     }
     void Update()
     {
@@ -294,6 +293,18 @@ public class SettingsManager : MonoBehaviour
 
     public void SetResolution(int resolutionIndex)
     {
+        if (resolutions == null || resolutions.Length == 0)
+        {
+            Debug.LogWarning("No resolutions available to set");
+            return;
+        }
+
+        if (resolutionIndex < 0 || resolutionIndex >= resolutions.Length)
+        {
+            Debug.LogWarning("Resolution index out of range: " + resolutionIndex);
+            resolutionIndex = 0;
+        }
+
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height,
             Screen.fullScreen ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed,
