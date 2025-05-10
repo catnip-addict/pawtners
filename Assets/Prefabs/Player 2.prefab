@@ -12301,11 +12301,12 @@ MonoBehaviour:
   constRotationSpeed: 10
   smoothTime: 0.2
   sprintSpeed: 2
-  jumpForce: 10
-  jumpDuration: 0.5
-  jumpMaxHeight: 1.25
+  jumpForce: 60
+  jumpDuration: 0.25
+  jumpMaxHeight: 2.5
   gravityMultiplier: 2
   maxFallSpeed: 10
+  coyoteTime: 0.2
   checkPointIndex: 1
   playerNumber: 1
   pickupCooldown: 0.5

@@ -2520,11 +2520,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1e0822b0c25d3044be57e3771e80021, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.590004
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a1e0822b0c25d3044be57e3771e80021, type: 3}
-      propertyPath: m_LocalPosition.x
       value: -24.63
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1e0822b0c25d3044be57e3771e80021, type: 3}
@@ -3397,12 +3392,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.043619405, w: 0.9990483}
   m_LocalPosition: {x: -17.978882, y: -14.1, z: 26.39025}
-
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 848957483}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -5}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &364231725
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19540,6 +19534,10 @@ PrefabInstance:
       propertyPath: BlackoutAnimator
       value: 
       objectReference: {fileID: 1988691918}
+    - target: {fileID: 1027644796539681287, guid: 6bd2d81ef276c2047b9b897913d3f3e7, type: 3}
+      propertyPath: constRotationSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2005270790026852139, guid: 6bd2d81ef276c2047b9b897913d3f3e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -44.6
@@ -19652,7 +19650,7 @@ PrefabInstance:
       objectReference: {fileID: 761097476}
     - target: {fileID: 1145093485538874620, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
       propertyPath: constRotationSpeed
-      value: 720
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1183146201941149849, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
       propertyPath: m_LocalRotation.w

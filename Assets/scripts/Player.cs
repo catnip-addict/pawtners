@@ -43,6 +43,10 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpMaxHeight = 2.5f;
     [SerializeField] float gravityMultiplier = 2f;
     [SerializeField] float maxFallSpeed = 10f;
+    [SerializeField] float coyoteTime = 0.2f;
+    private float coyoteTimeCounter = 0f;
+    private bool wasGroundedLastFrame = false;
+
     [Header("CheckPoints")]
     [SerializeField] int checkPointIndex = 0;
     [Header("Misc")]
@@ -182,10 +186,11 @@ public class Player : MonoBehaviour
 
     void OnJump(bool performed)
     {
-        if (performed && !jumpTimer.IsRunning && !jumpCooldownTimer.IsRunning && groundChecker.IsGrounded)
+        if (performed && !jumpTimer.IsRunning && !jumpCooldownTimer.IsRunning && (groundChecker.IsGrounded || coyoteTimeCounter > 0))
         {
             jumpTimer.Start();
             jumpParticles.Play();
+            coyoteTimeCounter = 0f;
         }
         else if (!performed && jumpTimer.IsRunning)
         {
@@ -222,7 +227,20 @@ public class Player : MonoBehaviour
             animator.SetBool("isSprinting", false);
         }
 
-        // Update pickup cooldown timer
+        if (groundChecker.IsGrounded)
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else if (wasGroundedLastFrame && !groundChecker.IsGrounded)
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+        wasGroundedLastFrame = groundChecker.IsGrounded;
+
         if (pickupCooldownTimer > 0)
         {
             pickupCooldownTimer -= Time.deltaTime;
