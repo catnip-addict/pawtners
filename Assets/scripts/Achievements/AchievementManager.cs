@@ -60,6 +60,17 @@ public class AchievementManager : MonoBehaviour
                 }
 
                 Debug.Log($"Załadowano {unlockedAchievements.Count(kvp => kvp.Value)} odblokowanych osiągnięć");
+
+                //Do zresetowania osiągnięć
+                foreach (Achievement achievement in availableAchievements)
+                {
+                    unlockedAchievements[achievement] = false;
+                }
+
+                // Zapisanie zresetowanych osiągnięć
+                SaveAchievementStates();
+
+                Debug.Log("Wszystkie osiągnięcia zostały zresetowane");
             }
         }
     }
