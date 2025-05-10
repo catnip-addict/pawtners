@@ -28,6 +28,7 @@ public class Customization : MonoBehaviour
     {
         if (playerNumber == 1)
         {
+            hatIndex = hatPlayer1.hatIndex;
             hatIndex++;
             if (hatIndex >= hatsLength)
             {
@@ -38,6 +39,7 @@ public class Customization : MonoBehaviour
         }
         else if (playerNumber == 2)
         {
+            hatIndex = hatPlayer2.hatIndex;
             hatIndex++;
             if (hatIndex >= hatsLength)
             {
@@ -56,6 +58,7 @@ public class Customization : MonoBehaviour
             {
                 hatIndex = hatsLength - 1;
             }
+            hatTextPlayer1.text = "Hat: " + (hatIndex + 1).ToString() + "/" + hatsLength.ToString();
             hatPlayer1.SetPlayerHat(hatIndex, PlayerNumber.First);
         }
         else if (playerNumber == 2)
@@ -65,6 +68,7 @@ public class Customization : MonoBehaviour
             {
                 hatIndex = hatsLength - 1;
             }
+            hatTextPlayer2.text = "Hat: " + (hatIndex + 1).ToString() + "/" + hatsLength.ToString();
             hatPlayer2.SetPlayerHat(hatIndex, PlayerNumber.Second);
         }
     }

@@ -97,6 +97,7 @@ public class TaskManager : MonoBehaviour
     IEnumerator ShowComic()
     {
         comicCanvas.SetActive(true);
+        PauseMenu.Instance.isBusy = true;
 
         yield return new WaitForSeconds(1);
         comicParts[0].enabled = true;
@@ -121,7 +122,7 @@ public class TaskManager : MonoBehaviour
     IEnumerator ShowComic2()
     {
         comicCanvas.SetActive(true);
-
+        PauseMenu.Instance.isBusy = true;
         yield return new WaitForSeconds(1);
         comicParts[0].enabled = true;
 
