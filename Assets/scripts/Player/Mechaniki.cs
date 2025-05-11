@@ -11,7 +11,7 @@ public class Mechaniki : MonoBehaviour
     private Rigidbody heldObjectRb;
     private Item heldObjectItem;
     private Player player;
-    public bool haveObject; 
+    public bool haveObject;
 
     [SerializeField] private Outline outline;
     void Start()
@@ -57,7 +57,7 @@ public class Mechaniki : MonoBehaviour
                 heldObject = hit.collider.gameObject;
                 heldObjectItem = heldObject.GetComponent<Item>();
                 GameManager.Instance.AddToMouse();
-                if (heldObjectItem.needAnimation)
+                if (!heldObjectItem.dragging)
                 {
                     player.isRestricted = false;
                 }

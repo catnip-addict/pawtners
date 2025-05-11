@@ -148,7 +148,11 @@ public class Player : MonoBehaviour
                 GameManager.Instance.player2 = this;
             }
         }
-
+        int hatIndex = PlayerPrefs.GetInt("HatIndex" + playerNumber, 0);
+        if (hatIndex != 0)
+        {
+            AchievementManager.Instance.UnlockAchievement(12);
+        }
     }
     void OnEnable()
     {
@@ -287,8 +291,8 @@ public class Player : MonoBehaviour
 
     public void SetWeight(float weight)
     {
-        moveSpeed = constMoveSpeed - weight * 100;
-        rotationSpeed = constRotationSpeed - weight * 200;
+        moveSpeed = constMoveSpeed - weight * 50;
+        rotationSpeed = constRotationSpeed - weight;
     }
 
     void HandleTimers()

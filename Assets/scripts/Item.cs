@@ -7,6 +7,7 @@ public class Item : MonoBehaviour
     Collider triggerCollider;
     public float weight = 0f;
     public bool needAnimation = true;
+    public bool dragging = false;
 
     public void SetCollider(bool value)
     {

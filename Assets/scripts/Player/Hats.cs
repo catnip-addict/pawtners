@@ -13,6 +13,7 @@ public class Hats : MonoBehaviour
             playerNumber = playerComponent.playerNumber;
         }
         hatIndex = PlayerPrefs.GetInt("HatIndex" + playerNumber, 0);
+
         if (hats.Length > 0)
         {
             hats[hatIndex].SetActive(true);
