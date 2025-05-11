@@ -18,8 +18,8 @@ public class SoundManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
-        sfxSource = gameObject.AddComponent<AudioSource>();
-        musicSource = gameObject.AddComponent<AudioSource>();
+        // sfxSource = gameObject.AddComponent<AudioSource>();
+        // musicSource = gameObject.AddComponent<AudioSource>();
     }
     private void Start()
     {

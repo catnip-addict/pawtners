@@ -4067,8 +4067,8 @@ GameObject:
   - component: {fileID: 477048664}
   - component: {fileID: 477048665}
   - component: {fileID: 477048666}
-  - component: {fileID: 477048668}
   - component: {fileID: 477048667}
+  - component: {fileID: 477048668}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4130,8 +4130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2b74274e1225f408aedcc0cc0fe834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSource: {fileID: 477048668}
-  sfxSource: {fileID: 477048667}
+  musicSource: {fileID: 477048667}
+  sfxSource: {fileID: 477048668}
   soundClips:
   - {fileID: 8300000, guid: 51079ebaf00175148b7abb30858688c5, type: 3}
 --- !u!82 &477048667
@@ -4144,8 +4144,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 814d544fcd3b555458cdd7e16d63d978, type: 3}
-  m_Resource: {fileID: 8300000, guid: 814d544fcd3b555458cdd7e16d63d978, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fd4270edee637fa4b9137c91fc26a900, type: 3}
+  m_Resource: {fileID: 8300000, guid: fd4270edee637fa4b9137c91fc26a900, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
