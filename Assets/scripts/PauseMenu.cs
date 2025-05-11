@@ -197,7 +197,7 @@ public class PauseMenu : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         PlayerPrefs.SetFloat("MusicVolume", volume);
-        AudioManager audioManager = FindAnyObjectByType<AudioManager>();
+        SoundManager audioManager = FindAnyObjectByType<SoundManager>();
         if (audioManager != null)
         {
             audioManager.UpdateMusicVolume(volume);
@@ -207,7 +207,7 @@ public class PauseMenu : MonoBehaviour
     public void SetSFXVolume(float volume)
     {
         PlayerPrefs.SetFloat("SFXVolume", volume);
-        AudioManager audioManager = FindAnyObjectByType<AudioManager>();
+        SoundManager audioManager = FindAnyObjectByType<SoundManager>();
         if (audioManager != null)
         {
             audioManager.UpdateSFXVolume(volume);
