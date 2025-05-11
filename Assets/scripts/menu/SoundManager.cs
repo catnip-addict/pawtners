@@ -4,7 +4,14 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
     public AudioSource audioSource;
+    public AudioSource audioSource2;
     public AudioClip[] soundClips;
+
+    private void Start()
+    {
+        audioSource2 = gameObject.GetComponent<AudioSource>();
+        audioSource2.volume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
+    }
 
     private void Awake()
     {
@@ -15,10 +22,10 @@ public class SoundManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
-
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
         audioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
+
     }
     public void PlayButtonSound()
     {
