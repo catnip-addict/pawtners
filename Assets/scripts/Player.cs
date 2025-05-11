@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.XR;
 using Utilities;
 
 public enum PlayerNumber
@@ -117,13 +118,13 @@ public class Player : MonoBehaviour
                 {
                     c.Input.LegacyGain = 1f * mouseSens;
                     c.Input.Gain = 2f * mouseSens;
-                    Debug.Log($"Setting X sensitivity on controller: {axisController.name}");
+                    // Debug.Log($"Setting X sensitivity on controller: {axisController.name}");
                 }
                 if (c.Name == "Look Orbit Y")
                 {
                     c.Input.LegacyGain = -1f * mouseSens;
                     c.Input.Gain = -2f * mouseSens;
-                    Debug.Log($"Setting Y sensitivity on controller: {axisController.name}");
+                    // Debug.Log($"Setting Y sensitivity on controller: {axisController.name}");
                 }
             }
         }
@@ -136,14 +137,18 @@ public class Player : MonoBehaviour
         rotationSpeed = constRotationSpeed;
         mechaniki = GetComponent<Mechaniki>();
         PauseMenu.Instance.isBusy = false;
-        if (playerNumber == PlayerNumber.First)
+        if (GameManager.Instance != null)
         {
-            GameManager.Instance.player1 = this;
+            if (playerNumber == PlayerNumber.First)
+            {
+                GameManager.Instance.player1 = this;
+            }
+            else if (playerNumber == PlayerNumber.Second)
+            {
+                GameManager.Instance.player2 = this;
+            }
         }
-        else if (playerNumber == PlayerNumber.Second)
-        {
-            GameManager.Instance.player2 = this;
-        }
+
     }
     void OnEnable()
     {
@@ -189,7 +194,7 @@ public class Player : MonoBehaviour
         if (performed && !jumpTimer.IsRunning && !jumpCooldownTimer.IsRunning && (groundChecker.IsGrounded || coyoteTimeCounter > 0))
         {
             jumpTimer.Start();
-            jumpParticles.Play();
+            JumpParticles();
             coyoteTimeCounter = 0f;
         }
         else if (!performed && jumpTimer.IsRunning)
@@ -325,7 +330,16 @@ public class Player : MonoBehaviour
 
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpVelocity, rb.linearVelocity.z);
     }
-
+    public void SetJumpVelocity(float value)
+    {
+        rb.AddForce(Vector3.up * value, ForceMode.VelocityChange);
+        jumpVelocity = value;
+        Debug.Log("Jump velocity set to: " + jumpVelocity);
+    }
+    public void JumpParticles()
+    {
+        jumpParticles.Play();
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.relativeVelocity.magnitude > 2f && groundChecker.IsGrounded)
