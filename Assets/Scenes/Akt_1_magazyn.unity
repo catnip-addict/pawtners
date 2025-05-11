@@ -7862,6 +7862,7 @@ MonoBehaviour:
   MainTaskUI: {fileID: 1309163183}
   taskDone1: {fileID: 507510655}
   taskDone2: {fileID: 422664814}
+  playTutorial: 1
   player1: {fileID: 7169744060409167444}
   player2: {fileID: 8883777135103103199}
   comicCanvas: {fileID: 373045373}
@@ -13818,6 +13819,10 @@ PrefabInstance:
       value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 1656749815841480766, guid: 2bfaad8854082e54c8a056e834826772, type: 3}
+      propertyPath: disappearAfter
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656749815841480766, guid: 2bfaad8854082e54c8a056e834826772, type: 3}
       propertyPath: onButtonPress.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
@@ -13831,7 +13836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656749815841480766, guid: 2bfaad8854082e54c8a056e834826772, type: 3}
       propertyPath: onButtonPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3221534403139120099, guid: 2bfaad8854082e54c8a056e834826772, type: 3}
       propertyPath: m_IsTrigger

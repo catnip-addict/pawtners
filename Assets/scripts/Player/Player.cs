@@ -104,6 +104,7 @@ public class Player : MonoBehaviour
         float mouseSens = PlayerPrefs.GetFloat("MouseSens", 1.0f);
         SetMouseSensitivity(mouseSens);
         hats = GetComponentInChildren<Hats>();
+        mechaniki = GetComponent<Mechaniki>();
     }
 
     public void SetMouseSensitivity(float mouseSens)
@@ -135,7 +136,6 @@ public class Player : MonoBehaviour
         input.EnablePlayerActions();
         moveSpeed = constMoveSpeed;
         rotationSpeed = constRotationSpeed;
-        mechaniki = GetComponent<Mechaniki>();
         PauseMenu.Instance.isBusy = false;
         if (GameManager.Instance != null)
         {
@@ -338,6 +338,10 @@ public class Player : MonoBehaviour
     public void JumpParticles()
     {
         jumpParticles.Play();
+    }
+    public Mechaniki GetMechaniki()
+    {
+        return mechaniki;
     }
     private void OnCollisionEnter(Collision collision)
     {

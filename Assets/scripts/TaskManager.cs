@@ -13,7 +13,7 @@ public class TaskManager : MonoBehaviour
     public TMP_Text MainTaskUI;
     public TMP_Text taskDone1;
     public TMP_Text taskDone2;
-    private bool playTutorial = true;
+    public bool playTutorial = true;
     int numerZadania = 0;
 
     public Player player1;
@@ -31,6 +31,8 @@ public class TaskManager : MonoBehaviour
 
     private void Start()
     {
+        mechaniki1 = player1.GetMechaniki();
+        mechaniki2 = player2.GetMechaniki();
         UpdateZadania();
         comicCanvas.SetActive(false);
 
@@ -38,8 +40,7 @@ public class TaskManager : MonoBehaviour
         {
             comicPart.enabled = false;
         }
-        mechaniki1 = player1.GetComponent<Mechaniki>();
-        mechaniki1 = player2.GetComponent<Mechaniki>();
+
     }
 
     private void Update()

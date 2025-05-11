@@ -129,15 +129,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 85e564d4905fc40d2bdbf87d2f13e21f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.044
+      value: 8.775
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85e564d4905fc40d2bdbf87d2f13e21f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.89
+      value: 8.849
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85e564d4905fc40d2bdbf87d2f13e21f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.16
+      value: -1.471
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85e564d4905fc40d2bdbf87d2f13e21f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5019,6 +5019,7 @@ MonoBehaviour:
   MainTaskUI: {fileID: 0}
   taskDone1: {fileID: 0}
   taskDone2: {fileID: 0}
+  playTutorial: 0
   player1: {fileID: 7169744060409167444}
   player2: {fileID: 8883777135103103199}
   comicCanvas: {fileID: 373045373}
@@ -18010,8 +18011,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53feeccfc2e72424aaf769cbb316d119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 0
-  disappearAfter: 1
+  playerNumber: 3
+  disappearAfter: 0
   onButtonPress:
     m_PersistentCalls:
       m_Calls:

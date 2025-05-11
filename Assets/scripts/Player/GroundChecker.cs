@@ -5,9 +5,14 @@ public class GroundChecker : MonoBehaviour
     [SerializeField] float groundDistance = 0.08f;
     [SerializeField] LayerMask groundLayers;
     [SerializeField] CapsuleCollider capsulecollider;
+    LayerMask InsideLayers;
 
 
     public bool IsGrounded { get; private set; }
+    void Start()
+    {
+        InsideLayers = LayerMask.GetMask("Ground");
+    }
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -35,7 +40,7 @@ public class GroundChecker : MonoBehaviour
 
         IsGrounded = Physics.CheckSphere(pos1, radius, groundLayers) ||
                      Physics.CheckSphere(pos2, radius, groundLayers);
-        if (Physics.CheckSphere(pos3, radius, 8))
+        if (Physics.CheckSphere(pos3, radius, InsideLayers))
         {
             // Debug.Log(groundLayers.value);
             GetComponent<Player>().SetJumpVelocity(5);
