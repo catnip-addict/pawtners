@@ -19,6 +19,8 @@ public class TaskManager : MonoBehaviour
     public Player player1;
     public Player player2;
 
+    Mechaniki mechaniki1;
+    Mechaniki mechaniki2;
 
     public GameObject comicCanvas;
     public Image[] comicParts;
@@ -36,6 +38,8 @@ public class TaskManager : MonoBehaviour
         {
             comicPart.enabled = false;
         }
+        mechaniki1 = player1.GetComponent<Mechaniki>();
+        mechaniki1 = player2.GetComponent<Mechaniki>();
     }
 
     private void Update()
@@ -140,5 +144,14 @@ public class TaskManager : MonoBehaviour
     public void Tp(int id)
     {
         StartCoroutine(TransitionManager.instance.TransitionToScene(id));
+    }
+
+
+    public void haveKey()
+    {
+        if (mechaniki1.haveObject || mechaniki2.haveObject)
+        {
+            Tp(3);
+        }
     }
 }

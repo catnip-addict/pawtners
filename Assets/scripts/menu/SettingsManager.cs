@@ -261,21 +261,13 @@ public class SettingsManager : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         PlayerPrefs.SetFloat("MusicVolume", volume);
-        AudioManager audioManager = FindFirstObjectByType<AudioManager>();
-        if (audioManager != null)
-        {
-            audioManager.UpdateMusicVolume(volume);
-        }
+        SoundManager.Instance.UpdateMusicVolume(volume);
     }
 
     public void SetSFXVolume(float volume)
     {
         PlayerPrefs.SetFloat("SFXVolume", volume);
-        AudioManager audioManager = FindFirstObjectByType<AudioManager>();
-        if (audioManager != null)
-        {
-            audioManager.UpdateSFXVolume(volume);
-        }
+        SoundManager.Instance.UpdateSFXVolume(volume);
     }
 
     public void SetQuality(int qualityIndex)

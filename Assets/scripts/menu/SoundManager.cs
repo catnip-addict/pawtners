@@ -3,7 +3,10 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
-    public AudioSource audioSource;
+    [Header("Źródła Audio")]
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource sfxSource;
+    // public AudioClip[] musicClips;
     public AudioClip[] soundClips;
 
     private void Awake()
@@ -15,10 +18,18 @@ public class SoundManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
+        // sfxSource = gameObject.AddComponent<AudioSource>();
+        // musicSource = gameObject.AddComponent<AudioSource>();
+    }
+    private void Start()
+    {
 
-        audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.playOnAwake = false;
-        audioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
+        sfxSource.playOnAwake = false;
+        sfxSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
+
+
+        musicSource.playOnAwake = true;
+        musicSource.volume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
     }
     public void PlayButtonSound()
     {
@@ -32,16 +43,29 @@ public class SoundManager : MonoBehaviour
     {
         if (clipIndex >= 0 && clipIndex < soundClips.Length)
         {
-            audioSource.PlayOneShot(soundClips[clipIndex]);
-            Debug.Log("Playing sound clip: " + soundClips[clipIndex].name);
-        }
-        else
-        {
-            Debug.LogWarning("Sound clip index out of range: " + clipIndex);
+            sfxSource.PlayOneShot(soundClips[clipIndex]);
         }
     }
+    // public void PlayMusic(int clipIndex)
+    // {
+    //     if (clipIndex >= 0 && clipIndex < musicClips.Length)
+    //     {
+    //         musicSource.clip = musicClips[clipIndex];
+    //         musicSource.loop = true;
+    //         musicSource.Play();
+    //     }
+    // }
     public void StopSound()
     {
-        audioSource.Stop();
+        sfxSource.Stop();
+    }
+    public void UpdateMusicVolume(float volume)
+    {
+        musicSource.volume = volume;
+    }
+
+    public void UpdateSFXVolume(float volume)
+    {
+        sfxSource.volume = volume;
     }
 }

@@ -11,6 +11,7 @@ public class Mechaniki : MonoBehaviour
     private Rigidbody heldObjectRb;
     private Item heldObjectItem;
     private Player player;
+    public bool haveObject; 
 
     [SerializeField] private Outline outline;
     void Start()
@@ -50,6 +51,7 @@ public class Mechaniki : MonoBehaviour
         {
             if (hit.collider.CompareTag("PickUp"))
             {
+                haveObject = true;
                 outline = hit.collider.GetComponent<Outline>();
                 outline.enabled = false;
                 heldObject = hit.collider.gameObject;
@@ -104,6 +106,7 @@ public class Mechaniki : MonoBehaviour
     }
     void DropObject()
     {
+        haveObject = false;
         if (heldObjectRb != null)
 
         {
