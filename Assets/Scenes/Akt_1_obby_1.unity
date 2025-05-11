@@ -11587,7 +11587,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150388149}
-  m_Mesh: {fileID: 1124092203578081911, guid: 25f37b28ae6524c589eeb26306fab5a7, type: 3}
+  m_Mesh: {fileID: -3102524695276092414, guid: 5a1164bbff1da44d0830e86f960d8639, type: 3}
 --- !u!4 &1150388152
 Transform:
   m_ObjectHideFlags: 0
@@ -11624,7 +11624,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1124092203578081911, guid: 25f37b28ae6524c589eeb26306fab5a7, type: 3}
+  m_Mesh: {fileID: -3102524695276092414, guid: 5a1164bbff1da44d0830e86f960d8639, type: 3}
 --- !u!54 &1150388154
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12465,7 +12465,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -13123,9 +13123,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1439730007547781893, guid: b5328f2d54fc0b54793e4aafecc37857, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1439730007547781893, guid: b5328f2d54fc0b54793e4aafecc37857, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b5328f2d54fc0b54793e4aafecc37857, type: 3}
       propertyPath: m_Name
       value: lampa_wiszaca
+      objectReference: {fileID: 0}
+    - target: {fileID: 6317578925029434746, guid: b5328f2d54fc0b54793e4aafecc37857, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6317578925029434746, guid: b5328f2d54fc0b54793e4aafecc37857, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6317578925029434746, guid: b5328f2d54fc0b54793e4aafecc37857, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -13941,7 +13957,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: de987bb37144d6d4da12672765cb7434, type: 2}
   - {fileID: 2100000, guid: 7de95d0831e4f40419a9f3834e0b4150, type: 2}
   - {fileID: 2100000, guid: 09daeae07be6ba340b6441f8e3764ffb, type: 2}
-  colorImage: {fileID: 1763576304}
 --- !u!1 &1309163181
 GameObject:
   m_ObjectHideFlags: 0
@@ -17609,7 +17624,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: de987bb37144d6d4da12672765cb7434, type: 2}
   - {fileID: 2100000, guid: 7de95d0831e4f40419a9f3834e0b4150, type: 2}
   - {fileID: 2100000, guid: 09daeae07be6ba340b6441f8e3764ffb, type: 2}
-  colorImage: {fileID: 1929864753}
 --- !u!114 &1781892161
 MonoBehaviour:
   m_ObjectHideFlags: 0

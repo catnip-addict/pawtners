@@ -148,7 +148,11 @@ public class Player : MonoBehaviour
                 GameManager.Instance.player2 = this;
             }
         }
-
+        int hatIndex = PlayerPrefs.GetInt("HatIndex" + playerNumber, 0);
+        if (hatIndex != 0)
+        {
+            AchievementManager.Instance.UnlockAchievement(12);
+        }
     }
     void OnEnable()
     {

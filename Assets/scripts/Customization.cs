@@ -11,7 +11,7 @@ public class Customization : MonoBehaviour
     [SerializeReference] private TMP_Text hatTextPlayer1;
     [SerializeReference] private Hats hatPlayer2;
     [SerializeReference] private Material[] materials;
-    [SerializeReference] private RawImage colorImage;
+    // [SerializeReference] private RawImage colorImage;
     int colorIndex = 0;
     int hatIndex = 0;
     int hatsLength = 0;
@@ -20,8 +20,7 @@ public class Customization : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         hatsLength = hatPlayer1.GetHatLength();
-        hatTextPlayer1.text = "Hat: " + (hatIndex + 1).ToString() + "/" + hatsLength.ToString();
-        hatTextPlayer2.text = "Hat: " + (hatIndex + 1).ToString() + "/" + hatsLength.ToString();
+        RefreshText();
     }
 
     public void NextHat(int playerNumber)
@@ -34,7 +33,6 @@ public class Customization : MonoBehaviour
             {
                 hatIndex = 0;
             }
-            hatTextPlayer1.text = "Hat: " + (hatIndex + 1).ToString() + "/" + hatsLength.ToString();
             hatPlayer1.SetPlayerHat(hatIndex, PlayerNumber.First);
         }
         else if (playerNumber == 2)
@@ -45,9 +43,9 @@ public class Customization : MonoBehaviour
             {
                 hatIndex = 0;
             }
-            hatTextPlayer2.text = "Hat: " + (hatIndex + 1).ToString() + "/" + hatsLength.ToString();
             hatPlayer2.SetPlayerHat(hatIndex, PlayerNumber.Second);
         }
+        RefreshText();
     }
     public void PreviousHat(int playerNumber)
     {
@@ -58,7 +56,6 @@ public class Customization : MonoBehaviour
             {
                 hatIndex = hatsLength - 1;
             }
-            hatTextPlayer1.text = "Hat: " + (hatIndex + 1).ToString() + "/" + hatsLength.ToString();
             hatPlayer1.SetPlayerHat(hatIndex, PlayerNumber.First);
         }
         else if (playerNumber == 2)
@@ -68,9 +65,14 @@ public class Customization : MonoBehaviour
             {
                 hatIndex = hatsLength - 1;
             }
-            hatTextPlayer2.text = "Hat: " + (hatIndex + 1).ToString() + "/" + hatsLength.ToString();
             hatPlayer2.SetPlayerHat(hatIndex, PlayerNumber.Second);
         }
+        RefreshText();
+    }
+    public void RefreshText()
+    {
+        hatTextPlayer1.text = "Hat: " + (hatPlayer1.hatIndex + 1).ToString() + "/" + hatsLength.ToString();
+        hatTextPlayer2.text = "Hat: " + (hatPlayer2.hatIndex + 1).ToString() + "/" + hatsLength.ToString();
     }
     // public void NextColor(PlayerNumber playerNumber)
     // {
