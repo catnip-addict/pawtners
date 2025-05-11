@@ -16,4 +16,12 @@ public class Item : MonoBehaviour
             triggerCollider.enabled = value;
         }
     }
+
+    public void MyszkaDodaj()
+    {
+        if (TryGetComponent<Myszka>(out Myszka myszka))
+        {
+            GameManager.Instance.mouseCont += 1;
+        }
+    }
 }
