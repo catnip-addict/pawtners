@@ -3,7 +3,9 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
-    public AudioSource audioSource;
+    AudioSource sfxSource;
+    AudioSource musicSource;
+    public AudioClip[] musicClips;
     public AudioClip[] soundClips;
 
     private void Awake()
@@ -15,10 +17,17 @@ public class SoundManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
+    }
+    private void Start()
+    {
+        sfxSource = gameObject.AddComponent<AudioSource>();
+        sfxSource.playOnAwake = false;
+        sfxSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
 
-        audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.playOnAwake = false;
-        audioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
+        musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource.playOnAwake = false;
+        musicSource.volume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
+        PlayMusic(0);
     }
     public void PlayButtonSound()
     {
@@ -32,16 +41,20 @@ public class SoundManager : MonoBehaviour
     {
         if (clipIndex >= 0 && clipIndex < soundClips.Length)
         {
-            audioSource.PlayOneShot(soundClips[clipIndex]);
-            Debug.Log("Playing sound clip: " + soundClips[clipIndex].name);
+            sfxSource.PlayOneShot(soundClips[clipIndex]);
         }
-        else
+    }
+    public void PlayMusic(int clipIndex)
+    {
+        if (clipIndex >= 0 && clipIndex < musicClips.Length)
         {
-            Debug.LogWarning("Sound clip index out of range: " + clipIndex);
+            musicSource.clip = musicClips[clipIndex];
+            musicSource.loop = true;
+            musicSource.Play();
         }
     }
     public void StopSound()
     {
-        audioSource.Stop();
+        sfxSource.Stop();
     }
 }
