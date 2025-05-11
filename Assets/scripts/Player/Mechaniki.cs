@@ -56,6 +56,7 @@ public class Mechaniki : MonoBehaviour
                 outline.enabled = false;
                 heldObject = hit.collider.gameObject;
                 heldObjectItem = heldObject.GetComponent<Item>();
+                GameManager.Instance.AddToMouse();
                 if (!heldObjectItem.dragging)
                 {
                     player.isRestricted = false;

@@ -5222,6 +5222,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 847521021045066699, guid: 3b69eb44318d46748a3d769680fcea3f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1485122656}
+    - targetCorrespondingSourceObject: {fileID: 847521021045066699, guid: 3b69eb44318d46748a3d769680fcea3f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1485122662}
   m_SourcePrefab: {fileID: 100100000, guid: 3b69eb44318d46748a3d769680fcea3f, type: 3}
 --- !u!1 &494645718 stripped
 GameObject:
@@ -10743,6 +10746,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 847521021045066699, guid: 3b69eb44318d46748a3d769680fcea3f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1390772336}
+    - targetCorrespondingSourceObject: {fileID: 847521021045066699, guid: 3b69eb44318d46748a3d769680fcea3f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1390772342}
   m_SourcePrefab: {fileID: 100100000, guid: 3b69eb44318d46748a3d769680fcea3f, type: 3}
 --- !u!1 &573269624 stripped
 GameObject:
@@ -16676,6 +16682,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionSoundIndex: 0
   soundCooldown: 0.2
+--- !u!114 &1390772342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573269624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a7bff80ef655814db384bfce9bf118a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1397527710 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c8ddc40ac14d21841bb66cbb44cfd863, type: 3}
@@ -17657,6 +17675,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionSoundIndex: 0
   soundCooldown: 0.2
+--- !u!114 &1485122662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494645718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a7bff80ef655814db384bfce9bf118a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1486742717 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7047834716447224378, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
