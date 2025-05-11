@@ -16,7 +16,7 @@ public class GroundChecker : MonoBehaviour
         // Use transform.TransformPoint to rotate positions relative to the player
         Vector3 pos1 = transform.TransformPoint(new Vector3(0, -radius * 1.2f, radius * 2));
         Vector3 pos2 = transform.TransformPoint(new Vector3(0, -radius * 1.2f, -radius * 2));
-        Vector3 pos3 = transform.TransformPoint(new Vector3(0, radius * -0.25f, -radius));
+        Vector3 pos3 = transform.TransformPoint(new Vector3(0, radius * 0.1f, radius * 0.1f));
 
         Gizmos.DrawWireSphere(pos1, radius);
         Gizmos.DrawWireSphere(pos2, radius);
@@ -31,12 +31,13 @@ public class GroundChecker : MonoBehaviour
         // Use the same transformations for the actual ground check
         Vector3 pos1 = transform.TransformPoint(new Vector3(0, -radius * 1.2f, radius * 2));
         Vector3 pos2 = transform.TransformPoint(new Vector3(0, -radius * 1.2f, -radius * 2));
-        Vector3 pos3 = transform.TransformPoint(new Vector3(0, radius * -0.25f, -radius));
+        Vector3 pos3 = transform.TransformPoint(new Vector3(0, radius * 0.1f, radius * 0.1f));
 
         IsGrounded = Physics.CheckSphere(pos1, radius, groundLayers) ||
                      Physics.CheckSphere(pos2, radius, groundLayers);
-        if (Physics.CheckSphere(pos3, radius, groundLayers))
+        if (Physics.CheckSphere(pos3, radius, 8))
         {
+            // Debug.Log(groundLayers.value);
             GetComponent<Player>().SetJumpVelocity(5);
         }
     }
