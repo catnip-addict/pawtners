@@ -124,8 +124,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270384369414960076}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212335, y: 0.000000029455475, z: -0.00000000453363, w: 0.98836154}
-  m_LocalPosition: {x: 0, y: 3.0070577, z: -9.53717}
+  m_LocalRotation: {x: 0.1521234, y: 0.000000014727736, z: -0.0000000022668158, w: 0.98836154}
+  m_LocalPosition: {x: 0, y: 3.0070581, z: -9.537169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10767,7 +10767,8 @@ MonoBehaviour:
   jumpDuration: 0.25
   jumpMaxHeight: 2.5
   gravityMultiplier: 2
-  maxFallSpeed: 10
+  maxFallSpeed: 25
+  coyoteTime: 0.2
   checkPointIndex: 0
   playerNumber: 0
   pickupCooldown: 0.5
@@ -10826,6 +10827,7 @@ MonoBehaviour:
   pickUpLayer:
     serializedVersion: 2
     m_Bits: 16
+  haveObject: 0
   outline: {fileID: 0}
 --- !u!114 &7964585917085854229
 MonoBehaviour:
@@ -11411,7 +11413,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5405716975533597364}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212335, y: 0.000000029455473, z: -0.0000000045336295, w: 0.98836154}
+  m_LocalRotation: {x: 0.1521234, y: 0.000000014727736, z: -0.0000000022668156, w: 0.98836154}
   m_LocalPosition: {x: 0, y: 3.0070581, z: -9.53717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

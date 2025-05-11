@@ -4,5 +4,5 @@
 - Active game object:
   - Name: f_trash
   - Tag: Untagged
-  - Layer: Default
+  - Layer: Player1
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
