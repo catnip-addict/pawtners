@@ -321,12 +321,11 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (Mathf.Abs(jumpVelocity) <= maxFallSpeed)
+            if (jumpVelocity >= maxFallSpeed)
             {
                 jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
             }
         }
-
 
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpVelocity, rb.linearVelocity.z);
     }
