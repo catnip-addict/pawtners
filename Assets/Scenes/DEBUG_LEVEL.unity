@@ -4291,6 +4291,7 @@ MonoBehaviour:
   MainTaskUI: {fileID: 1309163183}
   taskDone1: {fileID: 507510655}
   taskDone2: {fileID: 422664814}
+  playTutorial: 1
   player1: {fileID: 7169744060409167444}
   player2: {fileID: 8883777135103103199}
   comicCanvas: {fileID: 373045373}
@@ -9171,6 +9172,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 959671916}
     - target: {fileID: 1027644796539681287, guid: 6bd2d81ef276c2047b9b897913d3f3e7, type: 3}
+      propertyPath: maxFallSpeed
+      value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027644796539681287, guid: 6bd2d81ef276c2047b9b897913d3f3e7, type: 3}
       propertyPath: BlackoutAnimator
       value: 
       objectReference: {fileID: 1988691918}
@@ -9318,7 +9323,7 @@ PrefabInstance:
       objectReference: {fileID: 959671916}
     - target: {fileID: 1145093485538874620, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
       propertyPath: maxFallSpeed
-      value: 25
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 1145093485538874620, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
       propertyPath: BlackoutAnimator
