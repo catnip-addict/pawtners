@@ -3,9 +3,10 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
-    AudioSource sfxSource;
-    AudioSource musicSource;
-    public AudioClip[] musicClips;
+    [Header("Źródła Audio")]
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource sfxSource;
+    // public AudioClip[] musicClips;
     public AudioClip[] soundClips;
 
     private void Awake()
@@ -17,17 +18,18 @@ public class SoundManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
+        sfxSource = gameObject.AddComponent<AudioSource>();
+        musicSource = gameObject.AddComponent<AudioSource>();
     }
     private void Start()
     {
-        sfxSource = gameObject.AddComponent<AudioSource>();
+
         sfxSource.playOnAwake = false;
         sfxSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
 
-        musicSource = gameObject.AddComponent<AudioSource>();
-        musicSource.playOnAwake = false;
+
+        musicSource.playOnAwake = true;
         musicSource.volume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
-        PlayMusic(0);
     }
     public void PlayButtonSound()
     {
@@ -44,17 +46,26 @@ public class SoundManager : MonoBehaviour
             sfxSource.PlayOneShot(soundClips[clipIndex]);
         }
     }
-    public void PlayMusic(int clipIndex)
-    {
-        if (clipIndex >= 0 && clipIndex < musicClips.Length)
-        {
-            musicSource.clip = musicClips[clipIndex];
-            musicSource.loop = true;
-            musicSource.Play();
-        }
-    }
+    // public void PlayMusic(int clipIndex)
+    // {
+    //     if (clipIndex >= 0 && clipIndex < musicClips.Length)
+    //     {
+    //         musicSource.clip = musicClips[clipIndex];
+    //         musicSource.loop = true;
+    //         musicSource.Play();
+    //     }
+    // }
     public void StopSound()
     {
         sfxSource.Stop();
+    }
+    public void UpdateMusicVolume(float volume)
+    {
+        musicSource.volume = volume;
+    }
+
+    public void UpdateSFXVolume(float volume)
+    {
+        sfxSource.volume = volume;
     }
 }
