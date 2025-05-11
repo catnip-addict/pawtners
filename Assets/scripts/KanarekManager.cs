@@ -15,7 +15,10 @@ public class KanarekManager : MonoBehaviour
 
     private Coroutine activeCoroutine;
     private bool isDisplayingText = false;
-    private Queue<int> sentenceQueue = new Queue<int>();//to zrobilo AI nwm jak dzia³a ale zarz¹dza kolejk¹
+    private Queue<int> sentenceQueue = new Queue<int>();//to zrobilo AI nwm jak dziaï¿½a ale zarzï¿½dza kolejkï¿½
+
+    [Header("Sprite Settings")]
+    [SerializeField] private TMP_SpriteAsset spriteAsset; // Reference to your sprite asset
 
     private void Awake()
     {
@@ -27,6 +30,15 @@ public class KanarekManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        // Apply sprite asset to the TextMeshProUGUI if provided
+        if (spriteAsset != null && TutorialText != null)
+        {
+            TutorialText.spriteAsset = spriteAsset;
         }
     }
 
@@ -62,14 +74,47 @@ public class KanarekManager : MonoBehaviour
 
     IEnumerator WriteSentence(int index)
     {
-        foreach (char Character in Sentences[index].ToCharArray())
+        string sentence = Sentences[index];
+        string currentText = "";
+        bool inTag = false;
+        string tagBuffer = "";
+
+        for (int i = 0; i < sentence.Length; i++)
         {
-            TutorialText.text += Character;
+            char character = sentence[i];
+
+            // Check for tag start
+            if (character == '<')
+            {
+                inTag = true;
+                tagBuffer = "<";
+                continue;
+            }
+            // Check for tag end
+            else if (inTag && character == '>')
+            {
+                inTag = false;
+                tagBuffer += '>';
+                currentText += tagBuffer; // Add the entire tag at once
+                TutorialText.text = currentText;
+                continue;
+            }
+            // Build tag
+            else if (inTag)
+            {
+                tagBuffer += character;
+                continue;
+            }
+
+            // Normal character display
+            currentText += character;
+            TutorialText.text = currentText;
+
+            // Only wait for normal characters
             yield return new WaitForSeconds(DialogueSpeed);
         }
 
         activeCoroutine = null;
-        isDisplayingText = false;
 
         if (sentenceQueue.Count > 0)
         {
@@ -79,7 +124,18 @@ public class KanarekManager : MonoBehaviour
         }
         else
         {
-            DialogueAnimator.SetTrigger("Exit");
+            yield return new WaitForSeconds(5f);
+            if (sentenceQueue.Count > 0)
+            {
+                int nextIndex = sentenceQueue.Dequeue();
+                yield return new WaitForSeconds(0.8f);
+                DisplaySentence(nextIndex);
+            }
+            else
+            {
+                isDisplayingText = false;
+                DialogueAnimator.SetTrigger("Exit");
+            }
         }
     }
 }

@@ -287,8 +287,8 @@ public class Player : MonoBehaviour
 
     public void SetWeight(float weight)
     {
-        moveSpeed = constMoveSpeed - weight * 100;
-        rotationSpeed = constRotationSpeed - weight * 200;
+        moveSpeed = constMoveSpeed - weight * 50;
+        rotationSpeed = constRotationSpeed - weight;
     }
 
     void HandleTimers()
