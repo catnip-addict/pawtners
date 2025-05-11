@@ -124,8 +124,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270384369414960076}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1521234, y: 0.000000014727736, z: -0.0000000022668158, w: 0.98836154}
-  m_LocalPosition: {x: 0, y: 3.0070581, z: -9.537169}
+  m_LocalRotation: {x: 0, y: -0.98836154, z: 0.15212329, w: 0}
+  m_LocalPosition: {x: 0, y: 0.4682635, z: 1.4841423}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10767,7 +10767,7 @@ MonoBehaviour:
   jumpDuration: 0.25
   jumpMaxHeight: 2.5
   gravityMultiplier: 2
-  maxFallSpeed: 25
+  maxFallSpeed: -20
   coyoteTime: 0.2
   checkPointIndex: 0
   playerNumber: 0
@@ -10794,7 +10794,7 @@ MonoBehaviour:
   groundDistance: 0.08
   groundLayers:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 272
   capsulecollider: {fileID: 966656476141188699}
 --- !u!114 &4917612895862078928
 MonoBehaviour:
@@ -11413,8 +11413,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5405716975533597364}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1521234, y: 0.000000014727736, z: -0.0000000022668156, w: 0.98836154}
-  m_LocalPosition: {x: 0, y: 3.0070581, z: -9.53717}
+  m_LocalRotation: {x: 0.0000000016380696, y: -0.98836154, z: 0.15212329, w: 0.000000011102921}
+  m_LocalPosition: {x: 0, y: 3.0070581, z: 9.537169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
