@@ -33,6 +33,12 @@ public class BatteryBox : MonoBehaviour
     {
         if (other.CompareTag("PickUp") && other.GetComponent<Item>().needAnimation)
         {
+            Debug.Log(other.gameObject.name);
+            if (other.gameObject.name == "Zabawka2" || other.gameObject.name == "Zabawka3")
+            {
+                AchievementManager.Instance.UnlockAchievement(7);
+                Debug.Log("Nowe osiagniecie");
+            }
             heldObject = other.gameObject;
             heldObjectRb = heldObject.GetComponent<Rigidbody>();
             heldObjectItem = heldObject.GetComponent<Item>();
