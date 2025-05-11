@@ -21,7 +21,7 @@ public class CombineBattery : MonoBehaviour
         {
             Debug.Log("Battery Combined!");
             onButtonPress.Invoke();
-            gameObject.SetActive(false);
+            // gameObject.SetActive(false);
         }
     }
 }
