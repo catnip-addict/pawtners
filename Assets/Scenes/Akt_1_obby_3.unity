@@ -1040,6 +1040,7 @@ GameObject:
   - component: {fileID: 111575874}
   - component: {fileID: 111575878}
   - component: {fileID: 111575877}
+  - component: {fileID: 111575879}
   m_Layer: 0
   m_Name: budzzik_R
   m_TagString: Untagged
@@ -1164,6 +1165,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1624029444657275795, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+--- !u!114 &111575879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111575873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &116157848
 GameObject:
   m_ObjectHideFlags: 0
@@ -4555,6 +4570,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 659160180011412832, guid: 5cb0315d9c24a254fa8202cdae17489d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 490139957}
+    - targetCorrespondingSourceObject: {fileID: 659160180011412832, guid: 5cb0315d9c24a254fa8202cdae17489d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 490139959}
   m_SourcePrefab: {fileID: 100100000, guid: 5cb0315d9c24a254fa8202cdae17489d, type: 3}
 --- !u!1 &490139956 stripped
 GameObject:
@@ -4584,6 +4602,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4701176313645285238, guid: 5cb0315d9c24a254fa8202cdae17489d, type: 3}
   m_PrefabInstance: {fileID: 490139955}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &490139959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490139956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &507510653
 GameObject:
   m_ObjectHideFlags: 0
@@ -6959,6 +6991,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5097823376058800783, guid: 6c1ce0ea544d14840811f47c10ee8324, type: 3}
       insertIndex: -1
       addedObject: {fileID: 735841812}
+    - targetCorrespondingSourceObject: {fileID: 5097823376058800783, guid: 6c1ce0ea544d14840811f47c10ee8324, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 735841814}
   m_SourcePrefab: {fileID: 100100000, guid: 6c1ce0ea544d14840811f47c10ee8324, type: 3}
 --- !u!1 &735841811 stripped
 GameObject:
@@ -6988,6 +7023,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 69704919904798487, guid: 6c1ce0ea544d14840811f47c10ee8324, type: 3}
   m_PrefabInstance: {fileID: 735841810}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &735841814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735841811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &743450855
 GameObject:
   m_ObjectHideFlags: 0
@@ -8503,13 +8552,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 847521021045066699, guid: 3b69eb44318d46748a3d769680fcea3f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 902310985}
   m_SourcePrefab: {fileID: 100100000, guid: 3b69eb44318d46748a3d769680fcea3f, type: 3}
 --- !u!4 &902310983 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7020530887818233378, guid: 3b69eb44318d46748a3d769680fcea3f, type: 3}
   m_PrefabInstance: {fileID: 902310982}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &902310984 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 847521021045066699, guid: 3b69eb44318d46748a3d769680fcea3f, type: 3}
+  m_PrefabInstance: {fileID: 902310982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &902310985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902310984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &910214496
 GameObject:
   m_ObjectHideFlags: 0
@@ -10796,6 +10867,7 @@ GameObject:
   - component: {fileID: 1070109572}
   - component: {fileID: 1070109571}
   - component: {fileID: 1070109570}
+  - component: {fileID: 1070109574}
   m_Layer: 0
   m_Name: kubek_L (1)
   m_TagString: Untagged
@@ -10920,6 +10992,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070109568}
   m_Mesh: {fileID: 4727412996938287143, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+--- !u!114 &1070109574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070109568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &1105075756
 GameObject:
   m_ObjectHideFlags: 0
@@ -12255,6 +12341,7 @@ GameObject:
   - component: {fileID: 1273345866}
   - component: {fileID: 1273345870}
   - component: {fileID: 1273345869}
+  - component: {fileID: 1273345871}
   m_Layer: 0
   m_Name: kubek_L
   m_TagString: Untagged
@@ -12379,6 +12466,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4727412996938287143, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+--- !u!114 &1273345871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273345865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1001 &1273594498
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16250,6 +16351,7 @@ GameObject:
   - component: {fileID: 1677216615}
   - component: {fileID: 1677216619}
   - component: {fileID: 1677216618}
+  - component: {fileID: 1677216620}
   m_Layer: 8
   m_Name: ekspres_R
   m_TagString: Untagged
@@ -16373,6 +16475,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5782712, y: 2.0212512, z: 1.998352}
   m_Center: {x: 0.1669583, y: -0.18027054, z: -0.1547443}
+--- !u!114 &1677216620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677216614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &1686237565
 GameObject:
   m_ObjectHideFlags: 0

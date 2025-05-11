@@ -181,6 +181,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 85e564d4905fc40d2bdbf87d2f13e21f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 23546346}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 85e564d4905fc40d2bdbf87d2f13e21f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 23546348}
   m_SourcePrefab: {fileID: 100100000, guid: 85e564d4905fc40d2bdbf87d2f13e21f, type: 3}
 --- !u!1 &23546345 stripped
 GameObject:
@@ -236,6 +239,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5097669978542488239, guid: 85e564d4905fc40d2bdbf87d2f13e21f, type: 3}
+--- !u!114 &23546348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23546345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1001 &62591241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -454,6 +471,7 @@ GameObject:
   - component: {fileID: 85520560}
   - component: {fileID: 85520559}
   - component: {fileID: 85520558}
+  - component: {fileID: 85520562}
   m_Layer: 8
   m_Name: karton_L_4 (4)
   m_TagString: Untagged
@@ -578,6 +596,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85520556}
   m_Mesh: {fileID: 6245283502211983364, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+--- !u!114 &85520562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85520556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &87852482
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +709,7 @@ GameObject:
   - component: {fileID: 102521196}
   - component: {fileID: 102521195}
   - component: {fileID: 102521199}
+  - component: {fileID: 102521200}
   m_Layer: 4
   m_Name: Klucz
   m_TagString: PickUp
@@ -803,6 +836,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &102521200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102521193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1001 &114924953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1620,6 +1667,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 85e564d4905fc40d2bdbf87d2f13e21f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 258209226}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 85e564d4905fc40d2bdbf87d2f13e21f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 258209228}
   m_SourcePrefab: {fileID: 100100000, guid: 85e564d4905fc40d2bdbf87d2f13e21f, type: 3}
 --- !u!1 &258209225 stripped
 GameObject:
@@ -1675,6 +1725,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5097669978542488239, guid: 85e564d4905fc40d2bdbf87d2f13e21f, type: 3}
+--- !u!114 &258209228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258209225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &294679244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,6 +1892,7 @@ GameObject:
   - component: {fileID: 328295423}
   - component: {fileID: 328295422}
   - component: {fileID: 328295421}
+  - component: {fileID: 328295425}
   m_Layer: 8
   m_Name: karton_L_4 (3)
   m_TagString: Untagged
@@ -1952,6 +2017,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328295419}
   m_Mesh: {fileID: 6245283502211983364, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+--- !u!114 &328295425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328295419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!114 &346675137 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 728353771917281996, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
@@ -2213,6 +2292,7 @@ GameObject:
   - component: {fileID: 410740938}
   - component: {fileID: 410740937}
   - component: {fileID: 410740940}
+  - component: {fileID: 410740941}
   m_Layer: 8
   m_Name: karton_L_3
   m_TagString: Untagged
@@ -2337,6 +2417,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &410740941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410740935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1001 &429694723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2460,6 +2554,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4304595857770298553, guid: 5d77868666f429c40b56443c4d1e4d08, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1139482690}
+    - targetCorrespondingSourceObject: {fileID: 4304595857770298553, guid: 5d77868666f429c40b56443c4d1e4d08, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1139482691}
     - targetCorrespondingSourceObject: {fileID: 8571167838882559228, guid: 5d77868666f429c40b56443c4d1e4d08, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8714418903822259860}
@@ -3465,6 +3562,7 @@ GameObject:
   - component: {fileID: 744059462}
   - component: {fileID: 744059461}
   - component: {fileID: 744059460}
+  - component: {fileID: 744059464}
   m_Layer: 8
   m_Name: karton_L_4 (7)
   m_TagString: Untagged
@@ -3589,6 +3687,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744059458}
   m_Mesh: {fileID: 6245283502211983364, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+--- !u!114 &744059464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744059458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &748328190
 GameObject:
   m_ObjectHideFlags: 0
@@ -3602,6 +3714,7 @@ GameObject:
   - component: {fileID: 748328194}
   - component: {fileID: 748328193}
   - component: {fileID: 748328192}
+  - component: {fileID: 748328196}
   m_Layer: 8
   m_Name: karton_L_4 (8)
   m_TagString: Untagged
@@ -3726,6 +3839,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 748328190}
   m_Mesh: {fileID: 6245283502211983364, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+--- !u!114 &748328196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748328190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &759439834
 GameObject:
   m_ObjectHideFlags: 0
@@ -4026,6 +4153,7 @@ GameObject:
   - component: {fileID: 885139335}
   - component: {fileID: 885139334}
   - component: {fileID: 885139337}
+  - component: {fileID: 885139338}
   m_Layer: 8
   m_Name: karton_L_4
   m_TagString: Untagged
@@ -4150,6 +4278,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &885139338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885139332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &892949856
 GameObject:
   m_ObjectHideFlags: 0
@@ -4163,6 +4305,7 @@ GameObject:
   - component: {fileID: 892949860}
   - component: {fileID: 892949859}
   - component: {fileID: 892949858}
+  - component: {fileID: 892949862}
   m_Layer: 8
   m_Name: karton_L_4 (1)
   m_TagString: Untagged
@@ -4287,6 +4430,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 892949856}
   m_Mesh: {fileID: 6245283502211983364, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+--- !u!114 &892949862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892949856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!4 &897375247 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1182811042195730893, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
@@ -5124,6 +5281,7 @@ GameObject:
   - component: {fileID: 1001296342}
   - component: {fileID: 1001296341}
   - component: {fileID: 1001296340}
+  - component: {fileID: 1001296344}
   m_Layer: 8
   m_Name: karton_L_4 (9)
   m_TagString: Untagged
@@ -5248,6 +5406,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001296338}
   m_Mesh: {fileID: 6245283502211983364, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+--- !u!114 &1001296344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001296338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &1044525322
 GameObject:
   m_ObjectHideFlags: 0
@@ -5689,6 +5861,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &1139482691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139482689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!65 &1151890775
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5745,6 +5931,7 @@ GameObject:
   - component: {fileID: 1169856326}
   - component: {fileID: 1169856325}
   - component: {fileID: 1169856324}
+  - component: {fileID: 1169856328}
   m_Layer: 8
   m_Name: karton_L_4 (5)
   m_TagString: Untagged
@@ -5869,6 +6056,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169856322}
   m_Mesh: {fileID: 6245283502211983364, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+--- !u!114 &1169856328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169856322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &1177338536
 GameObject:
   m_ObjectHideFlags: 0
@@ -5882,6 +6083,7 @@ GameObject:
   - component: {fileID: 1177338540}
   - component: {fileID: 1177338539}
   - component: {fileID: 1177338538}
+  - component: {fileID: 1177338542}
   m_Layer: 8
   m_Name: karton_L_3 (1)
   m_TagString: Untagged
@@ -6006,6 +6208,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177338536}
   m_Mesh: {fileID: 3438505414227642029, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+--- !u!114 &1177338542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177338536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &1206310629
 GameObject:
   m_ObjectHideFlags: 0
@@ -6465,6 +6681,7 @@ GameObject:
   - component: {fileID: 1379469236}
   - component: {fileID: 1379469235}
   - component: {fileID: 1379469234}
+  - component: {fileID: 1379469238}
   m_Layer: 8
   m_Name: karton_L_3 (2)
   m_TagString: Untagged
@@ -6589,6 +6806,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379469232}
   m_Mesh: {fileID: 3438505414227642029, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+--- !u!114 &1379469238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379469232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &1407869374
 GameObject:
   m_ObjectHideFlags: 0
@@ -7608,6 +7839,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4304595857770298553, guid: 5d77868666f429c40b56443c4d1e4d08, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1739315678}
+    - targetCorrespondingSourceObject: {fileID: 4304595857770298553, guid: 5d77868666f429c40b56443c4d1e4d08, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1739315679}
     - targetCorrespondingSourceObject: {fileID: 8571167838882559228, guid: 5d77868666f429c40b56443c4d1e4d08, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1739315677}
@@ -7671,6 +7905,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &1739315679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739315675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &1746042501
 GameObject:
   m_ObjectHideFlags: 0
@@ -7684,6 +7932,7 @@ GameObject:
   - component: {fileID: 1746042505}
   - component: {fileID: 1746042504}
   - component: {fileID: 1746042503}
+  - component: {fileID: 1746042507}
   m_Layer: 8
   m_Name: karton_L_4 (2)
   m_TagString: Untagged
@@ -7808,6 +8057,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746042501}
   m_Mesh: {fileID: 6245283502211983364, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+--- !u!114 &1746042507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746042501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &1757936809 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4662153270316090847, guid: 62188d02b3e8f054ca5bbfaf5aa2d63d, type: 3}
@@ -8083,6 +8346,7 @@ GameObject:
   - component: {fileID: 1832600180}
   - component: {fileID: 1832600179}
   - component: {fileID: 1832600178}
+  - component: {fileID: 1832600182}
   m_Layer: 8
   m_Name: karton_L_4 (10)
   m_TagString: Untagged
@@ -8207,6 +8471,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832600176}
   m_Mesh: {fileID: 6245283502211983364, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+--- !u!114 &1832600182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832600176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &1840526382
 GameObject:
   m_ObjectHideFlags: 0
@@ -8370,6 +8648,7 @@ GameObject:
   - component: {fileID: 1878950004}
   - component: {fileID: 1878950003}
   - component: {fileID: 1878950002}
+  - component: {fileID: 1878950006}
   m_Layer: 8
   m_Name: karton_L_4 (6)
   m_TagString: Untagged
@@ -8494,6 +8773,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878950000}
   m_Mesh: {fileID: 6245283502211983364, guid: 949b78a72e98f9d45ad5787bf7dc729f, type: 3}
+--- !u!114 &1878950006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878950000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!65 &1918777170
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9711,6 +10004,7 @@ GameObject:
   - component: {fileID: 2124813502}
   - component: {fileID: 2124813501}
   - component: {fileID: 2124813505}
+  - component: {fileID: 2124813506}
   m_Layer: 8
   m_Name: karton_L_4 (1)
   m_TagString: Untagged
@@ -9835,6 +10129,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2124813506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124813500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
 --- !u!1 &2143325508
 GameObject:
   m_ObjectHideFlags: 0
