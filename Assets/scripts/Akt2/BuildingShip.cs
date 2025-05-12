@@ -5,7 +5,13 @@ public class BuildingShip : MonoBehaviour
 {
     [SerializeField] private List<Renderer> shipParts;
     [SerializeField] private List<kloda> PutInShipParts;
+<<<<<<< HEAD
     private Material WoodMaterial;
+=======
+    [SerializeField] private Animator animator;
+    private Material WoodMaterial;
+    bool isOnIsland = false;
+>>>>>>> c87e761a8c99a3f018e9eb374d946fd84138bfcf
     public int currentPartIndex = 0;
 
     void OnTriggerEnter(Collider other)
@@ -22,9 +28,38 @@ public class BuildingShip : MonoBehaviour
             // Destroy(other.gameObject);
             other.gameObject.SetActive(false);
         }
+<<<<<<< HEAD
         if (currentPartIndex >= shipParts.Count)
         {
 
+=======
+        if (other.CompareTag("Island"))
+        {
+            isOnIsland = true;
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Island"))
+        {
+            isOnIsland = false;
+        }
+    }
+    public void SwimToIsland()
+    {
+        if (currentPartIndex >= shipParts.Count)
+        {
+            if (isOnIsland)
+            {
+                animator.SetBool("SwimTo", false);
+                animator.SetBool("SwimBack", true);
+            }
+            else
+            {
+                animator.SetBool("SwimTo", true);
+                animator.SetBool("SwimBack", false);
+            }
+>>>>>>> c87e761a8c99a3f018e9eb374d946fd84138bfcf
         }
     }
 }
