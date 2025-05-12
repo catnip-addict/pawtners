@@ -238,7 +238,7 @@ public class SettingsManager : MonoBehaviour
     }
     public void StartGame()
     {
-        StartCoroutine(TransitionManager.instance.TransitionToScene(1));
+        StartCoroutine(TransitionManager.Instance.TransitionToScene(1));
     }
 
     public void QuitGame()

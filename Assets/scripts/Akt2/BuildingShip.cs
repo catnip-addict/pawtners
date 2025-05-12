@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +7,13 @@ public class BuildingShip : MonoBehaviour
     [SerializeField] private List<Renderer> shipParts;
     [SerializeField] private List<kloda> PutInShipParts;
     [SerializeField] private Animator animator;
-    private Material WoodMaterial;
+    [SerializeField] private Transform teleportPoint;
+    [SerializeField] private GameObject otherBoat;
+    [SerializeField] private float teleportDelay = 1f;
+    [SerializeField] private Material WoodMaterial;
     bool isOnIsland = false;
+    Player player1;
+    Player player2;
     public int currentPartIndex = 0;
 
     void OnTriggerEnter(Collider other)
@@ -24,32 +30,56 @@ public class BuildingShip : MonoBehaviour
             // Destroy(other.gameObject);
             other.gameObject.SetActive(false);
         }
-        if (other.CompareTag("Island"))
-        {
-            isOnIsland = true;
-        }
-    }
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Island"))
-        {
-            isOnIsland = false;
-        }
     }
     public void SwimToIsland()
     {
         if (currentPartIndex >= shipParts.Count)
         {
-            if (isOnIsland)
-            {
-                animator.SetBool("SwimTo", false);
-                animator.SetBool("SwimBack", true);
-            }
-            else
-            {
-                animator.SetBool("SwimTo", true);
-                animator.SetBool("SwimBack", false);
-            }
+            StartCoroutine(SwimToIslandCoroutine());
         }
+    }
+
+    private IEnumerator SwimToIslandCoroutine()
+    {
+        player1 = GameManager.Instance.player1;
+        player2 = GameManager.Instance.player2;
+
+        TransitionManager.Instance.FadeIn();
+        yield return new WaitForSeconds(teleportDelay);
+
+        player1.TeleportToPosition(teleportPoint.position);
+        player1.SetJumpVelocity(0);
+        player2.SetJumpVelocity(0);
+        player2.TeleportToPosition(teleportPoint.position + new Vector3(0.5f, 0.5f, 0));
+        otherBoat.SetActive(true);
+        yield return new WaitForSeconds(teleportDelay);
+        TransitionManager.Instance.FadeOut();
+
+        gameObject.SetActive(false);
+    }
+
+    public void SwimBackToIsland()
+    {
+        StartCoroutine(SwimBackToIslandCoroutine());
+    }
+
+    private IEnumerator SwimBackToIslandCoroutine()
+    {
+        player1 = GameManager.Instance.player1;
+        player2 = GameManager.Instance.player2;
+
+        TransitionManager.Instance.FadeIn();
+        yield return new WaitForSeconds(teleportDelay);
+
+        player1.TeleportToPosition(teleportPoint.position);
+        player2.TeleportToPosition(teleportPoint.position + new Vector3(0.5f, 0.5f, 0));
+        player1.SetJumpVelocity(0);
+        player2.SetJumpVelocity(0);
+        otherBoat.SetActive(true);
+
+
+        yield return new WaitForSeconds(teleportDelay);
+        TransitionManager.Instance.FadeOut();
+        gameObject.SetActive(false);
     }
 }

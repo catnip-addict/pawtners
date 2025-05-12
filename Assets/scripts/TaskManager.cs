@@ -72,7 +72,7 @@ public class TaskManager : MonoBehaviour
             // SceneManager.LoadScene(0);
             // Cursor.lockState = CursorLockMode.None;
             // Cursor.visible = true;
-            StartCoroutine(TransitionManager.instance.TransitionToScene(whichScene));
+            StartCoroutine(TransitionManager.Instance.TransitionToScene(whichScene));
         }
 
     }
@@ -144,7 +144,7 @@ public class TaskManager : MonoBehaviour
     }
     public void Tp(int id)
     {
-        StartCoroutine(TransitionManager.instance.TransitionToScene(id));
+        StartCoroutine(TransitionManager.Instance.TransitionToScene(id));
     }
 
 

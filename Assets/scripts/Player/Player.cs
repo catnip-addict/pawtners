@@ -427,7 +427,10 @@ public class Player : MonoBehaviour
         audioSource.PlayOneShot(clip);
         audioSource.pitch = originalPitch;
     }
-
+    public void TeleportToPosition(Vector3 position)
+    {
+        transform.position = position;
+    }
     public void SetPlayerHat(int index)
     {
         throw new NotImplementedException();
