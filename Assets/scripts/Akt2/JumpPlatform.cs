@@ -12,6 +12,7 @@ public class JumpPlatform : MonoBehaviour
             animator.SetTrigger("Jump");
             player.JumpParticles();
             player.SetJumpVelocity(jumpForce);
+            SoundManager.Instance.PlaySound(2);
             // Debug.Log("Jump");
         }
     }
