@@ -261,4 +261,13 @@ public class PauseMenu : MonoBehaviour
         player2.SetMouseSensitivity(GetMouseSensitivity());
         PlayerPrefs.Save();
     }
+    void Tp(int id)
+    {
+        StartCoroutine(TransitionManager.Instance.TransitionToScene(id));
+    }
+    public void Resetlevel()
+    {
+        Time.timeScale = 1.0f;
+        Tp(SceneManager.GetActiveScene().buildIndex);
+    }
 }
