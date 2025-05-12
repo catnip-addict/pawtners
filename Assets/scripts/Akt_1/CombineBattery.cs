@@ -24,4 +24,17 @@ public class CombineBattery : MonoBehaviour
             // gameObject.SetActive(false);
         }
     }
+    public void GetBatteryOut(int batteryType)
+    {
+        if (batteryType == 0)
+        {
+            red = false;
+            Debug.Log("Red Battery Inserted!");
+        }
+        else if (batteryType == 1)
+        {
+            blue = false;
+            Debug.Log("Blue Battery Inserted!");
+        }
+    }
 }
