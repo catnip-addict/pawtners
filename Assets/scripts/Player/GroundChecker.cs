@@ -26,7 +26,7 @@ public class GroundChecker : MonoBehaviour
         Gizmos.DrawWireSphere(pos1, radius);
         Gizmos.DrawWireSphere(pos2, radius);
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(pos3, radius);
+        Gizmos.DrawWireSphere(pos3, radius * 0.9f);
     }
 
     void Update()
@@ -40,7 +40,7 @@ public class GroundChecker : MonoBehaviour
 
         IsGrounded = Physics.CheckSphere(pos1, radius, groundLayers) ||
                      Physics.CheckSphere(pos2, radius, groundLayers);
-        if (Physics.CheckSphere(pos3, radius, InsideLayers))
+        if (Physics.CheckSphere(pos3, radius * 0.9f, InsideLayers))
         {
             // Debug.Log(groundLayers.value);
             GetComponent<Player>().SetJumpVelocity(5);
