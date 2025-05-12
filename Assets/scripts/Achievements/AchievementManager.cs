@@ -74,7 +74,17 @@ public class AchievementManager : MonoBehaviour
             }
         }
     }
+    public void ResetAchievements()
+    {
+        foreach (Achievement achievement in availableAchievements)
+        {
+            unlockedAchievements[achievement] = false;
+        }
 
+        SaveAchievementStates();
+        LoadAchievementStates();
+        Debug.Log("Wszystkie osiągnięcia zostały zresetowane");
+    }
     public void SaveAchievementStates()
     {
         if (SaveSystemManager.instance != null)
