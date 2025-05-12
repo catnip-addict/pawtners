@@ -8,7 +8,9 @@ public class KanarekManager : MonoBehaviour
     // public static KanarekManager instance;
 
     public Animator DialogueAnimator;
+    public TextMeshProUGUI nameText;
     public TextMeshProUGUI TutorialText;
+    public string otherName = "";
     public string[] Sentences;
     public float DialogueSpeed;
 
@@ -43,16 +45,16 @@ public class KanarekManager : MonoBehaviour
 
     public void PlaySentence(int index1)
     {
-            if (isDisplayingText)
-            {
-                sentenceQueue.Enqueue(index1);
-            }
-            else
-            {
-                DialogueAnimator.SetTrigger("Enter");
-                DisplaySentence(index1);
-            }
+        if (isDisplayingText)
+        {
+            sentenceQueue.Enqueue(index1);
         }
+        else
+        {
+            DialogueAnimator.SetTrigger("Enter");
+            DisplaySentence(index1);
+        }
+    }
 
     private void DisplaySentence(int index)
     {
@@ -63,6 +65,14 @@ public class KanarekManager : MonoBehaviour
 
         TutorialText.text = "";
         isDisplayingText = true;
+        if (otherName != "" && index >= 1)
+        {
+            nameText.text = otherName;
+        }
+        else
+        {
+            nameText.text = "Kanarek";
+        }
         activeCoroutine = StartCoroutine(WriteSentence(index));
     }
 

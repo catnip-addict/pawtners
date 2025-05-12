@@ -1517,6 +1517,17 @@ MonoBehaviour:
   - {fileID: 1338026573}
   - {fileID: 2103224509}
   teleportDelay: 1
+--- !u!114 &87284436 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7236405608309186417, guid: 491b9b65f57792441a3ae7a018bd8aef, type: 3}
+  m_PrefabInstance: {fileID: 1949859969}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &90111622
 GameObject:
   m_ObjectHideFlags: 0
@@ -4948,6 +4959,28 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.3
   m_Center: {x: 0.05, y: 0, z: 0}
+--- !u!95 &175054956
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175054953}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9f34ef05fe72bba49b933d92580888ad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &177125688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11649,7 +11682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &373045374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16398,6 +16431,7 @@ GameObject:
   - component: {fileID: 514148390}
   - component: {fileID: 514148389}
   - component: {fileID: 514148388}
+  - component: {fileID: 514148391}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -16496,6 +16530,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514148386}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &514148391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514148386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53feeccfc2e72424aaf769cbb316d119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 3
+  disappearAfter: 1
+  onButtonPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 959671914}
+        m_TargetAssemblyTypeName: TaskManager, Assembly-CSharp
+        m_MethodName: showcomic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &516070679 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 017a46eebfbfeef489d135ce1cc11e47, type: 3}
@@ -32831,7 +32894,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueAnimator: {fileID: 1949859972}
+  nameText: {fileID: 87284436}
   TutorialText: {fileID: 1949859971}
+  otherName: "Je\u017C"
   Sentences:
   - "Dobra uciekli\u015Bmy . Widzicie tego je\u017Ca mo\u017Ce on wie gdzie teraz
     i\u015B\u0107."
@@ -40577,7 +40642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7503251238041210701, guid: dcbb95a2f9cd84641a08bbb6e35e9c5d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 48.969997
+      value: 48.97
       objectReference: {fileID: 0}
     - target: {fileID: 7503251238041210701, guid: dcbb95a2f9cd84641a08bbb6e35e9c5d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -40622,6 +40687,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2759924467670210353, guid: dcbb95a2f9cd84641a08bbb6e35e9c5d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 175054955}
+    - targetCorrespondingSourceObject: {fileID: 2759924467670210353, guid: dcbb95a2f9cd84641a08bbb6e35e9c5d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 175054956}
   m_SourcePrefab: {fileID: 100100000, guid: dcbb95a2f9cd84641a08bbb6e35e9c5d, type: 3}
 --- !u!1001 &1166144747
 PrefabInstance:
@@ -59279,8 +59347,8 @@ MonoBehaviour:
   - {fileID: 1026267163}
   addedApples: []
   kanarek: {fileID: 959671921}
-  jezykAnimator: {fileID: 0}
-  colliderRura: {fileID: 0}
+  jezykAnimator: {fileID: 175054956}
+  colliderRura: {fileID: 138552251}
   appleCount: 0
 --- !u!65 &1641526907
 BoxCollider:
@@ -75309,7 +75377,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2143325510
 MonoBehaviour:

@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Player1, Player2, Ground
 - Active game object:
-  - Name: komiks_1
+  - Name: Player 2
   - Tag: Untagged
-  - Layer: UI
+  - Layer: Player2
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
