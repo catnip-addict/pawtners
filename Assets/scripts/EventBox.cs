@@ -63,8 +63,9 @@ public class EventBox : MonoBehaviour
             {
                 if (onButtonPress != null)
                 {
-                    onButtonPress.Invoke();
                     gameObject.SetActive(!disappearAfter);
+                    onButtonPress.Invoke();
+                    
                 }
             }
         }
