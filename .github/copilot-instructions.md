@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Player1, Player2, Ground
 - Active game object:
-  - Name: koszyk (2)
+  - Name: koszyk (4)
   - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
