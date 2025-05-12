@@ -9,12 +9,10 @@ public class BuildingShip : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Transform teleportPoint;
     [SerializeField] private GameObject otherBoat;
-<<<<<<< HEAD
+
     [SerializeField] private float teleportDelay = 1f;
     [SerializeField] private Material WoodMaterial;
-=======
-    private Material WoodMaterial;
->>>>>>> 7e5334aef6e0c561acbf4b766bcf25486ec6987c
+
     bool isOnIsland = false;
     Player player1;
     Player player2;
@@ -40,7 +38,6 @@ public class BuildingShip : MonoBehaviour
             other.gameObject.SetActive(false);
         }
     }
-<<<<<<< HEAD
     public void SwimToIsland()
     {
         if (currentPartIndex >= shipParts.Count)
@@ -92,7 +89,4 @@ public class BuildingShip : MonoBehaviour
         TransitionManager.Instance.FadeOut();
         gameObject.SetActive(false);
     }
-=======
-
->>>>>>> 7e5334aef6e0c561acbf4b766bcf25486ec6987c
 }
