@@ -75,6 +75,29 @@ public class SettingsManager : MonoBehaviour
             currentInputDevice = InputDeviceType.Mouse;
             EventSystem.current.SetSelectedGameObject(null);
         }
+        for (int i = 0; i < 20; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Joystick1Button0 + i))
+            {
+                if (currentInputDevice != InputDeviceType.GamepadKeyboard)
+                {
+                    currentInputDevice = InputDeviceType.GamepadKeyboard;
+                    ChangeInputDevice();
+                }
+                break;
+            }
+        }
+
+        // Check for joystick axes movement
+        if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.2f ||
+            Mathf.Abs(Input.GetAxis("Vertical")) > 0.2f)
+        {
+            if (currentInputDevice != InputDeviceType.GamepadKeyboard)
+            {
+                currentInputDevice = InputDeviceType.GamepadKeyboard;
+                ChangeInputDevice();
+            }
+        }
     }
     void ChangeInputDevice()
     {
