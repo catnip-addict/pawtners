@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Player1, Player2, Ground
 - Active game object:
-  - Name: Tree 1 (97)
+  - Name: Map_2
   - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
