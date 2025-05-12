@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: butelka
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 85e564d4905fc40d2bdbf87d2f13e21f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -264,6 +268,10 @@ PrefabInstance:
     - target: {fileID: 2646267228896938144, guid: e553a721143bec547a953644b77a1021, type: 3}
       propertyPath: m_Name
       value: Achievements
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646267228896938144, guid: e553a721143bec547a953644b77a1021, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5711481695194583021, guid: e553a721143bec547a953644b77a1021, type: 3}
       propertyPath: m_Pivot.x
@@ -1550,6 +1558,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: butelka (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 85e564d4905fc40d2bdbf87d2f13e21f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2257,6 +2269,10 @@ PrefabInstance:
     - target: {fileID: 4356913066090008236, guid: f796810d40ff2be4990319030a9ea572, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356913066090008236, guid: f796810d40ff2be4990319030a9ea572, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5885028753266010723, guid: f796810d40ff2be4990319030a9ea572, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4814,7 +4830,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959671912}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d4434bcf6f32a242b272d90759f0a71, type: 3}
   m_Name: 
@@ -7193,7 +7209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1631468700
 Transform:
   m_ObjectHideFlags: 0
@@ -8290,6 +8306,10 @@ PrefabInstance:
     - target: {fileID: 5814980240524274654, guid: 374d210bcfa713b4aa4389d2d825ea78, type: 3}
       propertyPath: m_Name
       value: FadeManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814980240524274654, guid: 374d210bcfa713b4aa4389d2d825ea78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12384,7 +12404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &2192511488518720983
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13992,6 +14012,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9124094477695629775, guid: 6bd2d81ef276c2047b9b897913d3f3e7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14253,6 +14277,10 @@ PrefabInstance:
     - target: {fileID: 3120651856453754274, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
       propertyPath: m_Name
       value: Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120651856453754274, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3567790585868962444, guid: 87d8a3c3a703d4d83b99f14c63294e68, type: 3}
       propertyPath: volumeTrigger

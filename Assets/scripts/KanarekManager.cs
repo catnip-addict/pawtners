@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class KanarekManager : MonoBehaviour
 {
-    public static KanarekManager instance;
+    // public static KanarekManager instance;
 
     public Animator DialogueAnimator;
     public TextMeshProUGUI TutorialText;
@@ -20,18 +20,18 @@ public class KanarekManager : MonoBehaviour
     [Header("Sprite Settings")]
     [SerializeField] private TMP_SpriteAsset spriteAsset; // Reference to your sprite asset
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    // private void Awake()
+    // {
+    //     if (instance == null)
+    //     {
+    //         instance = this;
+    //         DontDestroyOnLoad(gameObject);
+    //     }
+    //     else
+    //     {
+    //         Destroy(gameObject);
+    //     }
+    // }
 
     private void Start()
     {

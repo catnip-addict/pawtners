@@ -5,7 +5,7 @@ public class TutorialTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GetComponent<Collider>().enabled = false;
-        KanarekManager.instance.NextSentence();
+        // KanarekManager.instance.NextSentence();
         Destroy(gameObject);
     }
 }
