@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 5883479018520999824}
   - component: {fileID: 4973919649509252645}
   - component: {fileID: -3915446912667755967}
+  - component: {fileID: -6297553784417178811}
   m_Layer: 4
   m_Name: Apple
   m_TagString: PickUp
@@ -117,7 +118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5363440376291632270}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 43.88459, y: -14.17, z: 208.65625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -138,8 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7331e0400eadd014292d035708b3a380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemCollider: {fileID: 8035380821909079620}
-  triggerCollider: {fileID: 0}
+  itemCollider: {fileID: 2659112088990062820}
+  triggerCollider: {fileID: 5883479018520999824}
   weight: 0
   needAnimation: 1
   dragging: 0
@@ -688,6 +689,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionSoundIndex: 0
   soundCooldown: 0.2
+--- !u!114 &-6297553784417178811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5363440376291632270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20536af375a49c44198d5fc1d4a72f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7463037380934008752
 PrefabInstance:
   m_ObjectHideFlags: 0
