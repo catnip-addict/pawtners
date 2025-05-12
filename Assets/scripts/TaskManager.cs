@@ -153,4 +153,9 @@ public class TaskManager : MonoBehaviour
             Tp(3);
         }
     }
+    public void showcomic()
+    {
+        StartCoroutine(ShowComic());
+        isComicShowing = true;
+    }
 }

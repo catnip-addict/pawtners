@@ -2,15 +2,12 @@ using UnityEngine;
 
 public class Apple : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Transform spawnPoint;
+    void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.CompareTag("BatteryBox"))
+        {
+            transform.position = spawnPoint.position;
+        }
     }
 }
