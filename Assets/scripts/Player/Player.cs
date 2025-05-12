@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.XR;
 using Utilities;
 
 public enum PlayerNumber
@@ -48,6 +47,7 @@ public class Player : MonoBehaviour
     [SerializeField] float coyoteTime = 0.2f;
     private float coyoteTimeCounter = 0f;
     private bool wasGroundedLastFrame = false;
+    private bool inTheAir = false;
 
     [Header("CheckPoints")]
     [SerializeField] int checkPointIndex = 0;
@@ -274,9 +274,15 @@ public class Player : MonoBehaviour
         if (groundChecker.IsGrounded)
         {
             animator.SetBool("inTheAir", false);
+            if (inTheAir)
+            {
+                // CinemachineShakeManager.Instance.Shake(freeLookVCam, 0.5f, 0.15f);
+                inTheAir = false;
+            }
         }
         else
         {
+            inTheAir = true;
             animator.SetBool("inTheAir", true);
         }
     }

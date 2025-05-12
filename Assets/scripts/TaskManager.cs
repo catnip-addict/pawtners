@@ -146,8 +146,6 @@ public class TaskManager : MonoBehaviour
     {
         StartCoroutine(TransitionManager.Instance.TransitionToScene(id));
     }
-
-
     public void haveKey()
     {
         if (mechaniki1.haveObject || mechaniki2.haveObject)
