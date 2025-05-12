@@ -121,5 +121,9 @@ public class Mechaniki : MonoBehaviour
         heldObject = null;
         heldObjectRb = null;
         player.isRestricted = false;
+        if (outline != null)
+        {
+            outline.enabled = true;
+        }
     }
 }
