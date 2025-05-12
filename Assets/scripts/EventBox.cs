@@ -8,9 +8,10 @@ public class EventBox : MonoBehaviour
     public UnityEvent onButtonPress;
     bool player1OnButton = false;
     bool player2OnButton = false;
+    private bool eventTriggered = false;
+
     void OnTriggerExit(Collider other)
     {
-
         if (playerNumber == PlayerNumber.Both)
         {
             if (other.gameObject.TryGetComponent<Player>(out Player player))
@@ -23,25 +24,33 @@ public class EventBox : MonoBehaviour
                 {
                     player2OnButton = false;
                 }
+                if (!player1OnButton && !player2OnButton)
+                {
+                    eventTriggered = false;
+                }
             }
         }
-
+        else if (playerNumber != PlayerNumber.Both)
+        {
+            eventTriggered = false;
+        }
     }
-    private void OnTriggerStay(Collider other)
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<Player>(out var player))
         {
-            if (player.playerNumber == playerNumber)
+            if (player.playerNumber == playerNumber && !eventTriggered)
             {
                 if (onButtonPress != null)
                 {
+                    eventTriggered = true;
                     onButtonPress.Invoke();
                     gameObject.SetActive(!disappearAfter);
                 }
             }
             else if (playerNumber == PlayerNumber.Both)
             {
-
                 if (player.playerNumber == PlayerNumber.First)
                 {
                     player1OnButton = true;
@@ -50,22 +59,23 @@ public class EventBox : MonoBehaviour
                 {
                     player2OnButton = true;
                 }
-                if (player1OnButton && player2OnButton)
+                if (player1OnButton && player2OnButton && !eventTriggered)
                 {
                     if (onButtonPress != null)
                     {
-                        gameObject.SetActive(!disappearAfter);
+                        eventTriggered = true;
                         onButtonPress.Invoke();
+                        gameObject.SetActive(!disappearAfter);
                     }
                 }
             }
-            else if (playerNumber == PlayerNumber.Whatever)
+            else if (playerNumber == PlayerNumber.Whatever && !eventTriggered)
             {
                 if (onButtonPress != null)
                 {
-                    gameObject.SetActive(!disappearAfter);
+                    eventTriggered = true;
                     onButtonPress.Invoke();
-                    
+                    gameObject.SetActive(!disappearAfter);
                 }
             }
         }
