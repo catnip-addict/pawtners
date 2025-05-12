@@ -29,9 +29,17 @@ public class BatteryBox : MonoBehaviour
         onBatteryTakeOut?.Invoke();
         return heldObject;
     }
+    public void DeleteBattery()
+    {
+        if (heldObject != null)
+        {
+            heldObject = null;
+            heldObjectRb = null;
+        }
+    }
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("PickUp") && other.GetComponent<Item>().needAnimation)
+        if (other.CompareTag("PickUp") && other.GetComponent<Item>().needAnimation && heldObject == null)
         {
             Debug.Log(other.gameObject.name);
             if (other.gameObject.name == "Zabawka2" || other.gameObject.name == "Zabawka3")
