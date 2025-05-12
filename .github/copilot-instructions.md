@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Player1, Player2, Ground
 - Active game object:
-  - Name: Terrain
+  - Name: SwitchPlayers
   - Tag: Untagged
-  - Layer: Ground
+  - Layer: UI
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
