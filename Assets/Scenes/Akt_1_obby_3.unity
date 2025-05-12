@@ -1667,6 +1667,89 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 12, z: 8}
   m_Center: {x: 0, y: -9.8, z: 0}
+--- !u!1 &184925756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 184925757}
+  - component: {fileID: 184925759}
+  - component: {fileID: 184925758}
+  m_Layer: 0
+  m_Name: Start (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &184925757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184925756}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -92.23, y: 14.16, z: 10.48}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2041342052}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &184925758
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184925756}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 8.3112755, y: 3.0730743, z: 26.339462}
+  m_Center: {x: 2.7525196, y: 1.0365372, z: -5.3921165}
+--- !u!114 &184925759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184925756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53feeccfc2e72424aaf769cbb316d119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 2
+  disappearAfter: 1
+  onButtonPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 959671920}
+        m_TargetAssemblyTypeName: KanarekManager, Assembly-CSharp
+        m_MethodName: PlaySentence
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &190408185
 GameObject:
   m_ObjectHideFlags: 0
@@ -9798,6 +9881,10 @@ MonoBehaviour:
   Sentences:
   - "Tym razem b\u0119dziecie potrzebowali od siebie du\u017Co wsp\xF3\u0142pracy.
     Powodzenia!"
+  - "Ciekawostka. Mo\u017Cecie wcisn\u0105\u0107 <sprite=7> lub <sprite=10> aby zamiaucze\u0107
+    :)"
+  - "Niesamowite! Wasza wi\u0119\u017A jest widoczna w ka\u017Cdym ge\u015Bcie. Drzwi
+    stoj\u0105 otworem - czas na wolno\u015B\u0107 i nowy rozdzia\u0142 waszej historii"
   DialogueSpeed: 0.05
   spriteAsset: {fileID: 11400000, guid: 433aba7b198e71246ae0e4af4e6031d0, type: 2}
 --- !u!1001 &971274613
@@ -16405,6 +16492,89 @@ Transform:
   - {fileID: 430266089}
   m_Father: {fileID: 1324420914}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1625933185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1625933186}
+  - component: {fileID: 1625933188}
+  - component: {fileID: 1625933187}
+  m_Layer: 0
+  m_Name: Start (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1625933186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625933185}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -28.94, y: 10.27, z: -20.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2041342052}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1625933187
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625933185}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.042946, y: 3.0730743, z: 8.186014}
+  m_Center: {x: 10.71957, y: 1.0365372, z: -1.9097595}
+--- !u!114 &1625933188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625933185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53feeccfc2e72424aaf769cbb316d119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 3
+  disappearAfter: 1
+  onButtonPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 959671920}
+        m_TargetAssemblyTypeName: KanarekManager, Assembly-CSharp
+        m_MethodName: PlaySentence
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1626668749
 GameObject:
   m_ObjectHideFlags: 0
@@ -21013,6 +21183,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1455798011}
+  - {fileID: 1625933186}
+  - {fileID: 184925757}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2050307571
