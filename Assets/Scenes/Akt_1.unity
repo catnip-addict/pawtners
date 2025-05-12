@@ -1272,6 +1272,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 656201807}
+  - {fileID: 616491354}
   m_Father: {fileID: 1356848961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &181939921
@@ -3244,6 +3245,89 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3190623603289355565, guid: 4946180b68477c7458cb4f17b6685502, type: 3}
   m_PrefabInstance: {fileID: 575715437}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &616491353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 616491354}
+  - component: {fileID: 616491356}
+  - component: {fileID: 616491355}
+  m_Layer: 0
+  m_Name: podpowiedz
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &616491354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616491353}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.13, y: 0, z: -15.27}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 180812646}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &616491355
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616491353}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.3613663, y: 6.089085, z: 6.0575705}
+  m_Center: {x: -1.0829048, y: 2.544542, z: 2.5287852}
+--- !u!114 &616491356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616491353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53feeccfc2e72424aaf769cbb316d119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 3
+  disappearAfter: 1
+  onButtonPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 959671921}
+        m_TargetAssemblyTypeName: KanarekManager, Assembly-CSharp
+        m_MethodName: NextSentence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &618487855
 GameObject:
   m_ObjectHideFlags: 0
@@ -5206,17 +5290,9 @@ MonoBehaviour:
   DialogueAnimator: {fileID: 229734558}
   TutorialText: {fileID: 229734557}
   Sentences:
-  - "Hej! Mo\u017Cecie si\u0119 porusza\u0107 za pomoc\u0105 <sprite=2><sprite=3><sprite=4><sprite=5>lub
-    <sprite=13> "
-  - "Skaczcie, przytrzymuj\u0105c <sprite=1> lub <sprite=8>. Im d\u0142u\u017Cej
-    wci\u015Bniecie przycisk tym wy\u017Cej kot podskoczy!"
-  - "Naciskaj\u0105c <sprite=6> lub <sprite=11> mo\u017Cecie podno\u015Bci\u0107
-    przedmioty, kt\xF3re si\u0119 pod\u015Bwietlaj\u0105."
-  - "Czujecie to co ja? To zapach sera! Chod\u017Acie przekonamy si\u0119 gdzie te
-    pyszno\u015Bci!"
-  - "Teraz jak ju\u017C jeste\u015Bmy na asfaldzie mo\u017Cemy rozwin\u0105\u0107
-    pe\u0142n\u0105 pr\u0119dko\u015B\u0107 przytrzymuj\u0105c <sprite=0> lub <sprite=12>!"
-  - "Co ciekawego jest w zau\u0142ku?"
+  - "Zobaczcie! Tu jest klucz! Zdob\u0105d\u017Acie go aby wydosta\u0107 si\u0119
+    ze schroniska!"
+  - "Pami\u0119tajcie, \u017Ce mo\u017Cecie przenosi\u0107 przedmioy."
   DialogueSpeed: 0.05
   spriteAsset: {fileID: 11400000, guid: 433aba7b198e71246ae0e4af4e6031d0, type: 2}
 --- !u!65 &967531700
@@ -10065,6 +10141,7 @@ GameObject:
   - component: {fileID: 2080134120}
   - component: {fileID: 2080134119}
   - component: {fileID: 2080134118}
+  - component: {fileID: 2080134121}
   m_Layer: 0
   m_Name: StartCam
   m_TagString: Untagged
@@ -10146,6 +10223,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 912538468}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2080134121
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080134117}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0fa45f14ac120bd40a0bf3b46a4206b4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2098638170
 GameObject:
   m_ObjectHideFlags: 0
