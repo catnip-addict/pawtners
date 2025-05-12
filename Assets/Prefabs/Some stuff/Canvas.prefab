@@ -2016,6 +2016,8 @@ MonoBehaviour:
   mouseSensSlider: {fileID: 4031900051987152286}
   currentInputDevice: 0
   isBusy: 0
+  mainMenuFirstButton: {fileID: 5272444158400102249}
+  settingsMenuFirstButton: {fileID: 4745444355503865476}
 --- !u!1 &7518591455866027963
 GameObject:
   m_ObjectHideFlags: 0
@@ -2711,6 +2713,11 @@ PrefabInstance:
       addedObject: {fileID: 5243497475688211405}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbfc6f9aec1f081469ecb15a59d134f9, type: 3}
+--- !u!1 &5272444158400102249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5318942033182963556, guid: bbfc6f9aec1f081469ecb15a59d134f9, type: 3}
+  m_PrefabInstance: {fileID: 70880696281253901}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5647278733733782839 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5666930794092244282, guid: bbfc6f9aec1f081469ecb15a59d134f9, type: 3}
@@ -3189,6 +3196,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4745444355503865476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4765918917207657263, guid: 13ebddc0a952f8c428ca7f72331f4f0b, type: 3}
+  m_PrefabInstance: {fileID: 286196823747114411}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5021873202832537039 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5064721559070457956, guid: 13ebddc0a952f8c428ca7f72331f4f0b, type: 3}
@@ -3205,7 +3217,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5381101140069239795, guid: 13ebddc0a952f8c428ca7f72331f4f0b, type: 3}
   m_PrefabInstance: {fileID: 286196823747114411}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4745444355503865476}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}

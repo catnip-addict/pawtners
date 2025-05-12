@@ -1,5 +1,6 @@
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
@@ -29,6 +30,8 @@ public class PauseMenu : MonoBehaviour
 
     private Resolution[] resolutions;
     bool gameIsPaused = false;
+    [SerializeField] private GameObject mainMenuFirstButton;
+    [SerializeField] private GameObject settingsMenuFirstButton;
 
     private void Awake()
     {
@@ -51,6 +54,59 @@ public class PauseMenu : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+    void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            if (currentInputDevice != InputDeviceType.GamepadKeyboard)
+            {
+                currentInputDevice = InputDeviceType.GamepadKeyboard;
+                ChangeInputDevice();
+            }
+        }
+        if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+        {
+            currentInputDevice = InputDeviceType.Mouse;
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+        for (int i = 0; i < 20; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Joystick1Button0 + i))
+            {
+                if (currentInputDevice != InputDeviceType.GamepadKeyboard)
+                {
+                    currentInputDevice = InputDeviceType.GamepadKeyboard;
+                    ChangeInputDevice();
+                }
+                break;
+            }
+        }
+
+        // Check for joystick axes movement
+        if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.2f ||
+            Mathf.Abs(Input.GetAxis("Vertical")) > 0.2f)
+        {
+            if (currentInputDevice != InputDeviceType.GamepadKeyboard)
+            {
+                currentInputDevice = InputDeviceType.GamepadKeyboard;
+                ChangeInputDevice();
+            }
+        }
+    }
+    void ChangeInputDevice()
+    {
+        if (currentInputDevice == InputDeviceType.GamepadKeyboard)
+        {
+            if (pauseMenuUI.activeSelf)
+            {
+                EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
+            }
+            if (settingsMenuUI.activeSelf)
+            {
+                EventSystem.current.SetSelectedGameObject(settingsMenuFirstButton);
+            }
+        }
     }
     public void CheckForPause()
     {
