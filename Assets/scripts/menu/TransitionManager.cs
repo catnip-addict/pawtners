@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TransitionManager : MonoBehaviour
 {
-    public static TransitionManager instance;
+    public static TransitionManager Instance;
 
     [SerializeField] private CanvasGroup fadeCanvasGroup;
     [SerializeField] private GraphicRaycaster graphicRaycaster;
@@ -13,9 +13,9 @@ public class TransitionManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else

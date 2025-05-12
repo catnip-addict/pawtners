@@ -35,7 +35,7 @@ public class CutsceneManage : MonoBehaviour
         cutsceneAnim.SetTrigger(cutsceneTriggerName);
 
         yield return new WaitForSeconds(animationTime);
-        StartCoroutine(TransitionManager.instance.TransitionToScene(3));
+        StartCoroutine(TransitionManager.Instance.TransitionToScene(3));
         // playerScript.enabled = true;
         // playerCam1.gameObject.SetActive(true);
         // playerCam2.gameObject.SetActive(true);
