@@ -1,16 +1,30 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildingShip : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private List<Renderer> shipParts;
+    [SerializeField] private List<kloda> PutInShipParts;
+    private Material WoodMaterial;
+    public int currentPartIndex = 0;
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        
+        if (other.TryGetComponent<kloda>(out kloda log))
+        {
+            if (PutInShipParts.Contains(log))
+            {
+                return;
+            }
+            shipParts[log.logIndex].material = WoodMaterial;
+            PutInShipParts.Add(log);
+            currentPartIndex++;
+            // Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
+        }
+        if (currentPartIndex >= shipParts.Count)
+        {
+
+        }
     }
 }
