@@ -5,15 +5,20 @@ public class BuildingShip : MonoBehaviour
 {
     [SerializeField] private List<Renderer> shipParts;
     [SerializeField] private List<kloda> PutInShipParts;
-<<<<<<< HEAD
-    private Material WoodMaterial;
-=======
     [SerializeField] private Animator animator;
+    [SerializeField] private Transform teleportPoint;
+    [SerializeField] private GameObject otherBoat;
     private Material WoodMaterial;
     bool isOnIsland = false;
->>>>>>> c87e761a8c99a3f018e9eb374d946fd84138bfcf
+    Player player1;
+    Player player2;
     public int currentPartIndex = 0;
 
+    private void Start()
+    {
+        player1 = GameManager.Instance.player1;
+        player2 = GameManager.Instance.player2;
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<kloda>(out kloda log))
@@ -28,11 +33,6 @@ public class BuildingShip : MonoBehaviour
             // Destroy(other.gameObject);
             other.gameObject.SetActive(false);
         }
-<<<<<<< HEAD
-        if (currentPartIndex >= shipParts.Count)
-        {
-
-=======
         if (other.CompareTag("Island"))
         {
             isOnIsland = true;
@@ -45,21 +45,5 @@ public class BuildingShip : MonoBehaviour
             isOnIsland = false;
         }
     }
-    public void SwimToIsland()
-    {
-        if (currentPartIndex >= shipParts.Count)
-        {
-            if (isOnIsland)
-            {
-                animator.SetBool("SwimTo", false);
-                animator.SetBool("SwimBack", true);
-            }
-            else
-            {
-                animator.SetBool("SwimTo", true);
-                animator.SetBool("SwimBack", false);
-            }
->>>>>>> c87e761a8c99a3f018e9eb374d946fd84138bfcf
-        }
-    }
+
 }
