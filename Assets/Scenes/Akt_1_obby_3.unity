@@ -3065,7 +3065,7 @@ PrefabInstance:
     - target: {fileID: 7479297901177744630, guid: bbfc6f9aec1f081469ecb15a59d134f9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 959671918}
+      objectReference: {fileID: 0}
     - target: {fileID: 7479297901177744630, guid: bbfc6f9aec1f081469ecb15a59d134f9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ResumeGame
@@ -3081,7 +3081,7 @@ PrefabInstance:
     - target: {fileID: 8062934222333136418, guid: bbfc6f9aec1f081469ecb15a59d134f9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 959671918}
+      objectReference: {fileID: 0}
     - target: {fileID: 8062934222333136418, guid: bbfc6f9aec1f081469ecb15a59d134f9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 0
@@ -3098,11 +3098,6 @@ PrefabInstance:
 --- !u!224 &310137649 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6047307551219348519, guid: bbfc6f9aec1f081469ecb15a59d134f9, type: 3}
-  m_PrefabInstance: {fileID: 310137648}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &310137650 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8656004989825151408, guid: bbfc6f9aec1f081469ecb15a59d134f9, type: 3}
   m_PrefabInstance: {fileID: 310137648}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &322329649
@@ -6151,7 +6146,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 959671918}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: PauseGame
         m_Mode: 1
@@ -9403,7 +9398,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 959671918}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -9714,7 +9709,6 @@ GameObject:
   - component: {fileID: 959671915}
   - component: {fileID: 959671916}
   - component: {fileID: 959671919}
-  - component: {fileID: 959671918}
   - component: {fileID: 959671917}
   - component: {fileID: 959671920}
   m_Layer: 0
@@ -9825,29 +9819,6 @@ MonoBehaviour:
   cinemachineInputAxisController2: {fileID: 346675145}
   cinemachineInputAxisController3: {fileID: 2059205979}
   cinemachineInputAxisController4: {fileID: 2059205986}
---- !u!114 &959671918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959671912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e5368c447d0b6c4491c510f18201878, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 310137650}
-  settingsMenuUI: {fileID: 0}
-  masterVolumeSlider: {fileID: 0}
-  musicVolumeSlider: {fileID: 0}
-  sfxVolumeSlider: {fileID: 0}
-  qualityDropdown: {fileID: 0}
-  fullscreenToggle: {fileID: 0}
-  resolutionDropdown: {fileID: 0}
-  mouseSensSlider: {fileID: 0}
-  currentInputDevice: 0
-  isBusy: 0
 --- !u!114 &959671919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9877,7 +9848,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueAnimator: {fileID: 1198742413}
+  nameText: {fileID: 1198742414}
   TutorialText: {fileID: 1198742412}
+  otherName: 
   Sentences:
   - "Tym razem b\u0119dziecie potrzebowali od siebie du\u017Co wsp\xF3\u0142pracy.
     Powodzenia!"
@@ -12387,6 +12360,17 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 4585302967701405624, guid: 491b9b65f57792441a3ae7a018bd8aef, type: 3}
   m_PrefabInstance: {fileID: 1198742410}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1198742414 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7236405608309186417, guid: 491b9b65f57792441a3ae7a018bd8aef, type: 3}
+  m_PrefabInstance: {fileID: 1198742410}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1200764491
 GameObject:
   m_ObjectHideFlags: 0
