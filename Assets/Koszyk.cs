@@ -6,6 +6,8 @@ public class Koszyk : MonoBehaviour
     [SerializeField] private GameObject[] applePrefab;
     [SerializeField] private List<Apple> addedApples;
     [SerializeField] private KanarekManager kanarek;
+    [SerializeField] private Animator jezykAnimator;
+    [SerializeField] private Collider colliderRura;
     [SerializeField] private int appleCount = 0;
     void OnTriggerEnter(Collider other)
     {
@@ -22,6 +24,8 @@ public class Koszyk : MonoBehaviour
             if (appleCount >= 5)
             {
                 Debug.Log("Zebrałem wszystkie jabłka");
+                colliderRura.enabled = false;
+                jezykAnimator.SetTrigger("idz");
                 kanarek.PlaySentence(6);
             }
         }
