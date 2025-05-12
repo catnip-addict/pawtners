@@ -431,6 +431,12 @@ public class Player : MonoBehaviour
     {
         transform.position = position;
     }
+    public void ZeroEverything()
+    {
+        rb.linearDamping = 0f;
+        jumpVelocity = 0f;
+        rb.angularVelocity = Vector3.zero;
+    }
     public void SetPlayerHat(int index)
     {
         throw new NotImplementedException();

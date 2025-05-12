@@ -36,6 +36,9 @@ public class MapManager : MonoBehaviour
     private IEnumerator ChangeMap(int mapIndex, int teleportindex, Transform[] teleportPoint)
     {
         TransitionManager.Instance.FadeIn();
+        yield return new WaitForSeconds(teleportDelay);
+        player1.ZeroEverything();
+        player2.ZeroEverything();
         player1.enabled = false;
         player2.enabled = false;
         player1.transform.position = teleportPoint[teleportindex].position;
@@ -52,10 +55,10 @@ public class MapManager : MonoBehaviour
         yield return new WaitForSeconds(teleportDelay + 1f);
         player2.enabled = true;
         player1.enabled = true;
-        player1.SetJumpVelocity(0);
-        player2.SetJumpVelocity(0);
         player1.transform.position = teleportPoint[teleportindex].position;
         player2.transform.position = teleportPoint[teleportindex].position + new Vector3(0.5f, 0.5f, 0);
+        player1.ZeroEverything();
+        player2.ZeroEverything();
         TransitionManager.Instance.FadeOut();
     }
 

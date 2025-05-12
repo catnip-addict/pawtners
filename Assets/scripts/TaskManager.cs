@@ -114,7 +114,7 @@ public class TaskManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         comicParts[2].enabled = true;
 
-        if (comicParts[3] != null)
+        if (comicParts.Length > 3 && comicParts[3] != null)
         {
             yield return new WaitForSeconds(2);
             comicParts[3].enabled = true;
