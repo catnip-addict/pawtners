@@ -10,7 +10,6 @@ public class KanarekManager : MonoBehaviour
     public Animator DialogueAnimator;
     public TextMeshProUGUI TutorialText;
     public string[] Sentences;
-    private int currentIndex = 0;
     public float DialogueSpeed;
 
     private Coroutine activeCoroutine;
@@ -42,23 +41,18 @@ public class KanarekManager : MonoBehaviour
         }
     }
 
-    public void NextSentence()
+    public void PlaySentence(int index1)
     {
-        if (currentIndex < Sentences.Length)
-        {
             if (isDisplayingText)
             {
-                sentenceQueue.Enqueue(currentIndex);
-                currentIndex++;
+                sentenceQueue.Enqueue(index1);
             }
             else
             {
                 DialogueAnimator.SetTrigger("Enter");
-                DisplaySentence(currentIndex);
-                currentIndex++;
+                DisplaySentence(index1);
             }
         }
-    }
 
     private void DisplaySentence(int index)
     {
