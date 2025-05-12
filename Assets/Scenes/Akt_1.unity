@@ -4785,7 +4785,6 @@ GameObject:
   - component: {fileID: 959671919}
   - component: {fileID: 959671917}
   - component: {fileID: 959671920}
-  - component: {fileID: 959671921}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -4815,7 +4814,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959671912}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d4434bcf6f32a242b272d90759f0a71, type: 3}
   m_Name: 
@@ -4929,22 +4928,6 @@ MonoBehaviour:
   playerScript: {fileID: 7169744060409167444}
   cutsceneTriggerName: start
   animationTime: 2.5
---- !u!114 &959671921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959671912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5072c74f07176a4abe69a55c65137e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentSceneName: 
-  player1: {fileID: 0}
-  player2: {fileID: 0}
-  mouseCont: 0
 --- !u!65 &967531700
 BoxCollider:
   m_ObjectHideFlags: 0

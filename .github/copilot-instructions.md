@@ -2,7 +2,7 @@
 - Project name: Pawtners
 - Unity version: Unity 6000.0.30f1
 - Active scene:
-  - Name: Akt_2
+  - Name: Tutorial
   - Tags:
     - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Ground, PickUp, BatteryBox
   - Layers:
