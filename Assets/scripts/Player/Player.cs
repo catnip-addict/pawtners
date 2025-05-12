@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     [SerializeField] Animator BlackoutAnimator;
     [SerializeField] ParticleSystem jumpParticles;
     [SerializeField] ParticleSystem runParticles;
+    [SerializeField] ParticleSystem meowParticles;
 
     [Header("Movement Settings")]
     [SerializeField] float constMoveSpeed = 300f;
@@ -179,9 +180,13 @@ public class Player : MonoBehaviour
         PauseMenu.Instance.CheckForPause();
     }
 
-    private void OnSound(bool arg0)
+    private void OnSound(bool pressed)
     {
-        PlaySound(moewSound);
+        if (pressed)
+        {
+            PlaySound(moewSound);
+            meowParticles.Play();
+        }
     }
 
     void OnDisable()

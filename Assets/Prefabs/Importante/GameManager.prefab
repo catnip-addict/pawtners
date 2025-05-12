@@ -51,6 +51,7 @@ MonoBehaviour:
   currentSceneName: test1
   player1: {fileID: 0}
   player2: {fileID: 0}
+  mouseCont: 0
 --- !u!114 &7480992770407243682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +95,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
