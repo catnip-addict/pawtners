@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Player1, Player2, Ground
 - Active game object:
-  - Name: Kamien2 (15)
+  - Name: podstawa
   - Tag: Untagged
   - Layer: Ground
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
