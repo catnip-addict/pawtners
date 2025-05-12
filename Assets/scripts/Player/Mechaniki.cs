@@ -90,6 +90,7 @@ public class Mechaniki : MonoBehaviour
             else if (hit.collider.CompareTag("BatteryBox"))
             {
                 GiveObject(hit.collider.GetComponent<BatteryBox>().GiveBattery());
+                hit.collider.GetComponent<BatteryBox>().DeleteBattery();
             }
         }
     }
