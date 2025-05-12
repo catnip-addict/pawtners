@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 35488007}
   - component: {fileID: 35488006}
   - component: {fileID: 35488005}
+  - component: {fileID: 35488008}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -257,6 +258,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35488003}
   m_CullTransparentMesh: 1
+--- !u!114 &35488008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35488003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ed120ee2ad9074a848eac7ef391ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  animationSpeed: 10
+  normalTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
 --- !u!1 &48153356 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4591989041053721192, guid: 55b3241bdf6ee04459ba3159b59a8877, type: 3}
@@ -9835,6 +9853,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1141015574 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4032664825951419354, guid: e553a721143bec547a953644b77a1021, type: 3}
+  m_PrefabInstance: {fileID: 1567965666}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c6b5ad661f8fb41b411fe2635e9a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1148890021
@@ -21298,7 +21327,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Zapisz
+  m_text: Resetuj
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -21891,13 +21920,14 @@ GameObject:
   - component: {fileID: 2047877802}
   - component: {fileID: 2047877801}
   - component: {fileID: 2047877800}
+  - component: {fileID: 2047877803}
   m_Layer: 5
-  m_Name: Zapisz
+  m_Name: Resetuj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2047877799
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21915,7 +21945,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 875, y: 0}
   m_SizeDelta: {x: 320, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2047877800
@@ -21962,9 +21992,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 129258925}
-        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: SaveSettings
+      - m_Target: {fileID: 1141015574}
+        m_TargetAssemblyTypeName: AchievementManager, Assembly-CSharp
+        m_MethodName: ResetAchievements
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22012,6 +22042,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047877798}
   m_CullTransparentMesh: 1
+--- !u!114 &2047877803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047877798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ed120ee2ad9074a848eac7ef391ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  animationSpeed: 10
+  normalTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hoverTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  pressedTextColor: {r: 1, g: 0.6, b: 0, a: 1}
 --- !u!1 &2072074901
 GameObject:
   m_ObjectHideFlags: 0
