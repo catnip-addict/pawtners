@@ -448,6 +448,10 @@ public class Player : MonoBehaviour
         jumpVelocity = 0f;
         rb.angularVelocity = Vector3.zero;
     }
+    public void DisableRb(bool what)
+    {
+        rb.isKinematic = what;
+    }
     public void SetPlayerHat(int index)
     {
         throw new NotImplementedException();
