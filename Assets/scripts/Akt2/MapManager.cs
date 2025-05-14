@@ -41,8 +41,8 @@ public class MapManager : MonoBehaviour
         player2.ZeroEverything();
         player1.enabled = false;
         player2.enabled = false;
-        player1.DisableRb(false);
-        player2.DisableRb(false);
+        player1.DisableRb(true);
+        player2.DisableRb(true);
         player1.transform.position = teleportPoint[teleportindex].position;
         player2.transform.position = teleportPoint[teleportindex].position + new Vector3(2f, 0.5f, 0);
         yield return new WaitForSeconds(teleportDelay);
@@ -61,8 +61,8 @@ public class MapManager : MonoBehaviour
         player2.transform.position = teleportPoint[teleportindex].position + new Vector3(2f, 0.5f, 0);
         player1.ZeroEverything();
         player2.ZeroEverything();
-        player1.DisableRb(true);
-        player2.DisableRb(true);
+        player1.DisableRb(false);
+        player2.DisableRb(false);
         TransitionManager.Instance.FadeOut();
     }
 
