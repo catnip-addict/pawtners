@@ -51,10 +51,14 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
-        ShowMainMenu();
+        if (mainMenuPanel != null)
+        {
+            // Debug.LogError("Main Menu Panel is not assigned in the inspector.");
+            ShowMainMenu();
+        }
+        InitializeResolutions();
         InitializeQualityDropdown();
         LoadSettings();
-        InitializeResolutions();
     }
     void Update()
     {
@@ -70,6 +74,29 @@ public class SettingsManager : MonoBehaviour
         {
             currentInputDevice = InputDeviceType.Mouse;
             EventSystem.current.SetSelectedGameObject(null);
+        }
+        for (int i = 0; i < 20; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Joystick1Button0 + i))
+            {
+                if (currentInputDevice != InputDeviceType.GamepadKeyboard)
+                {
+                    currentInputDevice = InputDeviceType.GamepadKeyboard;
+                    ChangeInputDevice();
+                }
+                break;
+            }
+        }
+
+        // Check for joystick axes movement
+        if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.2f ||
+            Mathf.Abs(Input.GetAxis("Vertical")) > 0.2f)
+        {
+            if (currentInputDevice != InputDeviceType.GamepadKeyboard)
+            {
+                currentInputDevice = InputDeviceType.GamepadKeyboard;
+                ChangeInputDevice();
+            }
         }
     }
     void ChangeInputDevice()
@@ -113,12 +140,7 @@ public class SettingsManager : MonoBehaviour
         SetSFXVolume(sfxVolume);
         SetMouseSens(mouseSens);
         SetFullscreen(fullscreenToggle.isOn);
-#if UNITY_EDITOR
-
-#else
-    SetResolution(resolutionDropdown.value);
-#endif
-
+        SetResolution(resolutionDropdown.value);
     }
     private void InitializeQualityDropdown()
     {
@@ -239,7 +261,7 @@ public class SettingsManager : MonoBehaviour
     }
     public void StartGame()
     {
-        StartCoroutine(TransitionManager.instance.TransitionToScene(1));
+        StartCoroutine(TransitionManager.Instance.TransitionToScene(1));
     }
 
     public void QuitGame()
@@ -262,21 +284,13 @@ public class SettingsManager : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         PlayerPrefs.SetFloat("MusicVolume", volume);
-        AudioManager audioManager = FindFirstObjectByType<AudioManager>();
-        if (audioManager != null)
-        {
-            audioManager.UpdateMusicVolume(volume);
-        }
+        SoundManager.Instance.UpdateMusicVolume(volume);
     }
 
     public void SetSFXVolume(float volume)
     {
         PlayerPrefs.SetFloat("SFXVolume", volume);
-        AudioManager audioManager = FindFirstObjectByType<AudioManager>();
-        if (audioManager != null)
-        {
-            audioManager.UpdateSFXVolume(volume);
-        }
+        SoundManager.Instance.UpdateSFXVolume(volume);
     }
 
     public void SetQuality(int qualityIndex)
@@ -294,6 +308,18 @@ public class SettingsManager : MonoBehaviour
 
     public void SetResolution(int resolutionIndex)
     {
+        if (resolutions == null || resolutions.Length == 0)
+        {
+            Debug.LogWarning("No resolutions available to set");
+            return;
+        }
+
+        if (resolutionIndex < 0 || resolutionIndex >= resolutions.Length)
+        {
+            Debug.LogWarning("Resolution index out of range: " + resolutionIndex);
+            resolutionIndex = 0;
+        }
+
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height,
             Screen.fullScreen ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed,

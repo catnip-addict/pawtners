@@ -7,6 +7,7 @@ public class Item : MonoBehaviour
     Collider triggerCollider;
     public float weight = 0f;
     public bool needAnimation = true;
+    public bool dragging = false;
 
     public void SetCollider(bool value)
     {
@@ -14,6 +15,14 @@ public class Item : MonoBehaviour
         if (triggerCollider != null)
         {
             triggerCollider.enabled = value;
+        }
+    }
+
+    public void MyszkaDodaj()
+    {
+        if (TryGetComponent<Myszka>(out Myszka myszka))
+        {
+            GameManager.Instance.mouseCont += 1;
         }
     }
 }

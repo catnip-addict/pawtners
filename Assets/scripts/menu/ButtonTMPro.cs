@@ -1,7 +1,9 @@
-using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections;
+using UnityEngine.UI;
+using UnityEngine;
 using TMPro;
+
 
 [RequireComponent(typeof(Button))]
 public class ButtonTMPro : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
@@ -12,10 +14,6 @@ public class ButtonTMPro : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] private Color normalTextColor = Color.white;
     [SerializeField] private Color hoverTextColor = Color.yellow;
     [SerializeField] private Color pressedTextColor = new Color(1, 0.6f, 0);
-
-    [Header("Dźwięki")]
-    [SerializeField] private AudioClip hoverSound;
-    [SerializeField] private AudioClip clickSound;
 
     private Button button;
     private TextMeshProUGUI buttonText;
@@ -65,11 +63,7 @@ public class ButtonTMPro : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             {
                 buttonText.color = hoverTextColor;
             }
-
-            if (hoverSound != null)
-            {
-                audioSource.PlayOneShot(hoverSound);
-            }
+            SoundManager.Instance.PlayButtonSound();
         }
     }
 
@@ -101,13 +95,10 @@ public class ButtonTMPro : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             StartCoroutine(PressAnimation());
         }
 
-        if (clickSound != null)
-        {
-            audioSource.PlayOneShot(clickSound);
-        }
+        SoundManager.Instance.PlayClickSound();
     }
 
-    private System.Collections.IEnumerator PressAnimation()
+    private IEnumerator PressAnimation()
     {
         Vector3 pressedScale = originalScale * 0.9f;
         buttonText.transform.localScale = pressedScale;

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4213650319444887769}
   - component: {fileID: 4792396706281483607}
   - component: {fileID: 8186526693855160574}
+  - component: {fileID: 8027427608035622370}
+  - component: {fileID: 6538222698159854551}
   m_Layer: 4
   m_Name: Zabawka
   m_TagString: PickUp
@@ -54,6 +56,7 @@ MonoBehaviour:
   triggerCollider: {fileID: 4792396706281483607}
   weight: 0
   needAnimation: 1
+  dragging: 0
 --- !u!65 &2899483389343660724
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -141,6 +144,32 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &8027427608035622370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847521021045066699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035105c47c7912248be2ee4e7f328adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSoundIndex: 0
+  soundCooldown: 0.2
+--- !u!114 &6538222698159854551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847521021045066699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a7bff80ef655814db384bfce9bf118a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1205756826271226071
 GameObject:
   m_ObjectHideFlags: 0

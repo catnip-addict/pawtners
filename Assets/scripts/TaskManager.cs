@@ -13,12 +13,14 @@ public class TaskManager : MonoBehaviour
     public TMP_Text MainTaskUI;
     public TMP_Text taskDone1;
     public TMP_Text taskDone2;
-    private bool playTutorial = true;
+    public bool playTutorial = true;
     int numerZadania = 0;
 
     public Player player1;
     public Player player2;
 
+    Mechaniki mechaniki1;
+    Mechaniki mechaniki2;
 
     public GameObject comicCanvas;
     public Image[] comicParts;
@@ -29,6 +31,8 @@ public class TaskManager : MonoBehaviour
 
     private void Start()
     {
+        mechaniki1 = player1.GetMechaniki();
+        mechaniki2 = player2.GetMechaniki();
         UpdateZadania();
         comicCanvas.SetActive(false);
 
@@ -36,6 +40,7 @@ public class TaskManager : MonoBehaviour
         {
             comicPart.enabled = false;
         }
+
     }
 
     private void Update()
@@ -67,7 +72,7 @@ public class TaskManager : MonoBehaviour
             // SceneManager.LoadScene(0);
             // Cursor.lockState = CursorLockMode.None;
             // Cursor.visible = true;
-            StartCoroutine(TransitionManager.instance.TransitionToScene(whichScene));
+            StartCoroutine(TransitionManager.Instance.TransitionToScene(whichScene));
         }
 
     }
@@ -97,6 +102,7 @@ public class TaskManager : MonoBehaviour
     IEnumerator ShowComic()
     {
         comicCanvas.SetActive(true);
+        PauseMenu.Instance.isBusy = true;
 
         yield return new WaitForSeconds(1);
         comicParts[0].enabled = true;
@@ -108,7 +114,7 @@ public class TaskManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         comicParts[2].enabled = true;
 
-        if (comicParts[3] != null)
+        if (comicParts.Length > 3 && comicParts[3] != null)
         {
             yield return new WaitForSeconds(2);
             comicParts[3].enabled = true;
@@ -121,7 +127,7 @@ public class TaskManager : MonoBehaviour
     IEnumerator ShowComic2()
     {
         comicCanvas.SetActive(true);
-
+        PauseMenu.Instance.isBusy = true;
         yield return new WaitForSeconds(1);
         comicParts[0].enabled = true;
 
@@ -136,8 +142,21 @@ public class TaskManager : MonoBehaviour
         isComicDone = true;
         comicText.text = "Naciśnij dowolny klawisz aby kontynuować...";
     }
+
     public void Tp(int id)
     {
-        StartCoroutine(TransitionManager.instance.TransitionToScene(id));
+        StartCoroutine(TransitionManager.Instance.TransitionToScene(id));
+    }
+    public void haveKey()
+    {
+        if (mechaniki1.haveObject || mechaniki2.haveObject)
+        {
+            Tp(3);
+        }
+    }
+    public void showcomic()
+    {
+        StartCoroutine(ShowComic());
+        isComicShowing = true;
     }
 }
