@@ -5507,7 +5507,7 @@ Transform:
   m_GameObject: {fileID: 2608638241292834941}
   serializedVersion: 2
   m_LocalRotation: {x: 0.15212344, y: 0.00000007265812, z: -0.000000011183158, w: 0.98836154}
-  m_LocalPosition: {x: 0, y: 3.0070581, z: -9.53717}
+  m_LocalPosition: {x: -2.37, y: 12.707058, z: -36.21717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12195,6 +12195,7 @@ GameObject:
   - component: {fileID: 577653033917479870}
   - component: {fileID: 1188054215087998471}
   - component: {fileID: 8663316901182588421}
+  - component: {fileID: 52026705118743307}
   m_Layer: 7
   m_Name: Player 2
   m_TagString: Untagged
@@ -12317,11 +12318,11 @@ MonoBehaviour:
   jumpParticles: {fileID: 1865127632355074363}
   runParticles: {fileID: 3392521402643334024}
   meowParticles: {fileID: 8668053639091480776}
+  sensitivity: {fileID: 52026705118743307}
   constMoveSpeed: 300
   constRotationSpeed: 10
   smoothTime: 0.2
   sprintSpeed: 2
-  jumpForce: 60
   jumpDuration: 0.25
   jumpMaxHeight: 2.5
   gravityMultiplier: 2
@@ -12606,6 +12607,20 @@ MonoBehaviour:
   - {fileID: 7243481575129003183}
   playerNumber: 1
   hatIndex: 0
+--- !u!114 &52026705118743307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9124094477695629775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79029107c877648238cb229a3bd47bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemamachineMouse: {fileID: 2019793930757211763}
+  cinemachineController: {fileID: 8183545880990131462}
 --- !u!1 &9152986115002326653
 GameObject:
   m_ObjectHideFlags: 0

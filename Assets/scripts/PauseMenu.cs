@@ -25,6 +25,7 @@ public class PauseMenu : MonoBehaviour
 
     [Header("Ustawienia Sterowania")]
     [SerializeField] private Slider mouseSensSlider;
+    [SerializeField] private Slider joystickSensSlider;
     public InputDeviceType currentInputDevice;
     public bool isBusy = false;
 
@@ -175,12 +176,14 @@ public class PauseMenu : MonoBehaviour
         float musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
         float sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
         float mouseSens = PlayerPrefs.GetFloat("MouseSens", 1.0f);
+        float joystickSens = PlayerPrefs.GetFloat("JoystickSens", 1.0f);
 
         // Apply loaded values to UI if references exist
         if (masterVolumeSlider) masterVolumeSlider.value = masterVolume;
         if (musicVolumeSlider) musicVolumeSlider.value = musicVolume;
         if (sfxVolumeSlider) sfxVolumeSlider.value = sfxVolume;
         if (mouseSensSlider) mouseSensSlider.value = mouseSens;
+        if (joystickSensSlider) joystickSensSlider.value = joystickSens;
 
         if (fullscreenToggle)
             fullscreenToggle.isOn = PlayerPrefs.GetInt("Fullscreen", Screen.fullScreen ? 1 : 0) == 1;
@@ -190,6 +193,7 @@ public class PauseMenu : MonoBehaviour
         SetMusicVolume(musicVolume);
         SetSFXVolume(sfxVolume);
         SetMouseSens(mouseSens);
+        SetJoystickSens(joystickSens);
         SetFullscreen(fullscreenToggle ? fullscreenToggle.isOn : Screen.fullScreen);
 
 #if !UNITY_EDITOR
@@ -298,7 +302,10 @@ public class PauseMenu : MonoBehaviour
     {
         PlayerPrefs.SetFloat("MouseSens", mouseSens);
     }
-
+    public void SetJoystickSens(float joystickSens)
+    {
+        PlayerPrefs.SetFloat("JoystickSens", joystickSens);
+    }
     public void UpdateInputDevice(InputDeviceType newDeviceType)
     {
         currentInputDevice = newDeviceType;
@@ -313,8 +320,8 @@ public class PauseMenu : MonoBehaviour
     {
         Player player1 = GameManager.Instance.player1;
         Player player2 = GameManager.Instance.player2;
-        player1.SetMouseSensitivity(GetMouseSensitivity());
-        player2.SetMouseSensitivity(GetMouseSensitivity());
+        player1.SetSensitivity();
+        player2.SetSensitivity();
         PlayerPrefs.Save();
     }
     void Tp(int id)

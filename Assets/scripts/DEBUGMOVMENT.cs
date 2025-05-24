@@ -7,12 +7,12 @@ public class DEBUGMOVMENT : MonoBehaviour
     public InputReader player2;
 
     //First player
-    public Unity.Cinemachine.CinemachineInputAxisController cinemachineInputAxisController1;
-    public Unity.Cinemachine.CinemachineInputAxisController cinemachineInputAxisController2;
+    public CinemachineInputAxisController cinemachineInputAxisController1;
+    public CinemachineInputAxisController cinemachineInputAxisController2;
 
     //Second player
-    public Unity.Cinemachine.CinemachineInputAxisController cinemachineInputAxisController3;
-    public Unity.Cinemachine.CinemachineInputAxisController cinemachineInputAxisController4;
+    public CinemachineInputAxisController cinemachineInputAxisController3;
+    public CinemachineInputAxisController cinemachineInputAxisController4;
 
     public void SwitchPlayers()
     {

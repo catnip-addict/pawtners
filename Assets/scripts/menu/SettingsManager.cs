@@ -44,7 +44,7 @@ public class SettingsManager : MonoBehaviour
     [Header("Ustawienia Sterowania")]
     // [SerializeField] private bool enableControllerSupport = true;
     [SerializeField] private Slider mouseSensSlider;
-    // [SerializeField] private float controllerSensitivity = 0.5f;
+    [SerializeField] private Slider joystickSensSlider;
     public InputDeviceType currentInputDevice;
 
     private Resolution[] resolutions;
@@ -127,11 +127,13 @@ public class SettingsManager : MonoBehaviour
         float musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
         float sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
         float mouseSens = PlayerPrefs.GetFloat("MouseSens", 1.0f);
+        float joystickSens = PlayerPrefs.GetFloat("JoystickSens", 1.0f);
 
         masterVolumeSlider.value = masterVolume;
         musicVolumeSlider.value = musicVolume;
         sfxVolumeSlider.value = sfxVolume;
         mouseSensSlider.value = mouseSens;
+        joystickSensSlider.value = joystickSens;
 
         fullscreenToggle.isOn = PlayerPrefs.GetInt("Fullscreen", Screen.fullScreen ? 1 : 0) == 1;
 
@@ -139,6 +141,7 @@ public class SettingsManager : MonoBehaviour
         SetMusicVolume(musicVolume);
         SetSFXVolume(sfxVolume);
         SetMouseSens(mouseSens);
+        SetJoystickSens(joystickSens);
         SetFullscreen(fullscreenToggle.isOn);
         SetResolution(resolutionDropdown.value);
     }
@@ -329,6 +332,10 @@ public class SettingsManager : MonoBehaviour
     public void SetMouseSens(float mouseSens)
     {
         PlayerPrefs.SetFloat("MouseSens", mouseSens);
+    }
+    public void SetJoystickSens(float joystickSens)
+    {
+        PlayerPrefs.SetFloat("JoystickSens", joystickSens);
     }
     public void SaveSettings()
     {

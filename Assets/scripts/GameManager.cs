@@ -16,21 +16,15 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
-    }
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        if (player1 == null || player2 == null)
+        {
+            FindPlayers();
+        }
     }
     public void FindPlayers()
     {
-        player1 = GameObject.Find("Player1").GetComponent<Player>();
-        player2 = GameObject.Find("Player2").GetComponent<Player>();
+        player1 = GameObject.Find("Player 1").GetComponent<Player>();
+        player2 = GameObject.Find("Player 2").GetComponent<Player>();
         Debug.Log("Player1: " + player1.name + " Player2: " + player2.name);
     }
 

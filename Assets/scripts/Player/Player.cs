@@ -14,122 +14,155 @@ public enum PlayerNumber
 
 public class Player : MonoBehaviour
 {
-    //
     [Header("References")]
-    [SerializeField] Rigidbody rb;
-    [SerializeField] GroundChecker groundChecker;
-    [SerializeField] Animator animator;
-    [SerializeField] CinemachineCamera freeLookVCam;
-    [SerializeField] InputReader input;
-    [SerializeField] Transform mainCam;
-    [SerializeField] CheckPoints checkPoints;
-    [SerializeField] Animator BlackoutAnimator;
-    [SerializeField] ParticleSystem jumpParticles;
-    [SerializeField] ParticleSystem runParticles;
-    [SerializeField] ParticleSystem meowParticles;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private GroundChecker groundChecker;
+    [SerializeField] private Animator animator;
+    [SerializeField] private CinemachineCamera freeLookVCam;
+    [SerializeField] private InputReader input;
+    [SerializeField] private Transform mainCam;
+    [SerializeField] private CheckPoints checkPoints;
+    [SerializeField] private Animator BlackoutAnimator;
+    [SerializeField] private ParticleSystem jumpParticles;
+    [SerializeField] private ParticleSystem runParticles;
+    [SerializeField] private ParticleSystem meowParticles;
+    [SerializeField] private PlayerSensitivity sensitivity;
 
     [Header("Movement Settings")]
-    [SerializeField] float constMoveSpeed = 300f;
-    float moveSpeed;
-    [SerializeField] float constRotationSpeed = 720f;
-    float rotationSpeed = 360f;
-    [SerializeField] float smoothTime = 0.2f;
-    [SerializeField] float sprintSpeed = 2.0f;
-    bool isSprinting = false;
+    [SerializeField] private float constMoveSpeed = 300f;
+    [SerializeField] private float constRotationSpeed = 720f;
+    [SerializeField] private float smoothTime = 0.2f;
+    [SerializeField] private float sprintSpeed = 2.0f;
+
+    private float moveSpeed;
+    private float rotationSpeed = 360f;
+    private bool isSprinting = false;
 
     [Header("Jump Settings")]
-    [SerializeField] float jumpForce = 60f;
-    [SerializeField] float jumpDuration = 0.25f;
-    float jumpCooldown = 0f;
-    [SerializeField] float jumpMaxHeight = 2.5f;
-    [SerializeField] float gravityMultiplier = 2f;
-    [SerializeField] float maxFallSpeed = 10f;
-    [SerializeField] float coyoteTime = 0.2f;
+    [SerializeField] private float jumpDuration = 0.25f;
+    [SerializeField] private float jumpMaxHeight = 2.5f;
+    [SerializeField] private float gravityMultiplier = 2f;
+    [SerializeField] private float maxFallSpeed = 10f;
+    [SerializeField] private float coyoteTime = 0.2f;
+
+    private float jumpCooldown = 0f;
     private float coyoteTimeCounter = 0f;
     private bool wasGroundedLastFrame = false;
     private bool inTheAir = false;
 
     [Header("CheckPoints")]
-    [SerializeField] int checkPointIndex = 0;
+    [SerializeField] private int checkPointIndex = 0;
+
     [Header("Misc")]
     public PlayerNumber playerNumber;
-    [SerializeField] private float pickupCooldown = 0.5f; // Cooldown time in seconds for pickup action
+    [SerializeField] private float pickupCooldown = 0.5f;
     private float pickupCooldownTimer = 0f;
 
-    const float ZeroF = 0f;
-    float currentSpeed;
-    float velocity;
-    float jumpVelocity;
+    private const float ZERO_F = 0f;
+    private const float MIN_MOVEMENT_THRESHOLD = 0.01f;
+    private const float IMPACT_VELOCITY_THRESHOLD = 2f;
 
-    [HideInInspector]
-    public Vector3 movement;
+    private float currentSpeed;
+    private float velocity;
+    private float jumpVelocity;
 
-    List<Timer> timers;
-    CountdownTimer jumpTimer;
-    CountdownTimer jumpCooldownTimer;
-    [Header("Audio st00pek")]
+    [HideInInspector] public Vector3 movement;
+
+    private List<Timer> timers;
+    private CountdownTimer jumpTimer;
+    private CountdownTimer jumpCooldownTimer;
+
+    [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip footstepSound;
     public AudioClip moewSound;
     public float stepInterval = 0.5f;
 
     private float stepTimer = 0f;
-    [HideInInspector]
-    public bool isRestricted = false;
-    CinemachineInputAxisController inputAxisController;
-    Mechaniki mechaniki;
+
+    [HideInInspector] public bool isRestricted = false;
+
+    private Mechaniki mechaniki;
     public Hats hats;
+
+    // Cached components and values
+    private ParticleSystem.EmissionModule runParticlesEmission;
+
+    // Animator hash IDs for better performance
+    private static readonly int IsWalkingHash = Animator.StringToHash("isWalking");
+    private static readonly int IsSprintingHash = Animator.StringToHash("isSprinting");
+    private static readonly int InTheAirHash = Animator.StringToHash("inTheAir");
+    private static readonly int IsJumpingHash = Animator.StringToHash("isJumping");
+    private static readonly int BlackOutHash = Animator.StringToHash("BlackOut");
 
     public void Die()
     {
         checkPoints.ResetToCheckPoint(transform, checkPointIndex);
         rb.linearVelocity = Vector3.zero;
-        BlackoutAnimator.SetTrigger("BlackOut");
+        BlackoutAnimator.SetTrigger(BlackOutHash);
     }
 
     void Awake()
     {
+        InitializeCamera();
+        InitializePhysics();
+        InitializeTimers();
+        RegisterWithGameManager();
+        InitializeComponents();
+        InitializeSettings();
+    }
+
+    private void InitializeCamera()
+    {
         freeLookVCam.Follow = transform;
         freeLookVCam.LookAt = transform;
         freeLookVCam.OnTargetObjectWarped(transform, transform.position - freeLookVCam.transform.position - Vector3.forward);
-
-        rb.freezeRotation = true;
-
-        // Setup timers
-        jumpTimer = new CountdownTimer(jumpDuration);
-        jumpCooldownTimer = new CountdownTimer(jumpCooldown);
-        timers = new(2) { jumpTimer, jumpCooldownTimer };
-
-        jumpTimer.OnTimerStop += () => jumpCooldownTimer.Start();
-
-        float mouseSens = PlayerPrefs.GetFloat("MouseSens", 1.0f);
-        SetMouseSensitivity(mouseSens);
-        hats = GetComponentInChildren<Hats>();
-        mechaniki = GetComponent<Mechaniki>();
     }
 
-    public void SetMouseSensitivity(float mouseSens)
+    private void InitializePhysics()
     {
-        var axisControllers = freeLookVCam.GetComponents<CinemachineInputAxisController>();
+        rb.freezeRotation = true;
+    }
 
-        foreach (var axisController in axisControllers)
+    private void InitializeTimers()
+    {
+        jumpTimer = new CountdownTimer(jumpDuration);
+        jumpCooldownTimer = new CountdownTimer(jumpCooldown);
+        timers = new List<Timer>(2) { jumpTimer, jumpCooldownTimer };
+
+        jumpTimer.OnTimerStop += () => jumpCooldownTimer.Start();
+    }
+
+    private void RegisterWithGameManager()
+    {
+        if (GameManager.Instance == null) return;
+
+        switch (playerNumber)
         {
-            foreach (var c in axisController.Controllers)
-            {
-                if (c.Name == "Look Orbit X")
-                {
-                    c.Input.LegacyGain = 1f * mouseSens;
-                    c.Input.Gain = 2f * mouseSens;
-                    // Debug.Log($"Setting X sensitivity on controller: {axisController.name}");
-                }
-                if (c.Name == "Look Orbit Y")
-                {
-                    c.Input.LegacyGain = -1f * mouseSens;
-                    c.Input.Gain = -2f * mouseSens;
-                    // Debug.Log($"Setting Y sensitivity on controller: {axisController.name}");
-                }
-            }
+            case PlayerNumber.First:
+                GameManager.Instance.player1 = this;
+                break;
+            case PlayerNumber.Second:
+                GameManager.Instance.player2 = this;
+                break;
         }
+    }
+
+    private void InitializeComponents()
+    {
+        hats = GetComponentInChildren<Hats>();
+        mechaniki = GetComponent<Mechaniki>();
+        runParticlesEmission = runParticles.emission;
+    }
+
+    private void InitializeSettings()
+    {
+        SetSensitivity();
+    }
+    public void SetSensitivity()
+    {
+        sensitivity.SetJoyStickSensitivity();
+        sensitivity.SetMouseSensitivity();
     }
 
     void Start()
@@ -138,23 +171,14 @@ public class Player : MonoBehaviour
         moveSpeed = constMoveSpeed;
         rotationSpeed = constRotationSpeed;
         PauseMenu.Instance.isBusy = false;
-        if (GameManager.Instance != null)
-        {
-            if (playerNumber == PlayerNumber.First)
-            {
-                GameManager.Instance.player1 = this;
-            }
-            else if (playerNumber == PlayerNumber.Second)
-            {
-                GameManager.Instance.player2 = this;
-            }
-        }
+
         int hatIndex = PlayerPrefs.GetInt("HatIndex" + playerNumber, 0);
         if (hatIndex != 0)
         {
             AchievementManager.Instance.UnlockAchievement(12);
         }
     }
+
     void OnEnable()
     {
         input.Jump += OnJump;
@@ -164,13 +188,20 @@ public class Player : MonoBehaviour
         input.PickUp += OnPickUp;
     }
 
+    void OnDisable()
+    {
+        input.Jump -= OnJump;
+        input.Sprint -= OnSprint;
+        input.Moew -= OnSound;
+        input.Pause -= OnPause;
+        input.PickUp -= OnPickUp;
+    }
+
     private void OnPickUp()
     {
-        // Only allow pickup/drop if not on cooldown
         if (pickupCooldownTimer <= 0)
         {
             mechaniki.PickUpObject();
-            // Reset cooldown timer
             pickupCooldownTimer = pickupCooldown;
         }
     }
@@ -189,18 +220,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnDisable()
-    {
-        input.Jump -= OnJump;
-        input.Sprint -= OnSprint;
-        input.Moew -= OnSound;
-        input.Pause -= OnPause;
-        input.PickUp -= OnPickUp;
-    }
-
     void OnJump(bool performed)
     {
-        if (performed && !jumpTimer.IsRunning && !jumpCooldownTimer.IsRunning && (groundChecker.IsGrounded || coyoteTimeCounter > 0))
+        bool canJump = !jumpTimer.IsRunning && !jumpCooldownTimer.IsRunning &&
+                      (groundChecker.IsGrounded || coyoteTimeCounter > 0);
+
+        if (performed && canJump)
         {
             jumpTimer.Start();
             JumpParticles();
@@ -219,28 +244,34 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        HandleInput();
+        HandleSprintEffects();
+        HandleCoyoteTime();
+        UpdateCooldowns();
+        HandleTimers();
+        UpdateAnimator();
+    }
+
+    private void HandleInput()
+    {
         movement = new Vector3(input.Direction.x, 0f, input.Direction.y);
-        var emission = runParticles.emission;
+
         if (isSprinting)
         {
             movement *= sprintSpeed;
-            if (groundChecker.IsGrounded)
-            {
-                emission.enabled = true;
-                animator.SetBool("isSprinting", true);
-            }
-            else
-            {
-                emission.enabled = false;
-                animator.SetBool("isSprinting", false);
-            }
         }
-        else
-        {
-            emission.enabled = false;
-            animator.SetBool("isSprinting", false);
-        }
+    }
 
+    private void HandleSprintEffects()
+    {
+        bool shouldShowSprintEffects = isSprinting && groundChecker.IsGrounded;
+
+        runParticlesEmission.enabled = shouldShowSprintEffects;
+        animator.SetBool(IsSprintingHash, shouldShowSprintEffects);
+    }
+
+    private void HandleCoyoteTime()
+    {
         if (groundChecker.IsGrounded)
         {
             coyoteTimeCounter = coyoteTime;
@@ -253,15 +284,16 @@ public class Player : MonoBehaviour
         {
             coyoteTimeCounter -= Time.deltaTime;
         }
-        wasGroundedLastFrame = groundChecker.IsGrounded;
 
+        wasGroundedLastFrame = groundChecker.IsGrounded;
+    }
+
+    private void UpdateCooldowns()
+    {
         if (pickupCooldownTimer > 0)
         {
             pickupCooldownTimer -= Time.deltaTime;
         }
-
-        HandleTimers();
-        UpdateAnimator();
     }
 
     void FixedUpdate()
@@ -269,35 +301,31 @@ public class Player : MonoBehaviour
         HandleJump();
         HandleMovement();
     }
+
     void LateUpdate()
     {
-        if (groundChecker.IsGrounded)
+        HandleGroundState();
+    }
+
+    private void HandleGroundState()
+    {
+        bool isGrounded = groundChecker.IsGrounded;
+        animator.SetBool(InTheAirHash, !isGrounded);
+
+        if (isGrounded && inTheAir)
         {
-            animator.SetBool("inTheAir", false);
-            if (inTheAir)
-            {
-                // CinemachineShakeManager.Instance.Shake(freeLookVCam, 0.5f, 0.15f);
-                inTheAir = false;
-            }
+            inTheAir = false;
         }
-        else
+        else if (!isGrounded)
         {
             inTheAir = true;
-            animator.SetBool("inTheAir", true);
         }
     }
 
     void UpdateAnimator()
     {
-        // animator.SetFloat(Speed, currentSpeed);
-        if (movement.sqrMagnitude > 0)
-        {
-            animator.SetBool("isWalking", true);
-        }
-        else
-        {
-            animator.SetBool("isWalking", false);
-        }
+        bool isMoving = movement.sqrMagnitude > MIN_MOVEMENT_THRESHOLD;
+        animator.SetBool(IsWalkingHash, isMoving);
     }
 
     public void SetWeight(float weight)
@@ -316,51 +344,49 @@ public class Player : MonoBehaviour
 
     void HandleJump()
     {
-        if (isRestricted)
-            return;
+        if (isRestricted) return;
 
         if (!jumpTimer.IsRunning && groundChecker.IsGrounded)
         {
-            jumpVelocity = ZeroF;
-            animator.SetBool("inTheAir", false);
-            animator.SetBool("isJumping", false);
+            jumpVelocity = ZERO_F;
+            animator.SetBool(InTheAirHash, false);
+            animator.SetBool(IsJumpingHash, false);
             return;
         }
 
         if (jumpTimer.IsRunning)
         {
-            animator.SetBool("isJumping", true);
-            animator.SetBool("inTheAir", true);
-
+            animator.SetBool(IsJumpingHash, true);
+            animator.SetBool(InTheAirHash, true);
             jumpVelocity = Mathf.Sqrt(2 * jumpMaxHeight * Mathf.Abs(Physics.gravity.y));
         }
-        else
+        else if (jumpVelocity >= maxFallSpeed)
         {
-            if (jumpVelocity >= maxFallSpeed)
-            {
-                jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
-            }
+            jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
         }
 
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpVelocity, rb.linearVelocity.z);
     }
+
     public void SetJumpVelocity(float value)
     {
         rb.AddForce(Vector3.up * value, ForceMode.VelocityChange);
         jumpVelocity = value;
-        Debug.Log("Jump velocity set to: " + jumpVelocity);
     }
+
     public void JumpParticles()
     {
         jumpParticles.Play();
     }
+
     public Mechaniki GetMechaniki()
     {
         return mechaniki;
     }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.relativeVelocity.magnitude > 2f && groundChecker.IsGrounded)
+        if (collision.relativeVelocity.magnitude > IMPACT_VELOCITY_THRESHOLD && groundChecker.IsGrounded)
         {
             PlaySound(footstepSound);
         }
@@ -368,42 +394,41 @@ public class Player : MonoBehaviour
 
     void HandleMovement()
     {
-        _ = Vector3.zero;
-        Vector3 adjustedDirection;
-        if (isRestricted)
-        {
-            adjustedDirection = transform.forward * movement.z;
-        }
-        else
-        {
-            adjustedDirection = Quaternion.AngleAxis(mainCam.eulerAngles.y, Vector3.up) * movement;
-        }
+        Vector3 adjustedDirection = CalculateMovementDirection();
 
-        if (adjustedDirection.magnitude > ZeroF)
+        if (adjustedDirection.magnitude > ZERO_F)
         {
             HandleRotation(adjustedDirection);
             HandleHorizontalMovement(adjustedDirection);
             SmoothSpeed(adjustedDirection.magnitude);
-
-            if (isSprinting)
-            {
-                stepTimer -= Time.deltaTime * 1.25f;
-            }
-            else
-            {
-                stepTimer -= Time.deltaTime;
-            }
-            if (stepTimer <= 0f && groundChecker.IsGrounded)
-            {
-                PlaySound(footstepSound);
-                stepTimer = stepInterval;
-            }
+            HandleFootsteps();
         }
-
         else
         {
-            SmoothSpeed(ZeroF);
-            rb.linearVelocity = new Vector3(ZeroF, rb.linearVelocity.y, ZeroF);
+            SmoothSpeed(ZERO_F);
+            rb.linearVelocity = new Vector3(ZERO_F, rb.linearVelocity.y, ZERO_F);
+        }
+    }
+
+    private Vector3 CalculateMovementDirection()
+    {
+        if (isRestricted)
+        {
+            return transform.forward * movement.z;
+        }
+
+        return Quaternion.AngleAxis(mainCam.eulerAngles.y, Vector3.up) * movement;
+    }
+
+    private void HandleFootsteps()
+    {
+        float stepMultiplier = isSprinting ? 1.25f : 1f;
+        stepTimer -= Time.deltaTime * stepMultiplier;
+
+        if (stepTimer <= 0f && groundChecker.IsGrounded)
+        {
+            PlaySound(footstepSound);
+            stepTimer = stepInterval;
         }
     }
 
@@ -415,14 +440,10 @@ public class Player : MonoBehaviour
 
     void HandleRotation(Vector3 adjustedDirection)
     {
-        if (isRestricted)
-            return;
-
-        if (adjustedDirection.sqrMagnitude < 0.01f)
+        if (isRestricted || adjustedDirection.sqrMagnitude < MIN_MOVEMENT_THRESHOLD)
             return;
 
         var targetRotation = Quaternion.LookRotation(adjustedDirection);
-
         float rotationFactor = rotationSpeed * Time.fixedDeltaTime;
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationFactor);
     }
@@ -431,6 +452,7 @@ public class Player : MonoBehaviour
     {
         currentSpeed = Mathf.SmoothDamp(currentSpeed, value, ref velocity, smoothTime);
     }
+
     public void PlaySound(AudioClip clip)
     {
         float originalPitch = audioSource.pitch;
@@ -438,28 +460,21 @@ public class Player : MonoBehaviour
         audioSource.PlayOneShot(clip);
         audioSource.pitch = originalPitch;
     }
+
     public void TeleportToPosition(Vector3 position)
     {
         transform.position = position;
     }
+
     public void ZeroEverything()
     {
         rb.linearDamping = 0f;
         jumpVelocity = 0f;
         rb.angularVelocity = Vector3.zero;
     }
-    public void DisableRb(bool what)
-    {
-        rb.isKinematic = what;
-    }
-    public void SetPlayerHat(int index)
-    {
-        throw new NotImplementedException();
-    }
 
-    public void SetPlayerMat(Material material)
+    public void DisableRb(bool isKinematic)
     {
-        throw new NotImplementedException();
+        rb.isKinematic = isKinematic;
     }
 }
-
